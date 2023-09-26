@@ -8,14 +8,32 @@ class RollShotPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RollShotCubit(),
+      create: (context) => RollShotCubit()..start(),
       child: BlocBuilder<RollShotCubit, RollShotState>(
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Roll Shot'),
             ),
-            body: Column(),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (state.chosenRecipe != null)
+                    Text(state.chosenRecipe?.id ?? 'null'),
+                  ElevatedButton(
+                      onPressed: () {
+                        context.read<RollShotCubit>().rollShot();
+                      },
+                      child: const Text('Roll Shot')),
+                  ElevatedButton(
+                      onPressed: () {
+                        context.read<RollShotCubit>().resetShot();
+                      },
+                      child: const Text('Reset'))
+                ],
+              ),
+            ),
           );
         },
       ),
