@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ShotRecipeModel {
   String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  String get titleEN => throw _privateConstructorUsedError;
+  String get titlePL => throw _privateConstructorUsedError;
   List<IngredientModel> get ingredients => throw _privateConstructorUsedError;
   List<String> get tasteNoteIds => throw _privateConstructorUsedError;
 
@@ -34,7 +35,8 @@ abstract class $ShotRecipeModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String title,
+      String titleEN,
+      String titlePL,
       List<IngredientModel> ingredients,
       List<String> tasteNoteIds});
 }
@@ -53,7 +55,8 @@ class _$ShotRecipeModelCopyWithImpl<$Res, $Val extends ShotRecipeModel>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? titleEN = null,
+    Object? titlePL = null,
     Object? ingredients = null,
     Object? tasteNoteIds = null,
   }) {
@@ -62,9 +65,13 @@ class _$ShotRecipeModelCopyWithImpl<$Res, $Val extends ShotRecipeModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      titleEN: null == titleEN
+          ? _value.titleEN
+          : titleEN // ignore: cast_nullable_to_non_nullable
+              as String,
+      titlePL: null == titlePL
+          ? _value.titlePL
+          : titlePL // ignore: cast_nullable_to_non_nullable
               as String,
       ingredients: null == ingredients
           ? _value.ingredients
@@ -88,7 +95,8 @@ abstract class _$$_ShotRecipeModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String title,
+      String titleEN,
+      String titlePL,
       List<IngredientModel> ingredients,
       List<String> tasteNoteIds});
 }
@@ -105,7 +113,8 @@ class __$$_ShotRecipeModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? titleEN = null,
+    Object? titlePL = null,
     Object? ingredients = null,
     Object? tasteNoteIds = null,
   }) {
@@ -114,9 +123,13 @@ class __$$_ShotRecipeModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      titleEN: null == titleEN
+          ? _value.titleEN
+          : titleEN // ignore: cast_nullable_to_non_nullable
+              as String,
+      titlePL: null == titlePL
+          ? _value.titlePL
+          : titlePL // ignore: cast_nullable_to_non_nullable
               as String,
       ingredients: null == ingredients
           ? _value._ingredients
@@ -135,7 +148,8 @@ class __$$_ShotRecipeModelCopyWithImpl<$Res>
 class _$_ShotRecipeModel extends _ShotRecipeModel {
   const _$_ShotRecipeModel(
       {required this.id,
-      required this.title,
+      required this.titleEN,
+      required this.titlePL,
       required final List<IngredientModel> ingredients,
       required final List<String> tasteNoteIds})
       : _ingredients = ingredients,
@@ -145,7 +159,9 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
   @override
   final String id;
   @override
-  final String title;
+  final String titleEN;
+  @override
+  final String titlePL;
   final List<IngredientModel> _ingredients;
   @override
   List<IngredientModel> get ingredients {
@@ -164,7 +180,7 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
 
   @override
   String toString() {
-    return 'ShotRecipeModel(id: $id, title: $title, ingredients: $ingredients, tasteNoteIds: $tasteNoteIds)';
+    return 'ShotRecipeModel(id: $id, titleEN: $titleEN, titlePL: $titlePL, ingredients: $ingredients, tasteNoteIds: $tasteNoteIds)';
   }
 
   @override
@@ -173,7 +189,8 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
         (other.runtimeType == runtimeType &&
             other is _$_ShotRecipeModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.titleEN, titleEN) || other.titleEN == titleEN) &&
+            (identical(other.titlePL, titlePL) || other.titlePL == titlePL) &&
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
             const DeepCollectionEquality()
@@ -184,7 +201,8 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      title,
+      titleEN,
+      titlePL,
       const DeepCollectionEquality().hash(_ingredients),
       const DeepCollectionEquality().hash(_tasteNoteIds));
 
@@ -198,7 +216,8 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
 abstract class _ShotRecipeModel extends ShotRecipeModel {
   const factory _ShotRecipeModel(
       {required final String id,
-      required final String title,
+      required final String titleEN,
+      required final String titlePL,
       required final List<IngredientModel> ingredients,
       required final List<String> tasteNoteIds}) = _$_ShotRecipeModel;
   const _ShotRecipeModel._() : super._();
@@ -206,7 +225,9 @@ abstract class _ShotRecipeModel extends ShotRecipeModel {
   @override
   String get id;
   @override
-  String get title;
+  String get titleEN;
+  @override
+  String get titlePL;
   @override
   List<IngredientModel> get ingredients;
   @override

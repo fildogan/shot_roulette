@@ -9,7 +9,8 @@ part 'shot_recipe_model.freezed.dart';
 class ShotRecipeModel with _$ShotRecipeModel {
   const factory ShotRecipeModel({
     required String id,
-    required String title,
+    required String titleEN,
+    required String titlePL,
     required List<IngredientModel> ingredients,
     required List<String> tasteNoteIds,
   }) = _ShotRecipeModel;
