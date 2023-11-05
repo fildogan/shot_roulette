@@ -19,39 +19,79 @@ class RollShotPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 75,
-                        ),
-                        Text(
-                          state.chosenRecipe?.titleEN ?? '',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 75,
+                      ),
+                      Text(
+                        state.chosenRecipe?.titleEN ?? '',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
                   if (state.chosenRecipe != null)
                     Padding(
                       padding: const EdgeInsets.all(30.0),
-                      child: Container(
+                      child: SizedBox(
                           height: 150,
-                          child: Text(state.chosenRecipe?.id ?? 'null')),
+                          child: Card(
+                              child: Column(
+                            children: [
+                              Text(state.chosenRecipe?.titleEN ?? 'null'),
+                              const SizedBox(height: 10),
+                              for (int i = 0;
+                                  i <
+                                      (state.chosenRecipe?.ingredients.length ??
+                                          0);
+                                  i++)
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(state.chosenRecipe?.ingredients[i]
+                                            .ingredientNameId ??
+                                        'null'),
+                                    Text(state.chosenRecipe?.ingredients[i]
+                                            .amount.amount
+                                            .toString() ??
+                                        'null'),
+                                    Text(state.chosenRecipe?.ingredients[i]
+                                            .amount.unitId ??
+                                        'null'),
+                                  ],
+                                ),
+                              Wrap(
+                                children: [
+                                  for (int i = 0;
+                                      i <
+                                          (state.chosenRecipe?.tasteNoteIds
+                                                  .length ??
+                                              0);
+                                      i++)
+                                    Chip(
+                                      label: Text(
+                                          state.chosenRecipe?.tasteNoteIds[i] ??
+                                              ''),
+                                    )
+                                ],
+                              )
+                            ],
+                          ))),
                     )
                   else
                     Padding(
                       padding: const EdgeInsets.all(30.0),
-                      child: Container(
+                      child: SizedBox(
                         height: 150,
                         width: 150,
                         child: Image.asset('assets/images/casino_roulette.png'),
                       ),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
-                  Container(
+                  SizedBox(
                     width: 100,
                     child: ElevatedButton(
                         onPressed: () {
@@ -59,10 +99,10 @@ class RollShotPage extends StatelessWidget {
                         },
                         child: const Text('Roll Shot')),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
-                  Container(
+                  SizedBox(
                     width: 100,
                     child: ElevatedButton(
                         onPressed: () {
