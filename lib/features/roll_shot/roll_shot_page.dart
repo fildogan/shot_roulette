@@ -97,7 +97,10 @@ class RollShotPage extends StatelessWidget {
                         onPressed: () {
                           context.read<RollShotCubit>().rollShot();
                         },
-                        child: const Text('Roll Shot')),
+                        child: const Text(
+                          'Roll Shot',
+                          textAlign: TextAlign.center,
+                        )),
                   ),
                   const SizedBox(
                     height: 25,
