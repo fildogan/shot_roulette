@@ -34,9 +34,9 @@ class RollShotPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: SizedBox(
-                          height: 150,
-                          child: Card(
-                              child: Column(
+                        height: 150,
+                        child: Card(
+                          child: Column(
                             children: [
                               Text(state.chosenRecipe?.titleEN ?? 'null'),
                               const SizedBox(height: 10),
@@ -75,9 +75,15 @@ class RollShotPage extends StatelessWidget {
                                               ''),
                                     )
                                 ],
-                              )
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text('number of servings: 4'),
+                              ),
                             ],
-                          ))),
+                          ),
+                        ),
+                      ),
                     )
                   else
                     Padding(
