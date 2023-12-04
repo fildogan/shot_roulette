@@ -73,11 +73,11 @@ class _$IngredientModelCopyWithImpl<$Res, $Val extends IngredientModel>
 }
 
 /// @nodoc
-abstract class _$$_IngredientModelCopyWith<$Res>
+abstract class _$$IngredientModelImplCopyWith<$Res>
     implements $IngredientModelCopyWith<$Res> {
-  factory _$$_IngredientModelCopyWith(
-          _$_IngredientModel value, $Res Function(_$_IngredientModel) then) =
-      __$$_IngredientModelCopyWithImpl<$Res>;
+  factory _$$IngredientModelImplCopyWith(_$IngredientModelImpl value,
+          $Res Function(_$IngredientModelImpl) then) =
+      __$$IngredientModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ingredientNameId, IngredientAmountModel amount});
@@ -87,11 +87,11 @@ abstract class _$$_IngredientModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IngredientModelCopyWithImpl<$Res>
-    extends _$IngredientModelCopyWithImpl<$Res, _$_IngredientModel>
-    implements _$$_IngredientModelCopyWith<$Res> {
-  __$$_IngredientModelCopyWithImpl(
-      _$_IngredientModel _value, $Res Function(_$_IngredientModel) _then)
+class __$$IngredientModelImplCopyWithImpl<$Res>
+    extends _$IngredientModelCopyWithImpl<$Res, _$IngredientModelImpl>
+    implements _$$IngredientModelImplCopyWith<$Res> {
+  __$$IngredientModelImplCopyWithImpl(
+      _$IngredientModelImpl _value, $Res Function(_$IngredientModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_IngredientModelCopyWithImpl<$Res>
     Object? ingredientNameId = null,
     Object? amount = null,
   }) {
-    return _then(_$_IngredientModel(
+    return _then(_$IngredientModelImpl(
       ingredientNameId: null == ingredientNameId
           ? _value.ingredientNameId
           : ingredientNameId // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_IngredientModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_IngredientModel extends _IngredientModel {
-  const _$_IngredientModel(
+class _$IngredientModelImpl extends _IngredientModel {
+  const _$IngredientModelImpl(
       {required this.ingredientNameId, required this.amount})
       : super._();
 
@@ -134,7 +134,7 @@ class _$_IngredientModel extends _IngredientModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IngredientModel &&
+            other is _$IngredientModelImpl &&
             (identical(other.ingredientNameId, ingredientNameId) ||
                 other.ingredientNameId == ingredientNameId) &&
             (identical(other.amount, amount) || other.amount == amount));
@@ -146,14 +146,15 @@ class _$_IngredientModel extends _IngredientModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IngredientModelCopyWith<_$_IngredientModel> get copyWith =>
-      __$$_IngredientModelCopyWithImpl<_$_IngredientModel>(this, _$identity);
+  _$$IngredientModelImplCopyWith<_$IngredientModelImpl> get copyWith =>
+      __$$IngredientModelImplCopyWithImpl<_$IngredientModelImpl>(
+          this, _$identity);
 }
 
 abstract class _IngredientModel extends IngredientModel {
   const factory _IngredientModel(
       {required final String ingredientNameId,
-      required final IngredientAmountModel amount}) = _$_IngredientModel;
+      required final IngredientAmountModel amount}) = _$IngredientModelImpl;
   const _IngredientModel._() : super._();
 
   @override
@@ -162,6 +163,6 @@ abstract class _IngredientModel extends IngredientModel {
   IngredientAmountModel get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_IngredientModelCopyWith<_$_IngredientModel> get copyWith =>
+  _$$IngredientModelImplCopyWith<_$IngredientModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

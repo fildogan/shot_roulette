@@ -86,11 +86,11 @@ class _$ShotRecipeModelCopyWithImpl<$Res, $Val extends ShotRecipeModel>
 }
 
 /// @nodoc
-abstract class _$$_ShotRecipeModelCopyWith<$Res>
+abstract class _$$ShotRecipeModelImplCopyWith<$Res>
     implements $ShotRecipeModelCopyWith<$Res> {
-  factory _$$_ShotRecipeModelCopyWith(
-          _$_ShotRecipeModel value, $Res Function(_$_ShotRecipeModel) then) =
-      __$$_ShotRecipeModelCopyWithImpl<$Res>;
+  factory _$$ShotRecipeModelImplCopyWith(_$ShotRecipeModelImpl value,
+          $Res Function(_$ShotRecipeModelImpl) then) =
+      __$$ShotRecipeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_ShotRecipeModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ShotRecipeModelCopyWithImpl<$Res>
-    extends _$ShotRecipeModelCopyWithImpl<$Res, _$_ShotRecipeModel>
-    implements _$$_ShotRecipeModelCopyWith<$Res> {
-  __$$_ShotRecipeModelCopyWithImpl(
-      _$_ShotRecipeModel _value, $Res Function(_$_ShotRecipeModel) _then)
+class __$$ShotRecipeModelImplCopyWithImpl<$Res>
+    extends _$ShotRecipeModelCopyWithImpl<$Res, _$ShotRecipeModelImpl>
+    implements _$$ShotRecipeModelImplCopyWith<$Res> {
+  __$$ShotRecipeModelImplCopyWithImpl(
+      _$ShotRecipeModelImpl _value, $Res Function(_$ShotRecipeModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_ShotRecipeModelCopyWithImpl<$Res>
     Object? ingredients = null,
     Object? tasteNoteIds = null,
   }) {
-    return _then(_$_ShotRecipeModel(
+    return _then(_$ShotRecipeModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_ShotRecipeModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ShotRecipeModel extends _ShotRecipeModel {
-  const _$_ShotRecipeModel(
+class _$ShotRecipeModelImpl extends _ShotRecipeModel {
+  const _$ShotRecipeModelImpl(
       {required this.id,
       required this.titleEN,
       required this.titlePL,
@@ -187,7 +187,7 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShotRecipeModel &&
+            other is _$ShotRecipeModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.titleEN, titleEN) || other.titleEN == titleEN) &&
             (identical(other.titlePL, titlePL) || other.titlePL == titlePL) &&
@@ -209,8 +209,9 @@ class _$_ShotRecipeModel extends _ShotRecipeModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShotRecipeModelCopyWith<_$_ShotRecipeModel> get copyWith =>
-      __$$_ShotRecipeModelCopyWithImpl<_$_ShotRecipeModel>(this, _$identity);
+  _$$ShotRecipeModelImplCopyWith<_$ShotRecipeModelImpl> get copyWith =>
+      __$$ShotRecipeModelImplCopyWithImpl<_$ShotRecipeModelImpl>(
+          this, _$identity);
 }
 
 abstract class _ShotRecipeModel extends ShotRecipeModel {
@@ -219,7 +220,7 @@ abstract class _ShotRecipeModel extends ShotRecipeModel {
       required final String titleEN,
       required final String titlePL,
       required final List<IngredientModel> ingredients,
-      required final List<String> tasteNoteIds}) = _$_ShotRecipeModel;
+      required final List<String> tasteNoteIds}) = _$ShotRecipeModelImpl;
   const _ShotRecipeModel._() : super._();
 
   @override
@@ -234,6 +235,6 @@ abstract class _ShotRecipeModel extends ShotRecipeModel {
   List<String> get tasteNoteIds;
   @override
   @JsonKey(ignore: true)
-  _$$_ShotRecipeModelCopyWith<_$_ShotRecipeModel> get copyWith =>
+  _$$ShotRecipeModelImplCopyWith<_$ShotRecipeModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

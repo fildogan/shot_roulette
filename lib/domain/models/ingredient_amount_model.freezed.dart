@@ -64,22 +64,24 @@ class _$IngredientAmountModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_IngredientAmountModelCopyWith<$Res>
+abstract class _$$IngredientAmountModelImplCopyWith<$Res>
     implements $IngredientAmountModelCopyWith<$Res> {
-  factory _$$_IngredientAmountModelCopyWith(_$_IngredientAmountModel value,
-          $Res Function(_$_IngredientAmountModel) then) =
-      __$$_IngredientAmountModelCopyWithImpl<$Res>;
+  factory _$$IngredientAmountModelImplCopyWith(
+          _$IngredientAmountModelImpl value,
+          $Res Function(_$IngredientAmountModelImpl) then) =
+      __$$IngredientAmountModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String unitId, double amount});
 }
 
 /// @nodoc
-class __$$_IngredientAmountModelCopyWithImpl<$Res>
-    extends _$IngredientAmountModelCopyWithImpl<$Res, _$_IngredientAmountModel>
-    implements _$$_IngredientAmountModelCopyWith<$Res> {
-  __$$_IngredientAmountModelCopyWithImpl(_$_IngredientAmountModel _value,
-      $Res Function(_$_IngredientAmountModel) _then)
+class __$$IngredientAmountModelImplCopyWithImpl<$Res>
+    extends _$IngredientAmountModelCopyWithImpl<$Res,
+        _$IngredientAmountModelImpl>
+    implements _$$IngredientAmountModelImplCopyWith<$Res> {
+  __$$IngredientAmountModelImplCopyWithImpl(_$IngredientAmountModelImpl _value,
+      $Res Function(_$IngredientAmountModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +90,7 @@ class __$$_IngredientAmountModelCopyWithImpl<$Res>
     Object? unitId = null,
     Object? amount = null,
   }) {
-    return _then(_$_IngredientAmountModel(
+    return _then(_$IngredientAmountModelImpl(
       unitId: null == unitId
           ? _value.unitId
           : unitId // ignore: cast_nullable_to_non_nullable
@@ -103,8 +105,9 @@ class __$$_IngredientAmountModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_IngredientAmountModel extends _IngredientAmountModel {
-  const _$_IngredientAmountModel({required this.unitId, required this.amount})
+class _$IngredientAmountModelImpl extends _IngredientAmountModel {
+  const _$IngredientAmountModelImpl(
+      {required this.unitId, required this.amount})
       : super._();
 
   @override
@@ -121,7 +124,7 @@ class _$_IngredientAmountModel extends _IngredientAmountModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IngredientAmountModel &&
+            other is _$IngredientAmountModelImpl &&
             (identical(other.unitId, unitId) || other.unitId == unitId) &&
             (identical(other.amount, amount) || other.amount == amount));
   }
@@ -132,15 +135,15 @@ class _$_IngredientAmountModel extends _IngredientAmountModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IngredientAmountModelCopyWith<_$_IngredientAmountModel> get copyWith =>
-      __$$_IngredientAmountModelCopyWithImpl<_$_IngredientAmountModel>(
-          this, _$identity);
+  _$$IngredientAmountModelImplCopyWith<_$IngredientAmountModelImpl>
+      get copyWith => __$$IngredientAmountModelImplCopyWithImpl<
+          _$IngredientAmountModelImpl>(this, _$identity);
 }
 
 abstract class _IngredientAmountModel extends IngredientAmountModel {
   const factory _IngredientAmountModel(
       {required final String unitId,
-      required final double amount}) = _$_IngredientAmountModel;
+      required final double amount}) = _$IngredientAmountModelImpl;
   const _IngredientAmountModel._() : super._();
 
   @override
@@ -149,6 +152,6 @@ abstract class _IngredientAmountModel extends IngredientAmountModel {
   double get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_IngredientAmountModelCopyWith<_$_IngredientAmountModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$IngredientAmountModelImplCopyWith<_$IngredientAmountModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

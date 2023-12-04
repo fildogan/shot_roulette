@@ -69,22 +69,22 @@ class _$TasteNoteModelCopyWithImpl<$Res, $Val extends TasteNoteModel>
 }
 
 /// @nodoc
-abstract class _$$_TasteNoteModelCopyWith<$Res>
+abstract class _$$TasteNoteModelImplCopyWith<$Res>
     implements $TasteNoteModelCopyWith<$Res> {
-  factory _$$_TasteNoteModelCopyWith(
-          _$_TasteNoteModel value, $Res Function(_$_TasteNoteModel) then) =
-      __$$_TasteNoteModelCopyWithImpl<$Res>;
+  factory _$$TasteNoteModelImplCopyWith(_$TasteNoteModelImpl value,
+          $Res Function(_$TasteNoteModelImpl) then) =
+      __$$TasteNoteModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String titleEN, String titlePL});
 }
 
 /// @nodoc
-class __$$_TasteNoteModelCopyWithImpl<$Res>
-    extends _$TasteNoteModelCopyWithImpl<$Res, _$_TasteNoteModel>
-    implements _$$_TasteNoteModelCopyWith<$Res> {
-  __$$_TasteNoteModelCopyWithImpl(
-      _$_TasteNoteModel _value, $Res Function(_$_TasteNoteModel) _then)
+class __$$TasteNoteModelImplCopyWithImpl<$Res>
+    extends _$TasteNoteModelCopyWithImpl<$Res, _$TasteNoteModelImpl>
+    implements _$$TasteNoteModelImplCopyWith<$Res> {
+  __$$TasteNoteModelImplCopyWithImpl(
+      _$TasteNoteModelImpl _value, $Res Function(_$TasteNoteModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_TasteNoteModelCopyWithImpl<$Res>
     Object? titleEN = null,
     Object? titlePL = null,
   }) {
-    return _then(_$_TasteNoteModel(
+    return _then(_$TasteNoteModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_TasteNoteModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TasteNoteModel extends _TasteNoteModel {
-  const _$_TasteNoteModel(
+class _$TasteNoteModelImpl extends _TasteNoteModel {
+  const _$TasteNoteModelImpl(
       {required this.id, required this.titleEN, required this.titlePL})
       : super._();
 
@@ -134,7 +134,7 @@ class _$_TasteNoteModel extends _TasteNoteModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TasteNoteModel &&
+            other is _$TasteNoteModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.titleEN, titleEN) || other.titleEN == titleEN) &&
             (identical(other.titlePL, titlePL) || other.titlePL == titlePL));
@@ -146,15 +146,16 @@ class _$_TasteNoteModel extends _TasteNoteModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TasteNoteModelCopyWith<_$_TasteNoteModel> get copyWith =>
-      __$$_TasteNoteModelCopyWithImpl<_$_TasteNoteModel>(this, _$identity);
+  _$$TasteNoteModelImplCopyWith<_$TasteNoteModelImpl> get copyWith =>
+      __$$TasteNoteModelImplCopyWithImpl<_$TasteNoteModelImpl>(
+          this, _$identity);
 }
 
 abstract class _TasteNoteModel extends TasteNoteModel {
   const factory _TasteNoteModel(
       {required final String id,
       required final String titleEN,
-      required final String titlePL}) = _$_TasteNoteModel;
+      required final String titlePL}) = _$TasteNoteModelImpl;
   const _TasteNoteModel._() : super._();
 
   @override
@@ -165,6 +166,6 @@ abstract class _TasteNoteModel extends TasteNoteModel {
   String get titlePL;
   @override
   @JsonKey(ignore: true)
-  _$$_TasteNoteModelCopyWith<_$_TasteNoteModel> get copyWith =>
+  _$$TasteNoteModelImplCopyWith<_$TasteNoteModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

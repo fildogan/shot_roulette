@@ -70,23 +70,25 @@ class _$UnitOfMeasurementModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnitOfMeasurementModelCopyWith<$Res>
+abstract class _$$UnitOfMeasurementModelImplCopyWith<$Res>
     implements $UnitOfMeasurementModelCopyWith<$Res> {
-  factory _$$_UnitOfMeasurementModelCopyWith(_$_UnitOfMeasurementModel value,
-          $Res Function(_$_UnitOfMeasurementModel) then) =
-      __$$_UnitOfMeasurementModelCopyWithImpl<$Res>;
+  factory _$$UnitOfMeasurementModelImplCopyWith(
+          _$UnitOfMeasurementModelImpl value,
+          $Res Function(_$UnitOfMeasurementModelImpl) then) =
+      __$$UnitOfMeasurementModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String titleEN, String titlePL});
 }
 
 /// @nodoc
-class __$$_UnitOfMeasurementModelCopyWithImpl<$Res>
+class __$$UnitOfMeasurementModelImplCopyWithImpl<$Res>
     extends _$UnitOfMeasurementModelCopyWithImpl<$Res,
-        _$_UnitOfMeasurementModel>
-    implements _$$_UnitOfMeasurementModelCopyWith<$Res> {
-  __$$_UnitOfMeasurementModelCopyWithImpl(_$_UnitOfMeasurementModel _value,
-      $Res Function(_$_UnitOfMeasurementModel) _then)
+        _$UnitOfMeasurementModelImpl>
+    implements _$$UnitOfMeasurementModelImplCopyWith<$Res> {
+  __$$UnitOfMeasurementModelImplCopyWithImpl(
+      _$UnitOfMeasurementModelImpl _value,
+      $Res Function(_$UnitOfMeasurementModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +98,7 @@ class __$$_UnitOfMeasurementModelCopyWithImpl<$Res>
     Object? titleEN = null,
     Object? titlePL = null,
   }) {
-    return _then(_$_UnitOfMeasurementModel(
+    return _then(_$UnitOfMeasurementModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -115,8 +117,8 @@ class __$$_UnitOfMeasurementModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnitOfMeasurementModel extends _UnitOfMeasurementModel {
-  const _$_UnitOfMeasurementModel(
+class _$UnitOfMeasurementModelImpl extends _UnitOfMeasurementModel {
+  const _$UnitOfMeasurementModelImpl(
       {required this.id, required this.titleEN, required this.titlePL})
       : super._();
 
@@ -136,7 +138,7 @@ class _$_UnitOfMeasurementModel extends _UnitOfMeasurementModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnitOfMeasurementModel &&
+            other is _$UnitOfMeasurementModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.titleEN, titleEN) || other.titleEN == titleEN) &&
             (identical(other.titlePL, titlePL) || other.titlePL == titlePL));
@@ -148,16 +150,16 @@ class _$_UnitOfMeasurementModel extends _UnitOfMeasurementModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnitOfMeasurementModelCopyWith<_$_UnitOfMeasurementModel> get copyWith =>
-      __$$_UnitOfMeasurementModelCopyWithImpl<_$_UnitOfMeasurementModel>(
-          this, _$identity);
+  _$$UnitOfMeasurementModelImplCopyWith<_$UnitOfMeasurementModelImpl>
+      get copyWith => __$$UnitOfMeasurementModelImplCopyWithImpl<
+          _$UnitOfMeasurementModelImpl>(this, _$identity);
 }
 
 abstract class _UnitOfMeasurementModel extends UnitOfMeasurementModel {
   const factory _UnitOfMeasurementModel(
       {required final String id,
       required final String titleEN,
-      required final String titlePL}) = _$_UnitOfMeasurementModel;
+      required final String titlePL}) = _$UnitOfMeasurementModelImpl;
   const _UnitOfMeasurementModel._() : super._();
 
   @override
@@ -168,6 +170,6 @@ abstract class _UnitOfMeasurementModel extends UnitOfMeasurementModel {
   String get titlePL;
   @override
   @JsonKey(ignore: true)
-  _$$_UnitOfMeasurementModelCopyWith<_$_UnitOfMeasurementModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UnitOfMeasurementModelImplCopyWith<_$UnitOfMeasurementModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

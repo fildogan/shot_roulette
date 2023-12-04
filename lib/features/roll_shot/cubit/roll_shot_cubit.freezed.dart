@@ -102,11 +102,11 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
 }
 
 /// @nodoc
-abstract class _$$_RollShotStateCopyWith<$Res>
+abstract class _$$RollShotStateImplCopyWith<$Res>
     implements $RollShotStateCopyWith<$Res> {
-  factory _$$_RollShotStateCopyWith(
-          _$_RollShotState value, $Res Function(_$_RollShotState) then) =
-      __$$_RollShotStateCopyWithImpl<$Res>;
+  factory _$$RollShotStateImplCopyWith(
+          _$RollShotStateImpl value, $Res Function(_$RollShotStateImpl) then) =
+      __$$RollShotStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_RollShotStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RollShotStateCopyWithImpl<$Res>
-    extends _$RollShotStateCopyWithImpl<$Res, _$_RollShotState>
-    implements _$$_RollShotStateCopyWith<$Res> {
-  __$$_RollShotStateCopyWithImpl(
-      _$_RollShotState _value, $Res Function(_$_RollShotState) _then)
+class __$$RollShotStateImplCopyWithImpl<$Res>
+    extends _$RollShotStateCopyWithImpl<$Res, _$RollShotStateImpl>
+    implements _$$RollShotStateImplCopyWith<$Res> {
+  __$$RollShotStateImplCopyWithImpl(
+      _$RollShotStateImpl _value, $Res Function(_$RollShotStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -137,7 +137,7 @@ class __$$_RollShotStateCopyWithImpl<$Res>
     Object? unitsOfMeasurement = null,
     Object? chosenRecipe = freezed,
   }) {
-    return _then(_$_RollShotState(
+    return _then(_$RollShotStateImpl(
       shotRecipes: null == shotRecipes
           ? _value._shotRecipes
           : shotRecipes // ignore: cast_nullable_to_non_nullable
@@ -164,8 +164,8 @@ class __$$_RollShotStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RollShotState extends _RollShotState {
-  _$_RollShotState(
+class _$RollShotStateImpl extends _RollShotState {
+  _$RollShotStateImpl(
       {final List<ShotRecipeModel> shotRecipes = const [],
       final List<TasteNoteModel> tasteNotes = const [],
       final List<IngredientNameModel> ingredientNames = const [],
@@ -226,7 +226,7 @@ class _$_RollShotState extends _RollShotState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RollShotState &&
+            other is _$RollShotStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._shotRecipes, _shotRecipes) &&
             const DeepCollectionEquality()
@@ -251,8 +251,8 @@ class _$_RollShotState extends _RollShotState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RollShotStateCopyWith<_$_RollShotState> get copyWith =>
-      __$$_RollShotStateCopyWithImpl<_$_RollShotState>(this, _$identity);
+  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
+      __$$RollShotStateImplCopyWithImpl<_$RollShotStateImpl>(this, _$identity);
 }
 
 abstract class _RollShotState extends RollShotState {
@@ -261,7 +261,7 @@ abstract class _RollShotState extends RollShotState {
       final List<TasteNoteModel> tasteNotes,
       final List<IngredientNameModel> ingredientNames,
       final List<UnitOfMeasurementModel> unitsOfMeasurement,
-      final ShotRecipeModel? chosenRecipe}) = _$_RollShotState;
+      final ShotRecipeModel? chosenRecipe}) = _$RollShotStateImpl;
   _RollShotState._() : super._();
 
   @override
@@ -276,6 +276,6 @@ abstract class _RollShotState extends RollShotState {
   ShotRecipeModel? get chosenRecipe;
   @override
   @JsonKey(ignore: true)
-  _$$_RollShotStateCopyWith<_$_RollShotState> get copyWith =>
+  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

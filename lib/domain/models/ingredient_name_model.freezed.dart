@@ -69,22 +69,22 @@ class _$IngredientNameModelCopyWithImpl<$Res, $Val extends IngredientNameModel>
 }
 
 /// @nodoc
-abstract class _$$_IngredientNameModelCopyWith<$Res>
+abstract class _$$IngredientNameModelImplCopyWith<$Res>
     implements $IngredientNameModelCopyWith<$Res> {
-  factory _$$_IngredientNameModelCopyWith(_$_IngredientNameModel value,
-          $Res Function(_$_IngredientNameModel) then) =
-      __$$_IngredientNameModelCopyWithImpl<$Res>;
+  factory _$$IngredientNameModelImplCopyWith(_$IngredientNameModelImpl value,
+          $Res Function(_$IngredientNameModelImpl) then) =
+      __$$IngredientNameModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String titleEN, String titlePL});
 }
 
 /// @nodoc
-class __$$_IngredientNameModelCopyWithImpl<$Res>
-    extends _$IngredientNameModelCopyWithImpl<$Res, _$_IngredientNameModel>
-    implements _$$_IngredientNameModelCopyWith<$Res> {
-  __$$_IngredientNameModelCopyWithImpl(_$_IngredientNameModel _value,
-      $Res Function(_$_IngredientNameModel) _then)
+class __$$IngredientNameModelImplCopyWithImpl<$Res>
+    extends _$IngredientNameModelCopyWithImpl<$Res, _$IngredientNameModelImpl>
+    implements _$$IngredientNameModelImplCopyWith<$Res> {
+  __$$IngredientNameModelImplCopyWithImpl(_$IngredientNameModelImpl _value,
+      $Res Function(_$IngredientNameModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_IngredientNameModelCopyWithImpl<$Res>
     Object? titleEN = null,
     Object? titlePL = null,
   }) {
-    return _then(_$_IngredientNameModel(
+    return _then(_$IngredientNameModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_IngredientNameModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_IngredientNameModel extends _IngredientNameModel {
-  const _$_IngredientNameModel(
+class _$IngredientNameModelImpl extends _IngredientNameModel {
+  const _$IngredientNameModelImpl(
       {required this.id, required this.titleEN, required this.titlePL})
       : super._();
 
@@ -134,7 +134,7 @@ class _$_IngredientNameModel extends _IngredientNameModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IngredientNameModel &&
+            other is _$IngredientNameModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.titleEN, titleEN) || other.titleEN == titleEN) &&
             (identical(other.titlePL, titlePL) || other.titlePL == titlePL));
@@ -146,8 +146,8 @@ class _$_IngredientNameModel extends _IngredientNameModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IngredientNameModelCopyWith<_$_IngredientNameModel> get copyWith =>
-      __$$_IngredientNameModelCopyWithImpl<_$_IngredientNameModel>(
+  _$$IngredientNameModelImplCopyWith<_$IngredientNameModelImpl> get copyWith =>
+      __$$IngredientNameModelImplCopyWithImpl<_$IngredientNameModelImpl>(
           this, _$identity);
 }
 
@@ -155,7 +155,7 @@ abstract class _IngredientNameModel extends IngredientNameModel {
   const factory _IngredientNameModel(
       {required final String id,
       required final String titleEN,
-      required final String titlePL}) = _$_IngredientNameModel;
+      required final String titlePL}) = _$IngredientNameModelImpl;
   const _IngredientNameModel._() : super._();
 
   @override
@@ -166,6 +166,6 @@ abstract class _IngredientNameModel extends IngredientNameModel {
   String get titlePL;
   @override
   @JsonKey(ignore: true)
-  _$$_IngredientNameModelCopyWith<_$_IngredientNameModel> get copyWith =>
+  _$$IngredientNameModelImplCopyWith<_$IngredientNameModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
