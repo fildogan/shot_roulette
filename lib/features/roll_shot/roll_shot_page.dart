@@ -13,7 +13,7 @@ class RollShotPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Roll Shot'),
+              title: Text(state.chosenRecipe?.titleEN ?? 'Roll Shot'),
             ),
             body: Center(
               child: Column(
