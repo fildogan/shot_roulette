@@ -19,6 +19,22 @@ List<ShotRecipeModel> mockRecipes = [
         'taste1',
         'taste2'
       ]),
+  const ShotRecipeModel(
+      id: 'id1',
+      titleEN: 'titleEN2',
+      titlePL: 'titlePL2',
+      ingredients: [
+        IngredientModel(
+            ingredientNameId: 'ingredientNameId2',
+            amount: IngredientAmountModel(unitId: 'unitId2', amount: 1)),
+        IngredientModel(
+            ingredientNameId: 'ingredientNameId3',
+            amount: IngredientAmountModel(unitId: 'unitId3', amount: 1))
+      ],
+      tasteNoteIds: [
+        'taste1',
+        'taste2'
+      ]),
 ];
 
 List<TasteNoteModel> mockTasteNotes = [
