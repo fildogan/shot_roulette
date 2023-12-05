@@ -34,7 +34,7 @@ class RollShotPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: SizedBox(
-                        height: 150,
+                        height: 300,
                         child: Card(
                           child: Column(
                             children: [
@@ -89,7 +89,7 @@ class RollShotPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: SizedBox(
-                        height: 150,
+                        height: 300,
                         width: 150,
                         child: Image.asset('assets/images/casino_roulette.png'),
                       ),

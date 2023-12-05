@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,9 +24,11 @@ class RollShotCubit extends Cubit<RollShotState> {
   }
 
   Future<void> rollShot() async {
+    int maxLength = mockRecipes.length;
+    int randomRoll = Random().nextInt(maxLength);
     emit(
       state.copyWith(
-        chosenRecipe: mockRecipes[0],
+        chosenRecipe: mockRecipes[randomRoll],
       ),
     );
   }
