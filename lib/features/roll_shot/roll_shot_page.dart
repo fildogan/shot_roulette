@@ -19,17 +19,6 @@ class RollShotPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 75,
-                      ),
-                      Text(
-                        state.chosenRecipe?.titleEN ?? '',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
                   if (state.chosenRecipe != null)
                     Padding(
                       padding: const EdgeInsets.all(30.0),
