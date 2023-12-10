@@ -50,6 +50,9 @@ class RollShotPage extends StatelessWidget {
                                         'null'),
                                   ],
                                 ),
+                              const SizedBox(
+                                height: 10,
+                              ),
                               Wrap(
                                 children: [
                                   for (int i = 0;
