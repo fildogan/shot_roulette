@@ -29,6 +29,38 @@ class RollShotPage extends StatelessWidget {
                             children: [
                               Text(state.chosenRecipe?.titleEN ?? 'null'),
                               const SizedBox(height: 10),
+                              Table(
+                                columnWidths: const <int, TableColumnWidth>{
+                                  0: IntrinsicColumnWidth(flex: 3),
+                                  1: IntrinsicColumnWidth(flex: 1),
+                                  2: IntrinsicColumnWidth(flex: 2),
+                                },
+                                children: [
+                                  const TableRow(children: [
+                                    Text('name'),
+                                    Text('amount'),
+                                    Text('unit'),
+                                  ]),
+                                  for (int i = 0;
+                                      i <
+                                          (state.chosenRecipe?.ingredients
+                                                  .length ??
+                                              0);
+                                      i++)
+                                    TableRow(children: [
+                                      Text(state.chosenRecipe?.ingredients[i]
+                                              .ingredientNameId ??
+                                          'null'),
+                                      Text(state.chosenRecipe?.ingredients[i]
+                                              .amount.amount
+                                              .toString() ??
+                                          'null'),
+                                      Text(state.chosenRecipe?.ingredients[i]
+                                              .amount.unitId ??
+                                          'null'),
+                                    ])
+                                ],
+                              ),
                               for (int i = 0;
                                   i <
                                       (state.chosenRecipe?.ingredients.length ??
