@@ -26,8 +26,14 @@ class RollShotPage extends StatelessWidget {
                         height: 300,
                         child: Card(
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(state.chosenRecipe?.titleEN ?? 'null'),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Center(
+                                    child: Text(
+                                        state.chosenRecipe?.titleEN ?? 'null')),
+                              ),
                               const SizedBox(height: 10),
                               Table(
                                 columnWidths: const <int, TableColumnWidth>{
@@ -37,9 +43,9 @@ class RollShotPage extends StatelessWidget {
                                 },
                                 children: [
                                   const TableRow(children: [
-                                    Text('name'),
-                                    Text('amount'),
-                                    Text('unit'),
+                                    Center(child: Text('name')),
+                                    Center(child: Text('amount')),
+                                    Center(child: Text('unit')),
                                   ]),
                                   for (int i = 0;
                                       i <
@@ -48,57 +54,72 @@ class RollShotPage extends StatelessWidget {
                                               0);
                                       i++)
                                     TableRow(children: [
-                                      Text(state.chosenRecipe?.ingredients[i]
-                                              .ingredientNameId ??
-                                          'null'),
-                                      Text(state.chosenRecipe?.ingredients[i]
-                                              .amount.amount
-                                              .toString() ??
-                                          'null'),
-                                      Text(state.chosenRecipe?.ingredients[i]
-                                              .amount.unitId ??
-                                          'null'),
+                                      Center(
+                                        child: Text(state
+                                                .chosenRecipe
+                                                ?.ingredients[i]
+                                                .ingredientNameId ??
+                                            'null'),
+                                      ),
+                                      Center(
+                                        child: Text(state.chosenRecipe
+                                                ?.ingredients[i].amount.amount
+                                                .toString() ??
+                                            'null'),
+                                      ),
+                                      Center(
+                                        child: Text(state
+                                                .chosenRecipe
+                                                ?.ingredients[i]
+                                                .amount
+                                                .unitId ??
+                                            'null'),
+                                      ),
                                     ])
                                 ],
                               ),
-                              for (int i = 0;
-                                  i <
-                                      (state.chosenRecipe?.ingredients.length ??
-                                          0);
-                                  i++)
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(state.chosenRecipe?.ingredients[i]
-                                            .ingredientNameId ??
-                                        'null'),
-                                    Text(state.chosenRecipe?.ingredients[i]
-                                            .amount.amount
-                                            .toString() ??
-                                        'null'),
-                                    Text(state.chosenRecipe?.ingredients[i]
-                                            .amount.unitId ??
-                                        'null'),
-                                  ],
-                                ),
+                              // for (int i = 0;
+                              //     i <
+                              //         (state.chosenRecipe?.ingredients.length ??
+                              //             0);
+                              //     i++)
+                              //   Row(
+                              //     mainAxisAlignment:
+                              //         MainAxisAlignment.spaceAround,
+                              //     children: [
+                              //       Text(state.chosenRecipe?.ingredients[i]
+                              //               .ingredientNameId ??
+                              //           'null'),
+                              //       Text(state.chosenRecipe?.ingredients[i]
+                              //               .amount.amount
+                              //               .toString() ??
+                              //           'null'),
+                              //       Text(state.chosenRecipe?.ingredients[i]
+                              //               .amount.unitId ??
+                              //           'null'),
+                              //     ],
+                              //   ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              Wrap(
-                                children: [
-                                  for (int i = 0;
-                                      i <
-                                          (state.chosenRecipe?.tasteNoteIds
-                                                  .length ??
-                                              0);
-                                      i++)
-                                    Chip(
-                                      label: Text(
-                                          state.chosenRecipe?.tasteNoteIds[i] ??
-                                              ''),
-                                    )
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Wrap(
+                                  spacing: 10,
+                                  children: [
+                                    for (int i = 0;
+                                        i <
+                                            (state.chosenRecipe?.tasteNoteIds
+                                                    .length ??
+                                                0);
+                                        i++)
+                                      Chip(
+                                        label: Text(state.chosenRecipe
+                                                ?.tasteNoteIds[i] ??
+                                            ''),
+                                      )
+                                  ],
+                                ),
                               ),
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
