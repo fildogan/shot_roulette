@@ -28,12 +28,6 @@ class RollShotPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Center(
-                                    child: Text(
-                                        state.chosenRecipe?.titleEN ?? 'null')),
-                              ),
                               const SizedBox(height: 10),
                               Table(
                                 columnWidths: const <int, TableColumnWidth>{
@@ -78,27 +72,6 @@ class RollShotPage extends StatelessWidget {
                                     ])
                                 ],
                               ),
-                              // for (int i = 0;
-                              //     i <
-                              //         (state.chosenRecipe?.ingredients.length ??
-                              //             0);
-                              //     i++)
-                              //   Row(
-                              //     mainAxisAlignment:
-                              //         MainAxisAlignment.spaceAround,
-                              //     children: [
-                              //       Text(state.chosenRecipe?.ingredients[i]
-                              //               .ingredientNameId ??
-                              //           'null'),
-                              //       Text(state.chosenRecipe?.ingredients[i]
-                              //               .amount.amount
-                              //               .toString() ??
-                              //           'null'),
-                              //       Text(state.chosenRecipe?.ingredients[i]
-                              //               .amount.unitId ??
-                              //           'null'),
-                              //     ],
-                              //   ),
                               const SizedBox(
                                 height: 10,
                               ),
