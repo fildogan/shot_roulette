@@ -114,6 +114,7 @@ class RollShotPage extends StatelessWidget {
                                                 0);
                                         i++)
                                       Chip(
+                                        padding: const EdgeInsets.all(0),
                                         label: Text(state.chosenRecipe
                                                 ?.tasteNoteIds[i] ??
                                             ''),
