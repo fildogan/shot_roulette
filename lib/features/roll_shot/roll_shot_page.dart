@@ -72,9 +72,6 @@ class RollShotPage extends StatelessWidget {
                                     ])
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Wrap(
@@ -96,7 +93,14 @@ class RollShotPage extends StatelessWidget {
                                 ),
                               ),
                               const Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text('Description: Lorem Ipsum'),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text('number of servings: 4'),
                               ),
                             ],
