@@ -37,24 +37,15 @@ class RollShotPage extends StatelessWidget {
                                 },
                                 children: [
                                   const TableRow(children: [
-                                    Center(
-                                        child: Text(
-                                      'name',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                    Center(
-                                        child: Text(
-                                      'amount',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                    Center(
-                                        child: Text(
-                                      'unit',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )),
+                                    IngredientTableHeader(
+                                      title: 'name',
+                                    ),
+                                    IngredientTableHeader(
+                                      title: 'amount',
+                                    ),
+                                    IngredientTableHeader(
+                                      title: 'unit',
+                                    ),
                                   ]),
                                   for (int i = 0;
                                       i <
@@ -164,5 +155,18 @@ class RollShotPage extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class IngredientTableHeader extends StatelessWidget {
+  const IngredientTableHeader({super.key, required this.title});
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Text(
+      title,
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ));
   }
 }
