@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
 
 class RollShotPage extends StatelessWidget {
   const RollShotPage({super.key});
@@ -155,18 +156,5 @@ class RollShotPage extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class IngredientTableHeader extends StatelessWidget {
-  const IngredientTableHeader({super.key, required this.title});
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-      title,
-      style: const TextStyle(fontWeight: FontWeight.bold),
-    ));
   }
 }
