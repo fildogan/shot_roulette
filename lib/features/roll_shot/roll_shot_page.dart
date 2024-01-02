@@ -42,13 +42,13 @@ class RollShotPage extends StatelessWidget {
                                     children: [
                                       const TableRow(children: [
                                         IngredientTableHeader(
-                                          title: 'name',
+                                          title: 'Ingredient',
                                         ),
                                         IngredientTableHeader(
-                                          title: 'amount',
+                                          title: 'Amount',
                                         ),
                                         IngredientTableHeader(
-                                          title: 'unit',
+                                          title: 'Unit',
                                         ),
                                       ]),
                                       for (int i = 0;
