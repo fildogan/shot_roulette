@@ -120,8 +120,15 @@ class RollShotPage extends StatelessWidget {
                                       children: [
                                         const Text('number of servings:'),
                                         const Spacer(),
-                                        const Icon(Icons
-                                            .remove_circle_outline_rounded),
+                                        IconButton(
+                                          onPressed: () {
+                                            context
+                                                .read<RollShotCubit>()
+                                                .decreaseNumberOfServings();
+                                          },
+                                          icon: const Icon(Icons
+                                              .remove_circle_outline_rounded),
+                                        ),
                                         const SizedBox(width: 15),
                                         Text(
                                           state.numberOfServings.toString(),
@@ -129,8 +136,15 @@ class RollShotPage extends StatelessWidget {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(width: 15),
-                                        const Icon(
-                                            Icons.add_circle_outline_rounded),
+                                        IconButton(
+                                          onPressed: () {
+                                            context
+                                                .read<RollShotCubit>()
+                                                .increaseNumberOfServings();
+                                          },
+                                          icon: const Icon(
+                                              Icons.add_circle_outline_rounded),
+                                        ),
                                         const SizedBox(width: 10),
                                       ],
                                     ),

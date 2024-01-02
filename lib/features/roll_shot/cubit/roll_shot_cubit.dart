@@ -82,11 +82,12 @@ class RollShotCubit extends Cubit<RollShotState> {
   }
 
   Future<void> decreaseNumberOfServings() async {
-    if (state.numberOfServings > 1)
+    if (state.numberOfServings > 1) {
       emit(
         state.copyWith(
           numberOfServings: state.numberOfServings - 1,
         ),
       );
+    }
   }
 }
