@@ -37,9 +37,24 @@ class RollShotPage extends StatelessWidget {
                                 },
                                 children: [
                                   const TableRow(children: [
-                                    Center(child: Text('name')),
-                                    Center(child: Text('amount')),
-                                    Center(child: Text('unit')),
+                                    Center(
+                                        child: Text(
+                                      'name',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                                    Center(
+                                        child: Text(
+                                      'amount',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                                    Center(
+                                        child: Text(
+                                      'unit',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )),
                                   ]),
                                   for (int i = 0;
                                       i <
