@@ -26,91 +26,101 @@ class RollShotPage extends StatelessWidget {
                       child: SizedBox(
                         height: 300,
                         child: Card(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 10),
-                              Table(
-                                columnWidths: const <int, TableColumnWidth>{
-                                  0: IntrinsicColumnWidth(flex: 3),
-                                  1: IntrinsicColumnWidth(flex: 1),
-                                  2: IntrinsicColumnWidth(flex: 2),
-                                },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const TableRow(children: [
-                                    IngredientTableHeader(
-                                      title: 'name',
+                                  const SizedBox(height: 10),
+                                  Table(
+                                    columnWidths: const <int, TableColumnWidth>{
+                                      0: IntrinsicColumnWidth(flex: 3),
+                                      1: IntrinsicColumnWidth(flex: 1),
+                                      2: IntrinsicColumnWidth(flex: 2),
+                                    },
+                                    children: [
+                                      const TableRow(children: [
+                                        IngredientTableHeader(
+                                          title: 'name',
+                                        ),
+                                        IngredientTableHeader(
+                                          title: 'amount',
+                                        ),
+                                        IngredientTableHeader(
+                                          title: 'unit',
+                                        ),
+                                      ]),
+                                      for (int i = 0;
+                                          i <
+                                              (state.chosenRecipe?.ingredients
+                                                      .length ??
+                                                  0);
+                                          i++)
+                                        TableRow(children: [
+                                          Center(
+                                            child: Text(state
+                                                    .chosenRecipe
+                                                    ?.ingredients[i]
+                                                    .ingredientNameId ??
+                                                'null'),
+                                          ),
+                                          Center(
+                                            child: Text(state
+                                                    .chosenRecipe
+                                                    ?.ingredients[i]
+                                                    .amount
+                                                    .amount
+                                                    .toString() ??
+                                                'null'),
+                                          ),
+                                          Center(
+                                            child: Text(state
+                                                    .chosenRecipe
+                                                    ?.ingredients[i]
+                                                    .amount
+                                                    .unitId ??
+                                                'null'),
+                                          ),
+                                        ])
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Wrap(
+                                      spacing: 10,
+                                      children: [
+                                        for (int i = 0;
+                                            i <
+                                                (state.chosenRecipe
+                                                        ?.tasteNoteIds.length ??
+                                                    0);
+                                            i++)
+                                          Chip(
+                                            padding: const EdgeInsets.all(0),
+                                            label: Text(state.chosenRecipe
+                                                    ?.tasteNoteIds[i] ??
+                                                ''),
+                                          )
+                                      ],
                                     ),
-                                    IngredientTableHeader(
-                                      title: 'amount',
-                                    ),
-                                    IngredientTableHeader(
-                                      title: 'unit',
-                                    ),
-                                  ]),
-                                  for (int i = 0;
-                                      i <
-                                          (state.chosenRecipe?.ingredients
-                                                  .length ??
-                                              0);
-                                      i++)
-                                    TableRow(children: [
-                                      Center(
-                                        child: Text(state
-                                                .chosenRecipe
-                                                ?.ingredients[i]
-                                                .ingredientNameId ??
-                                            'null'),
-                                      ),
-                                      Center(
-                                        child: Text(state.chosenRecipe
-                                                ?.ingredients[i].amount.amount
-                                                .toString() ??
-                                            'null'),
-                                      ),
-                                      Center(
-                                        child: Text(state
-                                                .chosenRecipe
-                                                ?.ingredients[i]
-                                                .amount
-                                                .unitId ??
-                                            'null'),
-                                      ),
-                                    ])
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text('Description: Lorem Ipsum'),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text('number of servings: 4'),
+                                  ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Wrap(
-                                  spacing: 10,
-                                  children: [
-                                    for (int i = 0;
-                                        i <
-                                            (state.chosenRecipe?.tasteNoteIds
-                                                    .length ??
-                                                0);
-                                        i++)
-                                      Chip(
-                                        padding: const EdgeInsets.all(0),
-                                        label: Text(state.chosenRecipe
-                                                ?.tasteNoteIds[i] ??
-                                            ''),
-                                      )
-                                  ],
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text('Description: Lorem Ipsum'),
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text('number of servings: 4'),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
