@@ -113,10 +113,27 @@ class RollShotPage extends StatelessWidget {
                                   const SizedBox(
                                     height: 8,
                                   ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: Text('number of servings: 4'),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Row(
+                                      children: [
+                                        const Text('number of servings:'),
+                                        const Spacer(),
+                                        const Icon(Icons
+                                            .remove_circle_outline_rounded),
+                                        const SizedBox(width: 15),
+                                        Text(
+                                          state.numberOfServings.toString(),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(width: 15),
+                                        const Icon(
+                                            Icons.add_circle_outline_rounded),
+                                        const SizedBox(width: 10),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
