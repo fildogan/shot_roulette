@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
 
 class RollShotPage extends StatelessWidget {
@@ -65,16 +66,9 @@ class RollShotPage extends StatelessWidget {
                                                     .ingredientNameId ??
                                                 'null'),
                                           ),
-                                          Center(
-                                            child: Text((((state
-                                                            .chosenRecipe
-                                                            ?.ingredients[i]
-                                                            .amount
-                                                            .amount) ??
-                                                        0) *
-                                                    state.numberOfServings
-                                                        .toDouble())
-                                                .toString()),
+                                          IngredientAmount(
+                                            i: i,
+                                            state: state,
                                           ),
                                           Center(
                                             child: Text(state
