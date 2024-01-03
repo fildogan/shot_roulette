@@ -66,13 +66,15 @@ class RollShotPage extends StatelessWidget {
                                                 'null'),
                                           ),
                                           Center(
-                                            child: Text(state
-                                                    .chosenRecipe
-                                                    ?.ingredients[i]
-                                                    .amount
-                                                    .amount
-                                                    .toString() ??
-                                                'null'),
+                                            child: Text((((state
+                                                            .chosenRecipe
+                                                            ?.ingredients[i]
+                                                            .amount
+                                                            .amount) ??
+                                                        0) *
+                                                    state.numberOfServings
+                                                        .toDouble())
+                                                .toString()),
                                           ),
                                           Center(
                                             child: Text(state
