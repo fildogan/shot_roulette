@@ -26,10 +26,10 @@ List<ShotRecipeModel> mockRecipes = [
       ingredients: [
         IngredientModel(
             ingredientNameId: 'ingredientNameId2',
-            amount: IngredientAmountModel(unitId: 'unitId2', amount: 1)),
+            amount: IngredientAmountModel(unitId: 'unitId2', amount: 1.33)),
         IngredientModel(
             ingredientNameId: 'ingredientNameId3',
-            amount: IngredientAmountModel(unitId: 'unitId3', amount: 2))
+            amount: IngredientAmountModel(unitId: 'unitId3', amount: 2.5))
       ],
       tasteNoteIds: [
         'taste1',
