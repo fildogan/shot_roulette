@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/number_of_servings_row.dart';
 
 class RollShotPage extends StatelessWidget {
   const RollShotPage({super.key});
@@ -104,46 +105,19 @@ class RollShotPage extends StatelessWidget {
                                   const Padding(
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: Text('Description: Lorem Ipsum'),
-                                  ),
-                                  const SizedBox(
-                                    height: 8,
+                                    child: Text('Instructions: Lorem Ipsum'),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Row(
-                                      children: [
-                                        const Text('number of servings:'),
-                                        const Spacer(),
-                                        IconButton(
-                                          onPressed: () {
-                                            context
-                                                .read<RollShotCubit>()
-                                                .decreaseNumberOfServings();
-                                          },
-                                          icon: const Icon(Icons
-                                              .remove_circle_outline_rounded),
-                                        ),
-                                        const SizedBox(width: 15),
-                                        Text(
-                                          state.numberOfServings.toString(),
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(width: 15),
-                                        IconButton(
-                                          onPressed: () {
-                                            context
-                                                .read<RollShotCubit>()
-                                                .increaseNumberOfServings();
-                                          },
-                                          icon: const Icon(
-                                              Icons.add_circle_outline_rounded),
-                                        ),
-                                        const SizedBox(width: 10),
-                                      ],
+                                    child: NumberOfServingsRow(
+                                      state: state,
                                     ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text('Description: Lorem Ipsum'),
                                   ),
                                 ],
                               ),
