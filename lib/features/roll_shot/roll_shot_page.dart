@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/ingredient_name.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/ingredient_unit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/number_of_servings_row.dart';
 
 class RollShotPage extends StatelessWidget {
@@ -60,25 +62,9 @@ class RollShotPage extends StatelessWidget {
                                                   0);
                                           i++)
                                         TableRow(children: [
-                                          Center(
-                                            child: Text(state
-                                                    .chosenRecipe
-                                                    ?.ingredients[i]
-                                                    .ingredientNameId ??
-                                                'null'),
-                                          ),
-                                          IngredientAmount(
-                                            i: i,
-                                            state: state,
-                                          ),
-                                          Center(
-                                            child: Text(state
-                                                    .chosenRecipe
-                                                    ?.ingredients[i]
-                                                    .amount
-                                                    .unitId ??
-                                                'null'),
-                                          ),
+                                          IngredientName(i: i, state: state),
+                                          IngredientAmount(i: i, state: state),
+                                          IngredientUnit(i: i, state: state),
                                         ])
                                     ],
                                   ),
