@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/reset_button.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/roll_shot_button.dart';
 
 import 'package:shot_roulette/features/roll_shot/widgets/shot_recipe_card.dart';
 
@@ -41,28 +43,11 @@ class RollShotPage extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          context.read<RollShotCubit>().rollShot();
-                        },
-                        child: const Text(
-                          'Roll Shot',
-                          textAlign: TextAlign.center,
-                        )),
-                  ),
+                  const RolllShotButton(),
                   const SizedBox(
                     height: 25,
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          context.read<RollShotCubit>().resetShot();
-                        },
-                        child: const Text('Reset')),
-                  )
+                  const ResetButton()
                 ],
               ),
             ),
