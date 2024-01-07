@@ -6,7 +6,10 @@ import 'package:shot_roulette/features/roll_shot/widgets/custom_main_button.dart
 class RolllShotButton extends StatelessWidget {
   const RolllShotButton({
     super.key,
+    required this.state,
   });
+
+  final RollShotState state;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class RolllShotButton extends StatelessWidget {
       onPressed: () {
         context.read<RollShotCubit>().rollShot();
       },
-      title: 'Roll Shot',
+      title: state.chosenRecipe == null ? 'Roll Shot' : 'Roll Again',
     );
   }
 }

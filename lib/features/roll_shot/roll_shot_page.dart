@@ -43,7 +43,7 @@ class RollShotPage extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  const RolllShotButton(),
+                  RolllShotButton(state: state),
                   const SizedBox(
                     height: 25,
                   ),
