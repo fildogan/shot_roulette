@@ -24,7 +24,16 @@ class ShotRecipeCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+              Center(
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                    child: Image.asset(
+                      'assets/images/Mad-Dog.jpg',
+                      fit: BoxFit.fill,
+                      width: double.infinity,
+                    )),
+              ),
+              const SizedBox(height: 5),
               Table(
                 columnWidths: const <int, TableColumnWidth>{
                   0: IntrinsicColumnWidth(flex: 3),
