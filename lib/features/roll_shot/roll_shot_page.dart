@@ -11,6 +11,8 @@ class RollShotPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return BlocProvider(
       create: (context) => RollShotCubit()..start(),
       child: BlocBuilder<RollShotCubit, RollShotState>(
@@ -25,29 +27,30 @@ class RollShotPage extends StatelessWidget {
                 children: [
                   if (state.chosenRecipe != null)
                     Padding(
-                      padding: const EdgeInsets.all(30.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
                       child: SizedBox(
-                        height: 300,
+                        height: screenHeight * 0.6,
                         child: ShotRecipeCard(state: state),
                       ),
                     )
                   else
                     Padding(
-                      padding: const EdgeInsets.all(30.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: SizedBox(
-                        height: 300,
+                        height: screenHeight * 0.6,
                         width: 150,
                         child: Image.asset('assets/images/casino_roulette.png'),
                       ),
                     ),
                   const SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
                   RolllShotButton(state: state),
                   const SizedBox(
-                    height: 25,
+                    height: 10,
                   ),
-                  const ResetButton()
+                  if (state.chosenRecipe != null) const ResetButton()
                 ],
               ),
             ),
