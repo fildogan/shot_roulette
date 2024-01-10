@@ -14,3 +14,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Packages Used and Their Licenses:
+
+[build_runner](https://pub.dev/packages/build_runner/license),
+[cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
+[flutter_bloc](https://pub.dev/packages/flutter_bloc/license),
+[flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar/license),
+[freezed](https://pub.dev/packages/freezed/license),
+[freezed_annotation](https://pub.dev/packages/freezed_annotation/license), 
+[get_it](https://pub.dev/packages/get_it/license), 
+[injectable](https://pub.dev/packages/injectable/license)
