@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_name.dart';
@@ -79,6 +80,21 @@ class ShotRecipeCard extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text('Description: Lorem Ipsum'),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: RatingBarIndicator(
+                  rating: 2.34,
+                  itemBuilder: (context, index) => const Icon(
+                    Icons.star,
+                    // color: Colors.amber,
+                  ),
+                  itemCount: 5,
+                  itemSize: 25.0,
+                ),
               ),
             ],
           ),
