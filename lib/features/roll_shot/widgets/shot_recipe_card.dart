@@ -86,14 +86,22 @@ class ShotRecipeCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: RatingBarIndicator(
-                  rating: 2.34,
-                  itemBuilder: (context, index) => const Icon(
-                    Icons.star,
-                    // color: Colors.amber,
-                  ),
-                  itemCount: 5,
-                  itemSize: 25.0,
+                child: Row(
+                  children: [
+                    Text(
+                        "(${state.chosenRecipe?.ratings.length.toString() ?? "0"})"),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    RatingBarIndicator(
+                      rating: state.ratingAverage,
+                      itemBuilder: (context, index) => const Icon(
+                        Icons.star,
+                      ),
+                      itemCount: 5,
+                      itemSize: 25.0,
+                    ),
+                  ],
                 ),
               ),
             ],
