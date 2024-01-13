@@ -13,8 +13,8 @@ class RollShotState with _$RollShotState {
   const RollShotState._();
 
   double get ratingAverage {
-    if (chosenRecipe == null) {
-      return 0;
+    if (chosenRecipe == null || chosenRecipe!.ratings.isEmpty) {
+      return 0.0;
     } else {
       return ratingSum / chosenRecipe!.ratings.length;
     }
@@ -22,11 +22,11 @@ class RollShotState with _$RollShotState {
 
   double get ratingSum {
     if (chosenRecipe == null) {
-      return 0;
+      return 0.0;
     } else {
       return chosenRecipe!.ratings
           .map((rating) => rating.rating)
-          .reduce((a, b) => a + b);
+          .fold(0.0, (a, b) => a + b);
     }
   }
 }
