@@ -11,4 +11,22 @@ class RollShotState with _$RollShotState {
     ShotRecipeModel? chosenRecipe,
   }) = _RollShotState;
   const RollShotState._();
+
+  double get ratingAverage {
+    if (chosenRecipe == null) {
+      return 0;
+    } else {
+      return ratingSum / chosenRecipe!.ratings.length;
+    }
+  }
+
+  double get ratingSum {
+    if (chosenRecipe == null) {
+      return 0;
+    } else {
+      return chosenRecipe!.ratings
+          .map((rating) => rating.rating)
+          .reduce((a, b) => a + b);
+    }
+  }
 }
