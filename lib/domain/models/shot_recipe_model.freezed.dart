@@ -21,6 +21,7 @@ mixin _$ShotRecipeModel {
   String get titlePL => throw _privateConstructorUsedError;
   List<IngredientModel> get ingredients => throw _privateConstructorUsedError;
   List<String> get tasteNoteIds => throw _privateConstructorUsedError;
+  List<RatingModel> get ratings => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShotRecipeModelCopyWith<ShotRecipeModel> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $ShotRecipeModelCopyWith<$Res> {
       String titleEN,
       String titlePL,
       List<IngredientModel> ingredients,
-      List<String> tasteNoteIds});
+      List<String> tasteNoteIds,
+      List<RatingModel> ratings});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$ShotRecipeModelCopyWithImpl<$Res, $Val extends ShotRecipeModel>
     Object? titlePL = null,
     Object? ingredients = null,
     Object? tasteNoteIds = null,
+    Object? ratings = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,6 +84,10 @@ class _$ShotRecipeModelCopyWithImpl<$Res, $Val extends ShotRecipeModel>
           ? _value.tasteNoteIds
           : tasteNoteIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      ratings: null == ratings
+          ? _value.ratings
+          : ratings // ignore: cast_nullable_to_non_nullable
+              as List<RatingModel>,
     ) as $Val);
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$ShotRecipeModelImplCopyWith<$Res>
       String titleEN,
       String titlePL,
       List<IngredientModel> ingredients,
-      List<String> tasteNoteIds});
+      List<String> tasteNoteIds,
+      List<RatingModel> ratings});
 }
 
 /// @nodoc
@@ -117,6 +125,7 @@ class __$$ShotRecipeModelImplCopyWithImpl<$Res>
     Object? titlePL = null,
     Object? ingredients = null,
     Object? tasteNoteIds = null,
+    Object? ratings = null,
   }) {
     return _then(_$ShotRecipeModelImpl(
       id: null == id
@@ -139,6 +148,10 @@ class __$$ShotRecipeModelImplCopyWithImpl<$Res>
           ? _value._tasteNoteIds
           : tasteNoteIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      ratings: null == ratings
+          ? _value._ratings
+          : ratings // ignore: cast_nullable_to_non_nullable
+              as List<RatingModel>,
     ));
   }
 }
@@ -151,9 +164,11 @@ class _$ShotRecipeModelImpl extends _ShotRecipeModel {
       required this.titleEN,
       required this.titlePL,
       required final List<IngredientModel> ingredients,
-      required final List<String> tasteNoteIds})
+      required final List<String> tasteNoteIds,
+      required final List<RatingModel> ratings})
       : _ingredients = ingredients,
         _tasteNoteIds = tasteNoteIds,
+        _ratings = ratings,
         super._();
 
   @override
@@ -178,9 +193,17 @@ class _$ShotRecipeModelImpl extends _ShotRecipeModel {
     return EqualUnmodifiableListView(_tasteNoteIds);
   }
 
+  final List<RatingModel> _ratings;
+  @override
+  List<RatingModel> get ratings {
+    if (_ratings is EqualUnmodifiableListView) return _ratings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ratings);
+  }
+
   @override
   String toString() {
-    return 'ShotRecipeModel(id: $id, titleEN: $titleEN, titlePL: $titlePL, ingredients: $ingredients, tasteNoteIds: $tasteNoteIds)';
+    return 'ShotRecipeModel(id: $id, titleEN: $titleEN, titlePL: $titlePL, ingredients: $ingredients, tasteNoteIds: $tasteNoteIds, ratings: $ratings)';
   }
 
   @override
@@ -194,7 +217,8 @@ class _$ShotRecipeModelImpl extends _ShotRecipeModel {
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
             const DeepCollectionEquality()
-                .equals(other._tasteNoteIds, _tasteNoteIds));
+                .equals(other._tasteNoteIds, _tasteNoteIds) &&
+            const DeepCollectionEquality().equals(other._ratings, _ratings));
   }
 
   @override
@@ -204,7 +228,8 @@ class _$ShotRecipeModelImpl extends _ShotRecipeModel {
       titleEN,
       titlePL,
       const DeepCollectionEquality().hash(_ingredients),
-      const DeepCollectionEquality().hash(_tasteNoteIds));
+      const DeepCollectionEquality().hash(_tasteNoteIds),
+      const DeepCollectionEquality().hash(_ratings));
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +245,8 @@ abstract class _ShotRecipeModel extends ShotRecipeModel {
       required final String titleEN,
       required final String titlePL,
       required final List<IngredientModel> ingredients,
-      required final List<String> tasteNoteIds}) = _$ShotRecipeModelImpl;
+      required final List<String> tasteNoteIds,
+      required final List<RatingModel> ratings}) = _$ShotRecipeModelImpl;
   const _ShotRecipeModel._() : super._();
 
   @override
@@ -233,6 +259,8 @@ abstract class _ShotRecipeModel extends ShotRecipeModel {
   List<IngredientModel> get ingredients;
   @override
   List<String> get tasteNoteIds;
+  @override
+  List<RatingModel> get ratings;
   @override
   @JsonKey(ignore: true)
   _$$ShotRecipeModelImplCopyWith<_$ShotRecipeModelImpl> get copyWith =>

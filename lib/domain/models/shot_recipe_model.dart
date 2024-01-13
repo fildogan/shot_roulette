@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shot_roulette/domain/models/ingredient_model.dart';
+import 'package:shot_roulette/domain/models/rating_model.dart';
 
 part 'shot_recipe_model.freezed.dart';
 
@@ -13,6 +14,7 @@ class ShotRecipeModel with _$ShotRecipeModel {
     required String titlePL,
     required List<IngredientModel> ingredients,
     required List<String> tasteNoteIds,
+    required List<RatingModel> ratings,
   }) = _ShotRecipeModel;
   const ShotRecipeModel._();
 }
