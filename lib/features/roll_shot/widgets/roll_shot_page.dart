@@ -23,7 +23,7 @@ class RollShotPage extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: SizedBox(
                   height: double.infinity,
                   child: ShotRecipeCard(state: state),

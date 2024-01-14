@@ -35,13 +35,17 @@ class ShotRecipeCard extends StatelessWidget {
                   )),
                 ),
               Center(
-                child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                    child: Image.asset(
-                      'assets/images/Mad-Dog.jpg',
-                      fit: BoxFit.fill,
-                      width: double.infinity,
-                    )),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(8.0)),
+                      child: Image.asset(
+                        'assets/images/Mad-Dog.jpg',
+                        fit: BoxFit.fill,
+                        width: double.infinity,
+                      )),
+                ),
               ),
               const SizedBox(height: 5),
               Table(
