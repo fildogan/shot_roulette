@@ -16,7 +16,7 @@ class RatingRow extends StatelessWidget {
       children: [
         Text("(${state.chosenRecipe?.ratings.length.toString() ?? "0"})"),
         const SizedBox(
-          width: 10,
+          width: 5,
         ),
         RatingBarIndicator(
           rating: state.ratingAverage,
@@ -24,8 +24,11 @@ class RatingRow extends StatelessWidget {
             Icons.star,
           ),
           itemCount: 5,
-          itemSize: 25.0,
+          itemSize: 20.0,
         ),
+        const Spacer(),
+        ElevatedButton(
+            onPressed: () {}, child: const Text('Change rating (2.5)')),
       ],
     );
   }
