@@ -3,6 +3,8 @@ import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({
     super.key,
@@ -13,6 +15,8 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
@@ -20,10 +24,10 @@ class SettingsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SettingsItem(
-              header: 'AppLocalizations.of(context).application',
+              header: locale.application,
               settingsItems: [
                 SettingItemModel(
-                  title: 'AppLocalizations.of(context).theme',
+                  title: locale.theme,
                   onTap: () {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(
@@ -34,7 +38,7 @@ class SettingsPage extends StatelessWidget {
                   trailing: const Icon(Icons.chevron_right),
                 ),
                 SettingItemModel(
-                  title: 'AppLocalizations.of(context).language',
+                  title: locale.language,
                   onTap: () {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(
@@ -45,17 +49,6 @@ class SettingsPage extends StatelessWidget {
                   },
                   trailing: const Icon(Icons.chevron_right),
                 ),
-                SettingItemModel(
-                  title: 'AppLocalizations.of(context).voyagers',
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const VoyagerListPage(),
-                    //   ),
-                    // );
-                  },
-                  trailing: const Icon(Icons.chevron_right),
-                )
               ],
             ),
           ],
