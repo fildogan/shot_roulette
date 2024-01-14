@@ -20,6 +20,7 @@ samples, guidance on mobile development, and a full API reference.
 [build_runner](https://pub.dev/packages/build_runner/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
 [flutter_bloc](https://pub.dev/packages/flutter_bloc/license),
+[flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons/license),
 [flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar/license),
 [freezed](https://pub.dev/packages/freezed/license),
 [freezed_annotation](https://pub.dev/packages/freezed_annotation/license), 
