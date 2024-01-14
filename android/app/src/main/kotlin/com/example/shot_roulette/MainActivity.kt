@@ -1,4 +1,4 @@
-package com.example.shot_roulette
+package com.filipdoganowski.shot_roulette
 
 import io.flutter.embedding.android.FlutterActivity
 
