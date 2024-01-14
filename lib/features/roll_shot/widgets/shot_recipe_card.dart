@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_name.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/ingredient_unit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/number_of_servings_row.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/rating_row.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/taste_notes_wrap.dart';
 
 class ShotRecipeCard extends StatelessWidget {
@@ -86,23 +86,7 @@ class ShotRecipeCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
-                  children: [
-                    Text(
-                        "(${state.chosenRecipe?.ratings.length.toString() ?? "0"})"),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    RatingBarIndicator(
-                      rating: state.ratingAverage,
-                      itemBuilder: (context, index) => const Icon(
-                        Icons.star,
-                      ),
-                      itemCount: 5,
-                      itemSize: 25.0,
-                    ),
-                  ],
-                ),
+                child: RatingRow(state: state),
               ),
             ],
           ),
