@@ -25,4 +25,5 @@ samples, guidance on mobile development, and a full API reference.
 [freezed](https://pub.dev/packages/freezed/license),
 [freezed_annotation](https://pub.dev/packages/freezed_annotation/license), 
 [get_it](https://pub.dev/packages/get_it/license), 
-[injectable](https://pub.dev/packages/injectable/license)
+[injectable](https://pub.dev/packages/injectable/license),
+[shared_preferences](https://pub.dev/packages/shared_preferences/license)
