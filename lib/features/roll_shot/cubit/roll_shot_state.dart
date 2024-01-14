@@ -8,6 +8,7 @@ class RollShotState with _$RollShotState {
     @Default([]) List<IngredientNameModel> ingredientNames,
     @Default([]) List<UnitOfMeasurementModel> unitsOfMeasurement,
     @Default(4) int numberOfServings,
+    @Default(1) int pageIndex,
     ShotRecipeModel? chosenRecipe,
   }) = _RollShotState;
   const RollShotState._();

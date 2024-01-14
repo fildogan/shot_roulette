@@ -23,6 +23,7 @@ mixin _$RollShotState {
   List<UnitOfMeasurementModel> get unitsOfMeasurement =>
       throw _privateConstructorUsedError;
   int get numberOfServings => throw _privateConstructorUsedError;
+  int get pageIndex => throw _privateConstructorUsedError;
   ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,6 +43,7 @@ abstract class $RollShotStateCopyWith<$Res> {
       List<IngredientNameModel> ingredientNames,
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
+      int pageIndex,
       ShotRecipeModel? chosenRecipe});
 
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
@@ -65,6 +67,7 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
     Object? ingredientNames = null,
     Object? unitsOfMeasurement = null,
     Object? numberOfServings = null,
+    Object? pageIndex = null,
     Object? chosenRecipe = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +90,10 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
       numberOfServings: null == numberOfServings
           ? _value.numberOfServings
           : numberOfServings // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageIndex: null == pageIndex
+          ? _value.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
       chosenRecipe: freezed == chosenRecipe
           ? _value.chosenRecipe
@@ -122,6 +129,7 @@ abstract class _$$RollShotStateImplCopyWith<$Res>
       List<IngredientNameModel> ingredientNames,
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
+      int pageIndex,
       ShotRecipeModel? chosenRecipe});
 
   @override
@@ -144,6 +152,7 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
     Object? ingredientNames = null,
     Object? unitsOfMeasurement = null,
     Object? numberOfServings = null,
+    Object? pageIndex = null,
     Object? chosenRecipe = freezed,
   }) {
     return _then(_$RollShotStateImpl(
@@ -167,6 +176,10 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
           ? _value.numberOfServings
           : numberOfServings // ignore: cast_nullable_to_non_nullable
               as int,
+      pageIndex: null == pageIndex
+          ? _value.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       chosenRecipe: freezed == chosenRecipe
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
@@ -184,6 +197,7 @@ class _$RollShotStateImpl extends _RollShotState {
       final List<IngredientNameModel> ingredientNames = const [],
       final List<UnitOfMeasurementModel> unitsOfMeasurement = const [],
       this.numberOfServings = 4,
+      this.pageIndex = 1,
       this.chosenRecipe})
       : _shotRecipes = shotRecipes,
         _tasteNotes = tasteNotes,
@@ -232,15 +246,18 @@ class _$RollShotStateImpl extends _RollShotState {
   @JsonKey()
   final int numberOfServings;
   @override
+  @JsonKey()
+  final int pageIndex;
+  @override
   final ShotRecipeModel? chosenRecipe;
 
   @override
   String toString() {
-    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, chosenRecipe: $chosenRecipe)';
+    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RollShotStateImpl &&
@@ -254,6 +271,8 @@ class _$RollShotStateImpl extends _RollShotState {
                 .equals(other._unitsOfMeasurement, _unitsOfMeasurement) &&
             (identical(other.numberOfServings, numberOfServings) ||
                 other.numberOfServings == numberOfServings) &&
+            (identical(other.pageIndex, pageIndex) ||
+                other.pageIndex == pageIndex) &&
             (identical(other.chosenRecipe, chosenRecipe) ||
                 other.chosenRecipe == chosenRecipe));
   }
@@ -266,6 +285,7 @@ class _$RollShotStateImpl extends _RollShotState {
       const DeepCollectionEquality().hash(_ingredientNames),
       const DeepCollectionEquality().hash(_unitsOfMeasurement),
       numberOfServings,
+      pageIndex,
       chosenRecipe);
 
   @JsonKey(ignore: true)
@@ -282,6 +302,7 @@ abstract class _RollShotState extends RollShotState {
       final List<IngredientNameModel> ingredientNames,
       final List<UnitOfMeasurementModel> unitsOfMeasurement,
       final int numberOfServings,
+      final int pageIndex,
       final ShotRecipeModel? chosenRecipe}) = _$RollShotStateImpl;
   _RollShotState._() : super._();
 
@@ -295,6 +316,8 @@ abstract class _RollShotState extends RollShotState {
   List<UnitOfMeasurementModel> get unitsOfMeasurement;
   @override
   int get numberOfServings;
+  @override
+  int get pageIndex;
   @override
   ShotRecipeModel? get chosenRecipe;
   @override

@@ -90,4 +90,12 @@ class RollShotCubit extends Cubit<RollShotState> {
       );
     }
   }
+
+  Future<void> changePageIndex(int newIndex) async {
+    emit(
+      state.copyWith(
+        pageIndex: newIndex,
+      ),
+    );
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shot_roulette/features/roll_shot/roll_shot_page.dart';
+import 'package:shot_roulette/features/roll_shot/main_menu_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
           // primarySwatch: Colors.blue,
           ),
-      home: const RollShotPage(),
+      home: const MainMenuPage(),
     );
   }
 }
