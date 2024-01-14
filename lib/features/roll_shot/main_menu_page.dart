@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/roll_shot_page.dart';
+import 'package:shot_roulette/features/roll_shot/widgets/settings_page.dart';
 
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key});
@@ -41,7 +42,7 @@ class MainMenuPage extends StatelessWidget {
             ),
             body: Builder(builder: (context) {
               if (state.pageIndex == 0) {
-                return const Text('0');
+                return SettingsPage(state: state);
               } else if (state.pageIndex == 1) {
                 return RollShotPage(
                   mainContainerHeight: mainContainerHeight,
