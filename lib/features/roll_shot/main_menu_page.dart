@@ -7,7 +7,9 @@ import 'package:shot_roulette/features/settings_page/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainMenuPage extends StatelessWidget {
-  const MainMenuPage({super.key});
+  const MainMenuPage({super.key, required this.state});
+
+  final RollShotState state;
 
   @override
   Widget build(BuildContext context) {
@@ -15,49 +17,42 @@ class MainMenuPage extends StatelessWidget {
     double mainContainerHeight = screenHeight * 0.6;
     final localizations = AppLocalizations.of(context)!;
 
-    return BlocProvider(
-      create: (context) => RollShotCubit()..start(),
-      child: BlocBuilder<RollShotCubit, RollShotState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(state.chosenRecipe?.titleEN ?? 'Roll Shot'),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: state.pageIndex,
-              onTap: (newIndex) {
-                context.read<RollShotCubit>().changePageIndex(newIndex);
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.settings),
-                  label: localizations.settings,
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.local_drink),
-                  label: "Roll",
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.person),
-                  label: localizations.account,
-                ),
-              ],
-            ),
-            body: Builder(builder: (context) {
-              if (state.pageIndex == 0) {
-                return SettingsPage(state: state);
-              } else if (state.pageIndex == 1) {
-                return RollShotPage(
-                  mainContainerHeight: mainContainerHeight,
-                  state: state,
-                );
-              } else {
-                return const Text('2');
-              }
-            }),
-          );
-        },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(state.chosenRecipe?.titleEN ?? 'Roll Shot'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: state.pageIndex,
+        onTap: (newIndex) {
+          context.read<RollShotCubit>().changePageIndex(newIndex);
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.settings),
+            label: localizations.settings,
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.local_drink),
+            label: "Roll",
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.person),
+            label: localizations.account,
+          ),
+        ],
+      ),
+      body: Builder(builder: (context) {
+        if (state.pageIndex == 0) {
+          return SettingsPage(state: state);
+        } else if (state.pageIndex == 1) {
+          return RollShotPage(
+            mainContainerHeight: mainContainerHeight,
+            state: state,
+          );
+        } else {
+          return const Text('2');
+        }
+      }),
     );
   }
 }
