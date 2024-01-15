@@ -15,8 +15,7 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
-
+    final localizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
@@ -24,10 +23,10 @@ class SettingsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SettingsItem(
-              header: locale.application,
+              header: localizations.application,
               settingsItems: [
                 SettingItemModel(
-                  title: locale.theme,
+                  title: localizations.theme,
                   onTap: () {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(
@@ -38,7 +37,7 @@ class SettingsPage extends StatelessWidget {
                   trailing: const Icon(Icons.chevron_right),
                 ),
                 SettingItemModel(
-                  title: locale.language,
+                  title: localizations.language,
                   onTap: () {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(

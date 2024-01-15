@@ -24,5 +24,7 @@
   "termsOfUse": "Warunki korzystania",
   "privacyPolicy": "Polityka prywatności",
   "minOsVersion": "Minimalna wersja systemu operacyjnego",
-  "developerSite": "Strona dewelopera"
+  "developerSite": "Strona dewelopera",
+  "settings": "Ustawienia",
+  "reset": "Resetuj"
 }

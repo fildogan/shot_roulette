@@ -24,5 +24,7 @@
   "termsOfUse": "Terms of Use",
   "privacyPolicy": "Privacy Policy",
   "minOsVersion": "Minimum OS version",
-  "developerSite": "Developer site"
+  "developerSite": "Developer site",
+  "settings": "Settings",
+  "reset": "Reset"
 }

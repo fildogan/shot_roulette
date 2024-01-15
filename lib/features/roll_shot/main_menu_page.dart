@@ -4,6 +4,8 @@ import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/roll_shot_page.dart';
 import 'package:shot_roulette/features/settings_page/settings_page.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key});
 
@@ -11,6 +13,7 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double mainContainerHeight = screenHeight * 0.6;
+    final localizations = AppLocalizations.of(context)!;
 
     return BlocProvider(
       create: (context) => RollShotCubit()..start(),
@@ -25,18 +28,18 @@ class MainMenuPage extends StatelessWidget {
               onTap: (newIndex) {
                 context.read<RollShotCubit>().changePageIndex(newIndex);
               },
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: "Settings",
+                  icon: const Icon(Icons.settings),
+                  label: localizations.settings,
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.local_drink),
                   label: "Roll",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: "Account",
+                  icon: const Icon(Icons.person),
+                  label: localizations.account,
                 ),
               ],
             ),
