@@ -25,6 +25,9 @@ mixin _$RollShotState {
   int get numberOfServings => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
   ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
+  SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
+  SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RollShotStateCopyWith<RollShotState> get copyWith =>
@@ -44,7 +47,10 @@ abstract class $RollShotStateCopyWith<$Res> {
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
       int pageIndex,
-      ShotRecipeModel? chosenRecipe});
+      ShotRecipeModel? chosenRecipe,
+      SelectedLanguage selectedLanguage,
+      SelectedTheme selectedTheme,
+      String errorMessage});
 
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
 }
@@ -69,6 +75,9 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
     Object? numberOfServings = null,
     Object? pageIndex = null,
     Object? chosenRecipe = freezed,
+    Object? selectedLanguage = null,
+    Object? selectedTheme = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       shotRecipes: null == shotRecipes
@@ -99,6 +108,18 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
               as ShotRecipeModel?,
+      selectedLanguage: null == selectedLanguage
+          ? _value.selectedLanguage
+          : selectedLanguage // ignore: cast_nullable_to_non_nullable
+              as SelectedLanguage,
+      selectedTheme: null == selectedTheme
+          ? _value.selectedTheme
+          : selectedTheme // ignore: cast_nullable_to_non_nullable
+              as SelectedTheme,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -130,7 +151,10 @@ abstract class _$$RollShotStateImplCopyWith<$Res>
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
       int pageIndex,
-      ShotRecipeModel? chosenRecipe});
+      ShotRecipeModel? chosenRecipe,
+      SelectedLanguage selectedLanguage,
+      SelectedTheme selectedTheme,
+      String errorMessage});
 
   @override
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
@@ -154,6 +178,9 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
     Object? numberOfServings = null,
     Object? pageIndex = null,
     Object? chosenRecipe = freezed,
+    Object? selectedLanguage = null,
+    Object? selectedTheme = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$RollShotStateImpl(
       shotRecipes: null == shotRecipes
@@ -184,6 +211,18 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
               as ShotRecipeModel?,
+      selectedLanguage: null == selectedLanguage
+          ? _value.selectedLanguage
+          : selectedLanguage // ignore: cast_nullable_to_non_nullable
+              as SelectedLanguage,
+      selectedTheme: null == selectedTheme
+          ? _value.selectedTheme
+          : selectedTheme // ignore: cast_nullable_to_non_nullable
+              as SelectedTheme,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -198,7 +237,10 @@ class _$RollShotStateImpl extends _RollShotState {
       final List<UnitOfMeasurementModel> unitsOfMeasurement = const [],
       this.numberOfServings = 4,
       this.pageIndex = 1,
-      this.chosenRecipe})
+      this.chosenRecipe,
+      this.selectedLanguage = SelectedLanguage.english,
+      this.selectedTheme = SelectedTheme.system,
+      this.errorMessage = ''})
       : _shotRecipes = shotRecipes,
         _tasteNotes = tasteNotes,
         _ingredientNames = ingredientNames,
@@ -250,10 +292,19 @@ class _$RollShotStateImpl extends _RollShotState {
   final int pageIndex;
   @override
   final ShotRecipeModel? chosenRecipe;
+  @override
+  @JsonKey()
+  final SelectedLanguage selectedLanguage;
+  @override
+  @JsonKey()
+  final SelectedTheme selectedTheme;
+  @override
+  @JsonKey()
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe)';
+    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, errorMessage: $errorMessage)';
   }
 
   @override
@@ -274,7 +325,13 @@ class _$RollShotStateImpl extends _RollShotState {
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
             (identical(other.chosenRecipe, chosenRecipe) ||
-                other.chosenRecipe == chosenRecipe));
+                other.chosenRecipe == chosenRecipe) &&
+            (identical(other.selectedLanguage, selectedLanguage) ||
+                other.selectedLanguage == selectedLanguage) &&
+            (identical(other.selectedTheme, selectedTheme) ||
+                other.selectedTheme == selectedTheme) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -286,7 +343,10 @@ class _$RollShotStateImpl extends _RollShotState {
       const DeepCollectionEquality().hash(_unitsOfMeasurement),
       numberOfServings,
       pageIndex,
-      chosenRecipe);
+      chosenRecipe,
+      selectedLanguage,
+      selectedTheme,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +363,10 @@ abstract class _RollShotState extends RollShotState {
       final List<UnitOfMeasurementModel> unitsOfMeasurement,
       final int numberOfServings,
       final int pageIndex,
-      final ShotRecipeModel? chosenRecipe}) = _$RollShotStateImpl;
+      final ShotRecipeModel? chosenRecipe,
+      final SelectedLanguage selectedLanguage,
+      final SelectedTheme selectedTheme,
+      final String errorMessage}) = _$RollShotStateImpl;
   _RollShotState._() : super._();
 
   @override
@@ -320,6 +383,12 @@ abstract class _RollShotState extends RollShotState {
   int get pageIndex;
   @override
   ShotRecipeModel? get chosenRecipe;
+  @override
+  SelectedLanguage get selectedLanguage;
+  @override
+  SelectedTheme get selectedTheme;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
