@@ -30,7 +30,7 @@ class ShotRecipeCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Center(
                       child: Text(
-                    state.chosenRecipe?.titleEN ?? '',
+                    state.chosenRecipeTitle,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                 ),
