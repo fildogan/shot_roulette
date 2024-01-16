@@ -128,4 +128,16 @@ class RollShotCubit extends Cubit<RollShotState> {
       selectedTheme: SelectedTheme.dark,
     ));
   }
+
+  Future<void> changeSettingsPage(Widget page) async {
+    emit(state.copyWith(
+      settingsMenuPage: page,
+    ));
+  }
+
+  Future<void> resetSettingsPage() async {
+    emit(state.copyWith(
+      settingsMenuPage: null,
+    ));
+  }
 }
