@@ -143,6 +143,22 @@ class RollShotCubit extends Cubit<RollShotState> {
     ));
   }
 
+  // ******************************** set language ********************************
+
+  Future<void> setLanguageEnglish() async {
+    PreferencesService().saveLanguage(SelectedLanguage.english);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.english,
+    ));
+  }
+
+  Future<void> setLanguagePolish() async {
+    PreferencesService().saveLanguage(SelectedLanguage.polish);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.polish,
+    ));
+  }
+
   // ******************************** navigate settings page ********************************
 
   Future<void> changeSettingsPage(Widget page) async {

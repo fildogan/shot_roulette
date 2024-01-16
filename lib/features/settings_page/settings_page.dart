@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
 import 'package:shot_roulette/features/settings_page/pages/theme_selection.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -37,24 +38,14 @@ class SettingsPage extends StatelessWidget {
                       context
                           .read<RollShotCubit>()
                           .changeSettingsPage(ThemeSelectionPage(state: state));
-
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const ThemeSelectionPage(),
-                      //   ),
-                      // );
                     },
                     trailing: const Icon(Icons.chevron_right),
                   ),
                   SettingItemModel(
                     title: localizations.language,
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         const LanguageSelectionPage(),
-                      //   ),
-                      // );
+                      context.read<RollShotCubit>().changeSettingsPage(
+                          LanguageSelectionPage(state: state));
                     },
                     trailing: const Icon(Icons.chevron_right),
                   ),
