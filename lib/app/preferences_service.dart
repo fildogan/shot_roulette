@@ -34,6 +34,7 @@ class PreferencesService {
     final locale = await Devicelocale.currentLocale;
 
     String language = '';
+    String country = '';
 
     if (locale != null && locale.length >= 2) {
       try {
@@ -43,7 +44,16 @@ class PreferencesService {
       }
     }
 
+    if (locale != null && locale.length >= 5) {
+      try {
+        country = locale.substring(3, 5);
+      } catch (e) {
+        debugPrint('Error when fetching user country: $e');
+      }
+    }
+
     print(language);
+    print(country);
     return language;
   }
 }
