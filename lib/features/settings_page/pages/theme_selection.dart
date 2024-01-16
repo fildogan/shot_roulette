@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
 @immutable
@@ -18,12 +18,7 @@ class ThemeSelectionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: (() {
-            context.read<RollShotCubit>().resetSettingsPage();
-          }),
-        ),
+        leading: const ResetSettingPageButton(),
         title: Text(
             '${AppLocalizations.of(context)!.choose} ${AppLocalizations.of(context)!.theme}'),
       ),
