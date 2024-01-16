@@ -43,7 +43,7 @@ class LanguageSelectionPage extends StatelessWidget {
                           },
                           title: 'English',
                           trailing:
-                              state.selectedLanguage == SelectedLanguage.english
+                              state.selectedLanguage == SelectedLanguage.en
                                   ? const Icon(Icons.check_box)
                                   : const Icon(Icons.check_box_outline_blank),
                         ),
@@ -53,7 +53,7 @@ class LanguageSelectionPage extends StatelessWidget {
                           },
                           title: 'Polski',
                           trailing:
-                              state.selectedLanguage == SelectedLanguage.polish
+                              state.selectedLanguage == SelectedLanguage.pl
                                   ? const Icon(Icons.check_box)
                                   : const Icon(Icons.check_box_outline_blank),
                         ),
