@@ -41,16 +41,15 @@ class RollShotState with _$RollShotState {
         return const Locale('en');
       case SelectedLanguage.polish:
         return const Locale('pl');
-      // case SelectedLanguage.system:
-      //   return null;
     }
   }
 
   String get chosenRecipeTitle {
-    if (locale == const Locale('pl')) {
-      return chosenRecipe?.titlePL ?? '';
-    } else {
-      return chosenRecipe?.titleEN ?? '';
+    switch (selectedLanguage) {
+      case SelectedLanguage.english:
+        return chosenRecipe?.titleEN ?? '';
+      case SelectedLanguage.polish:
+        return chosenRecipe?.titlePL ?? '';
     }
   }
 
