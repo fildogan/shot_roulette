@@ -135,7 +135,7 @@ class _$UnitOfMeasurementModelImpl extends _UnitOfMeasurementModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnitOfMeasurementModelImpl &&

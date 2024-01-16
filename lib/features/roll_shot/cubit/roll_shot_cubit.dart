@@ -1,10 +1,14 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shot_roulette/app/core/enums.dart';
+import 'package:shot_roulette/app/preferences_service.dart';
 import 'package:shot_roulette/data/mock_data_sources/mock_list.dart';
 import 'package:shot_roulette/domain/models/ingredient_name_model.dart';
+import 'package:shot_roulette/domain/models/settings_model.dart';
 import 'package:shot_roulette/domain/models/shot_recipe_model.dart';
 import 'package:shot_roulette/domain/models/taste_note_model.dart';
 import 'package:shot_roulette/domain/models/unit_of_measurement_model.dart';
@@ -17,6 +21,8 @@ class RollShotCubit extends Cubit<RollShotState> {
   RollShotCubit() : super(RollShotState());
 
   Future<void> start() async {
+    getSettings();
+
     getShotRecipeList();
     getTasteNoteList();
     getIngredientNameList();
@@ -89,5 +95,37 @@ class RollShotCubit extends Cubit<RollShotState> {
         ),
       );
     }
+  }
+
+  Future<void> changePageIndex(int newIndex) async {
+    emit(
+      state.copyWith(
+        pageIndex: newIndex,
+      ),
+    );
+  }
+
+  Future<void> getSettings() async {
+    try {
+      final SettingsModel settings = await PreferencesService().getSettings();
+      final selectedTheme = settings.selectedTheme;
+      final selectedLanguage = settings.selectedLanguage;
+      emit(state.copyWith(
+        selectedTheme: selectedTheme,
+        selectedLanguage: selectedLanguage,
+      ));
+    } on Exception catch (e) {
+      print(e.toString());
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  // ******************************** set theme ********************************
+
+  Future<void> setThemeDark() async {
+    PreferencesService().saveTheme(SelectedTheme.dark);
+    emit(state.copyWith(
+      selectedTheme: SelectedTheme.dark,
+    ));
   }
 }
