@@ -10,7 +10,10 @@ import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart'
 
 @immutable
 class ThemeSelectionPage extends StatelessWidget {
-  const ThemeSelectionPage({super.key, required this.state});
+  const ThemeSelectionPage({
+    super.key,
+    required this.state,
+  });
 
   final RollShotState state;
 
