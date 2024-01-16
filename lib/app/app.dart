@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             locale: state.locale,
-            theme: ThemeData.dark(
-                // primarySwatch: Colors.blue,
-                ),
+            theme: ThemeData.light(useMaterial3: true),
+            darkTheme: ThemeData.dark(useMaterial3: true),
+            themeMode: state.currentTheme,
             home: MainMenuPage(
               state: state,
             ),

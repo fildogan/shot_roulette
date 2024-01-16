@@ -129,6 +129,22 @@ class RollShotCubit extends Cubit<RollShotState> {
     ));
   }
 
+  Future<void> setThemeLight() async {
+    PreferencesService().saveTheme(SelectedTheme.light);
+    emit(state.copyWith(
+      selectedTheme: SelectedTheme.light,
+    ));
+  }
+
+  Future<void> setThemeSystem() async {
+    PreferencesService().saveTheme(SelectedTheme.system);
+    emit(state.copyWith(
+      selectedTheme: SelectedTheme.system,
+    ));
+  }
+
+  // ******************************** navigate settings page ********************************
+
   Future<void> changeSettingsPage(Widget page) async {
     emit(state.copyWith(
       settingsMenuPage: page,
