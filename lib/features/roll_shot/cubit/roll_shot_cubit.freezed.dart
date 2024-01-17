@@ -28,7 +28,9 @@ mixin _$RollShotState {
   ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  String get authError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RollShotStateCopyWith<RollShotState> get copyWith =>
@@ -52,7 +54,9 @@ abstract class $RollShotStateCopyWith<$Res> {
       ShotRecipeModel? chosenRecipe,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
-      String errorMessage});
+      User? user,
+      String errorMessage,
+      String authError});
 
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
 }
@@ -80,7 +84,9 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
     Object? chosenRecipe = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
+    Object? user = freezed,
     Object? errorMessage = null,
+    Object? authError = null,
   }) {
     return _then(_value.copyWith(
       shotRecipes: null == shotRecipes
@@ -123,9 +129,17 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
           ? _value.selectedTheme
           : selectedTheme // ignore: cast_nullable_to_non_nullable
               as SelectedTheme,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      authError: null == authError
+          ? _value.authError
+          : authError // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -162,7 +176,9 @@ abstract class _$$RollShotStateImplCopyWith<$Res>
       ShotRecipeModel? chosenRecipe,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
-      String errorMessage});
+      User? user,
+      String errorMessage,
+      String authError});
 
   @override
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
@@ -189,7 +205,9 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
     Object? chosenRecipe = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
+    Object? user = freezed,
     Object? errorMessage = null,
+    Object? authError = null,
   }) {
     return _then(_$RollShotStateImpl(
       shotRecipes: null == shotRecipes
@@ -232,9 +250,17 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
           ? _value.selectedTheme
           : selectedTheme // ignore: cast_nullable_to_non_nullable
               as SelectedTheme,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      authError: null == authError
+          ? _value.authError
+          : authError // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -254,7 +280,9 @@ class _$RollShotStateImpl extends _RollShotState {
       this.chosenRecipe,
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
-      this.errorMessage = ''})
+      this.user,
+      this.errorMessage = '',
+      this.authError = ''})
       : _shotRecipes = shotRecipes,
         _tasteNotes = tasteNotes,
         _ingredientNames = ingredientNames,
@@ -315,12 +343,17 @@ class _$RollShotStateImpl extends _RollShotState {
   @JsonKey()
   final SelectedTheme selectedTheme;
   @override
+  final User? user;
+  @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final String authError;
 
   @override
   String toString() {
-    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, settingsMenuPage: $settingsMenuPage, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, errorMessage: $errorMessage)';
+    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, settingsMenuPage: $settingsMenuPage, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage, authError: $authError)';
   }
 
   @override
@@ -348,8 +381,11 @@ class _$RollShotStateImpl extends _RollShotState {
                 other.selectedLanguage == selectedLanguage) &&
             (identical(other.selectedTheme, selectedTheme) ||
                 other.selectedTheme == selectedTheme) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.authError, authError) ||
+                other.authError == authError));
   }
 
   @override
@@ -365,7 +401,9 @@ class _$RollShotStateImpl extends _RollShotState {
       chosenRecipe,
       selectedLanguage,
       selectedTheme,
-      errorMessage);
+      const DeepCollectionEquality().hash(user),
+      errorMessage,
+      authError);
 
   @JsonKey(ignore: true)
   @override
@@ -386,7 +424,9 @@ abstract class _RollShotState extends RollShotState {
       final ShotRecipeModel? chosenRecipe,
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
-      final String errorMessage}) = _$RollShotStateImpl;
+      final User? user,
+      final String errorMessage,
+      final String authError}) = _$RollShotStateImpl;
   _RollShotState._() : super._();
 
   @override
@@ -410,7 +450,11 @@ abstract class _RollShotState extends RollShotState {
   @override
   SelectedTheme get selectedTheme;
   @override
+  User? get user;
+  @override
   String get errorMessage;
+  @override
+  String get authError;
   @override
   @JsonKey(ignore: true)
   _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>

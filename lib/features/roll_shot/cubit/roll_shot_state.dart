@@ -13,7 +13,9 @@ class RollShotState with _$RollShotState {
     ShotRecipeModel? chosenRecipe,
     @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
+    User? user,
     @Default('') String errorMessage,
+    @Default('') String authError,
   }) = _RollShotState;
   const RollShotState._();
 
