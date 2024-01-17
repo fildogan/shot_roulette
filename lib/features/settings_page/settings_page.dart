@@ -51,6 +51,26 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ],
               ),
+              // Account
+              SettingsItem(settingsItems: [
+                SettingItemModel(
+                  onTap: () {},
+                  title: localizations.accountSettings,
+                  trailing: const Icon(Icons.chevron_right),
+                ),
+                // if (!(state.userModel?.isPremium ?? false))
+                //   SettingItemModel(
+                //     onTap: () {
+                //       context.read<RootCubit>().setPremium();
+                //     },
+                //     //TODO: translations
+                //     title: 'GO PREMIUM',
+                //     trailing: const Icon(
+                //       Icons.star,
+                //       color: Colors.amber,
+                //     ),
+                //   )
+              ], header: localizations.account),
             ],
           ),
         ),
