@@ -26,5 +26,7 @@
   "minOsVersion": "Minimalna wersja systemu operacyjnego",
   "developerSite": "Strona dewelopera",
   "settings": "Ustawienia",
-  "reset": "Resetuj"
+  "reset": "Resetuj",
+  "signIn": "Utwórz konto",
+  "logIn": "Zaloguj się"
 }

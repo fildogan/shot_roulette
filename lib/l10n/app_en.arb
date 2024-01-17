@@ -26,5 +26,7 @@
   "minOsVersion": "Minimum OS version",
   "developerSite": "Developer site",
   "settings": "Settings",
-  "reset": "Reset"
+  "reset": "Reset",
+  "signIn": "Sign in",
+  "logIn": "Log in"
 }
