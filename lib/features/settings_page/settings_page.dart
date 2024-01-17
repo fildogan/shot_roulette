@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
+import 'package:shot_roulette/features/settings_page/pages/log_in.dart';
 import 'package:shot_roulette/features/settings_page/pages/theme_selection.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -51,26 +52,46 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ],
               ),
-              // Account
-              SettingsItem(settingsItems: [
-                SettingItemModel(
-                  onTap: () {},
-                  title: localizations.accountSettings,
-                  trailing: const Icon(Icons.chevron_right),
-                ),
-                // if (!(state.userModel?.isPremium ?? false))
-                //   SettingItemModel(
-                //     onTap: () {
-                //       context.read<RootCubit>().setPremium();
-                //     },
-                //     //TODO: translations
-                //     title: 'GO PREMIUM',
-                //     trailing: const Icon(
-                //       Icons.star,
-                //       color: Colors.amber,
-                //     ),
-                //   )
-              ], header: localizations.account),
+              // Account if logged in
+              if (state.user != null)
+                SettingsItem(settingsItems: [
+                  SettingItemModel(
+                    onTap: () {},
+                    title: localizations.accountSettings,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                  // if (!(state.userModel?.isPremium ?? false))
+                  //   SettingItemModel(
+                  //     onTap: () {
+                  //       context.read<RootCubit>().setPremium();
+                  //     },
+                  //     //TODO: translations
+                  //     title: 'GO PREMIUM',
+                  //     trailing: const Icon(
+                  //       Icons.star,
+                  //       color: Colors.amber,
+                  //     ),
+                  //   )
+                ], header: localizations.account),
+
+              // Account if not logged in
+              if (state.user == null)
+                SettingsItem(settingsItems: [
+                  SettingItemModel(
+                    onTap: () {
+                      context
+                          .read<RollShotCubit>()
+                          .changeSettingsPage(LogInPage(state: state));
+                    },
+                    title: localizations.logIn,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                  SettingItemModel(
+                    onTap: () {},
+                    title: localizations.signIn,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                ], header: localizations.account),
             ],
           ),
         ),
