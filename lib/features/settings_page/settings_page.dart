@@ -56,22 +56,12 @@ class SettingsPage extends StatelessWidget {
               if (state.user != null)
                 SettingsItem(settingsItems: [
                   SettingItemModel(
-                    onTap: () {},
-                    title: localizations.accountSettings,
+                    onTap: () {
+                      context.read<RollShotCubit>().signOut();
+                    },
+                    title: localizations.logOut,
                     trailing: const Icon(Icons.chevron_right),
                   ),
-                  // if (!(state.userModel?.isPremium ?? false))
-                  //   SettingItemModel(
-                  //     onTap: () {
-                  //       context.read<RootCubit>().setPremium();
-                  //     },
-                  //     //TODO: translations
-                  //     title: 'GO PREMIUM',
-                  //     trailing: const Icon(
-                  //       Icons.star,
-                  //       color: Colors.amber,
-                  //     ),
-                  //   )
                 ], header: localizations.account),
 
               // Account if not logged in

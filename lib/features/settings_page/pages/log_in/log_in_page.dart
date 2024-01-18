@@ -27,7 +27,16 @@ class LogInPage extends StatelessWidget {
       create: (context) => LogInCubit(),
       child: BlocBuilder<RollShotCubit, RollShotState>(
         builder: (context, state) {
-          return BlocBuilder<LogInCubit, LogInState>(
+          return BlocConsumer<LogInCubit, LogInState>(
+            listener: (context, state) {
+              // Handle state changes here, if needed
+              if (state.authError.isNotEmpty) {
+                _showErrorSnackBar(context, state.authError);
+              }
+              if (state.authCompleted) {
+                context.read<RollShotCubit>().resetSettingsPage();
+              }
+            },
             builder: (context, state) {
               return Scaffold(
                 appBar: AppBar(
@@ -116,6 +125,18 @@ class LogInPage extends StatelessWidget {
           //     : AppLocalizations.of(context).pleaseEnterExpenseName,
         );
       },
+    );
+  }
+
+  void _showErrorSnackBar(BuildContext context, String errorMessage) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          errorMessage,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.red,
+      ),
     );
   }
 }

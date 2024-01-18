@@ -29,6 +29,7 @@
   "reset": "Resetuj",
   "signUp": "Utwórz konto",
   "logIn": "Zaloguj się",
+  "logOut": "Wyloguj się",
   "email": "Email",
   "password": "Hasło"
 }

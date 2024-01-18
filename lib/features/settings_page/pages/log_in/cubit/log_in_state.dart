@@ -6,6 +6,7 @@ class LogInState with _$LogInState {
     @Default('') String emailValue,
     @Default('') String passwordValue,
     @Default('') String authError,
+    @Default(false) bool authCompleted,
   }) = _LogInState;
   const LogInState._();
 }

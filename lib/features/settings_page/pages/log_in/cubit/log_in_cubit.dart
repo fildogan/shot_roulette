@@ -29,8 +29,13 @@ class LogInCubit extends Cubit<LogInState> {
         email: state.emailValue,
         password: state.passwordValue,
       );
+      emit(state.copyWith(authCompleted: true));
+    } on FirebaseAuthException catch (e) {
+      emit(state.copyWith(authError: e.toString()));
+      print(e);
     } on Exception catch (e) {
       emit(state.copyWith(authError: e.toString()));
+      print(e);
     }
   }
 
@@ -40,8 +45,13 @@ class LogInCubit extends Cubit<LogInState> {
         email: state.emailValue,
         password: state.passwordValue,
       );
+      emit(state.copyWith(authCompleted: true));
+    } on FirebaseAuthException catch (e) {
+      emit(state.copyWith(authError: e.toString()));
+      print(e);
     } on Exception catch (e) {
       emit(state.copyWith(authError: e.toString()));
+      print(e);
     }
   }
 }

@@ -29,6 +29,7 @@
   "reset": "Reset",
   "signUp": "Sign Up",
   "logIn": "Log in",
+  "logOut": "Log out",
   "email": "Email",
   "password": "Password"
 

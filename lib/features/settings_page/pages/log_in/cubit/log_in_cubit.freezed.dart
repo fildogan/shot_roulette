@@ -19,6 +19,7 @@ mixin _$LogInState {
   String get emailValue => throw _privateConstructorUsedError;
   String get passwordValue => throw _privateConstructorUsedError;
   String get authError => throw _privateConstructorUsedError;
+  bool get authCompleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LogInStateCopyWith<LogInState> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $LogInStateCopyWith<$Res> {
           LogInState value, $Res Function(LogInState) then) =
       _$LogInStateCopyWithImpl<$Res, LogInState>;
   @useResult
-  $Res call({String emailValue, String passwordValue, String authError});
+  $Res call(
+      {String emailValue,
+      String passwordValue,
+      String authError,
+      bool authCompleted});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
     Object? emailValue = null,
     Object? passwordValue = null,
     Object? authError = null,
+    Object? authCompleted = null,
   }) {
     return _then(_value.copyWith(
       emailValue: null == emailValue
@@ -64,6 +70,10 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
           ? _value.authError
           : authError // ignore: cast_nullable_to_non_nullable
               as String,
+      authCompleted: null == authCompleted
+          ? _value.authCompleted
+          : authCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +86,11 @@ abstract class _$$LogInStateImplCopyWith<$Res>
       __$$LogInStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String emailValue, String passwordValue, String authError});
+  $Res call(
+      {String emailValue,
+      String passwordValue,
+      String authError,
+      bool authCompleted});
 }
 
 /// @nodoc
@@ -93,6 +107,7 @@ class __$$LogInStateImplCopyWithImpl<$Res>
     Object? emailValue = null,
     Object? passwordValue = null,
     Object? authError = null,
+    Object? authCompleted = null,
   }) {
     return _then(_$LogInStateImpl(
       emailValue: null == emailValue
@@ -107,6 +122,10 @@ class __$$LogInStateImplCopyWithImpl<$Res>
           ? _value.authError
           : authError // ignore: cast_nullable_to_non_nullable
               as String,
+      authCompleted: null == authCompleted
+          ? _value.authCompleted
+          : authCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -115,7 +134,10 @@ class __$$LogInStateImplCopyWithImpl<$Res>
 
 class _$LogInStateImpl extends _LogInState {
   _$LogInStateImpl(
-      {this.emailValue = '', this.passwordValue = '', this.authError = ''})
+      {this.emailValue = '',
+      this.passwordValue = '',
+      this.authError = '',
+      this.authCompleted = false})
       : super._();
 
   @override
@@ -127,10 +149,13 @@ class _$LogInStateImpl extends _LogInState {
   @override
   @JsonKey()
   final String authError;
+  @override
+  @JsonKey()
+  final bool authCompleted;
 
   @override
   String toString() {
-    return 'LogInState(emailValue: $emailValue, passwordValue: $passwordValue, authError: $authError)';
+    return 'LogInState(emailValue: $emailValue, passwordValue: $passwordValue, authError: $authError, authCompleted: $authCompleted)';
   }
 
   @override
@@ -143,12 +168,14 @@ class _$LogInStateImpl extends _LogInState {
             (identical(other.passwordValue, passwordValue) ||
                 other.passwordValue == passwordValue) &&
             (identical(other.authError, authError) ||
-                other.authError == authError));
+                other.authError == authError) &&
+            (identical(other.authCompleted, authCompleted) ||
+                other.authCompleted == authCompleted));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, emailValue, passwordValue, authError);
+  int get hashCode => Object.hash(
+      runtimeType, emailValue, passwordValue, authError, authCompleted);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +188,8 @@ abstract class _LogInState extends LogInState {
   factory _LogInState(
       {final String emailValue,
       final String passwordValue,
-      final String authError}) = _$LogInStateImpl;
+      final String authError,
+      final bool authCompleted}) = _$LogInStateImpl;
   _LogInState._() : super._();
 
   @override
@@ -170,6 +198,8 @@ abstract class _LogInState extends LogInState {
   String get passwordValue;
   @override
   String get authError;
+  @override
+  bool get authCompleted;
   @override
   @JsonKey(ignore: true)
   _$$LogInStateImplCopyWith<_$LogInStateImpl> get copyWith =>

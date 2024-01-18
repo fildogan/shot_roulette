@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -21,9 +22,11 @@ part 'roll_shot_cubit.freezed.dart';
 class RollShotCubit extends Cubit<RollShotState> {
   RollShotCubit() : super(RollShotState());
 
+  StreamSubscription? _streamSubscription;
+
   Future<void> start() async {
     getSettings();
-
+    userSubscription();
     getShotRecipeList();
     getTasteNoteList();
     getIngredientNameList();
@@ -172,5 +175,30 @@ class RollShotCubit extends Cubit<RollShotState> {
     emit(state.copyWith(
       settingsMenuPage: null,
     ));
+  }
+
+  Future<void> userSubscription() async {
+    _streamSubscription =
+        FirebaseAuth.instance.authStateChanges().listen((user) {
+      emit(state.copyWith(
+        user: user,
+      ));
+    })
+          ..onError((error) {
+            emit(state.copyWith(
+              user: null,
+              errorMessage: error.toString(),
+            ));
+          });
+  }
+
+  Future<void> signOut() async {
+    FirebaseAuth.instance.signOut();
+  }
+
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
   }
 }
