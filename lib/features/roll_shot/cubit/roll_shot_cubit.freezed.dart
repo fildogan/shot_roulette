@@ -381,7 +381,7 @@ class _$RollShotStateImpl extends _RollShotState {
                 other.selectedLanguage == selectedLanguage) &&
             (identical(other.selectedTheme, selectedTheme) ||
                 other.selectedTheme == selectedTheme) &&
-            const DeepCollectionEquality().equals(other.user, user) &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.authError, authError) ||
@@ -401,7 +401,7 @@ class _$RollShotStateImpl extends _RollShotState {
       chosenRecipe,
       selectedLanguage,
       selectedTheme,
-      const DeepCollectionEquality().hash(user),
+      user,
       errorMessage,
       authError);
 

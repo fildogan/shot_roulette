@@ -27,6 +27,10 @@
   "developerSite": "Developer site",
   "settings": "Settings",
   "reset": "Reset",
-  "signIn": "Sign in",
-  "logIn": "Log in"
+  "signUp": "Sign Up",
+  "logIn": "Log in",
+  "email": "Email",
+  "password": "Password"
+
+
 }

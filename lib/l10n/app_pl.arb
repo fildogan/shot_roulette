@@ -27,6 +27,8 @@
   "developerSite": "Strona dewelopera",
   "settings": "Ustawienia",
   "reset": "Resetuj",
-  "signIn": "Utwórz konto",
-  "logIn": "Zaloguj się"
+  "signUp": "Utwórz konto",
+  "logIn": "Zaloguj się",
+  "email": "Email",
+  "password": "Hasło"
 }
