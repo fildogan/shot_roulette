@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shot_roulette/app/core/enums.dart';
 
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/custom_main_button.dart';
@@ -33,7 +34,7 @@ class LogInPage extends StatelessWidget {
               if (state.authError.isNotEmpty) {
                 _showErrorSnackBar(context, state.authError);
               }
-              if (state.authCompleted) {
+              if (state.authStatus == Status.success) {
                 context.read<RollShotCubit>().resetSettingsPage();
               }
             },
@@ -41,41 +42,45 @@ class LogInPage extends StatelessWidget {
               return Scaffold(
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
-                  leading: const ResetSettingPageButton(),
+                  leading: ResetSettingPageButton(
+                    status: state.authStatus,
+                  ),
                   title: Text(isCreatingAccount
                       ? localizations.signUp
                       : localizations.logIn),
                 ),
                 body: SafeArea(
                   child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: ListView(
-                        children: [
-                          _emailField(state),
-                          _passwordField(state),
-                          const SizedBox(
-                            height: 20,
+                    child: state.authStatus == Status.loading
+                        ? const CircularProgressIndicator()
+                        : Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            child: ListView(
+                              children: [
+                                _emailField(state),
+                                _passwordField(state),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                CustomMainButton(
+                                    onPressed: () {
+                                      isCreatingAccount
+                                          ? context
+                                              .read<LogInCubit>()
+                                              .createUserWithEmailAndPassword()
+                                          : context
+                                              .read<LogInCubit>()
+                                              .signInWithEmailAndPassword();
+                                    },
+                                    title: isCreatingAccount
+                                        ? localizations.signUp
+                                        : localizations.logIn),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
                           ),
-                          CustomMainButton(
-                              onPressed: () {
-                                isCreatingAccount
-                                    ? context
-                                        .read<LogInCubit>()
-                                        .createUserWithEmailAndPassword()
-                                    : context
-                                        .read<LogInCubit>()
-                                        .signInWithEmailAndPassword();
-                              },
-                              title: isCreatingAccount
-                                  ? localizations.signUp
-                                  : localizations.logIn),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
                 ),
               );

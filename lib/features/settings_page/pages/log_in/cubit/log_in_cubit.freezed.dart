@@ -19,7 +19,7 @@ mixin _$LogInState {
   String get emailValue => throw _privateConstructorUsedError;
   String get passwordValue => throw _privateConstructorUsedError;
   String get authError => throw _privateConstructorUsedError;
-  bool get authCompleted => throw _privateConstructorUsedError;
+  Status get authStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LogInStateCopyWith<LogInState> get copyWith =>
@@ -36,7 +36,7 @@ abstract class $LogInStateCopyWith<$Res> {
       {String emailValue,
       String passwordValue,
       String authError,
-      bool authCompleted});
+      Status authStatus});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
     Object? emailValue = null,
     Object? passwordValue = null,
     Object? authError = null,
-    Object? authCompleted = null,
+    Object? authStatus = null,
   }) {
     return _then(_value.copyWith(
       emailValue: null == emailValue
@@ -70,10 +70,10 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
           ? _value.authError
           : authError // ignore: cast_nullable_to_non_nullable
               as String,
-      authCompleted: null == authCompleted
-          ? _value.authCompleted
-          : authCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      authStatus: null == authStatus
+          ? _value.authStatus
+          : authStatus // ignore: cast_nullable_to_non_nullable
+              as Status,
     ) as $Val);
   }
 }
@@ -90,7 +90,7 @@ abstract class _$$LogInStateImplCopyWith<$Res>
       {String emailValue,
       String passwordValue,
       String authError,
-      bool authCompleted});
+      Status authStatus});
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class __$$LogInStateImplCopyWithImpl<$Res>
     Object? emailValue = null,
     Object? passwordValue = null,
     Object? authError = null,
-    Object? authCompleted = null,
+    Object? authStatus = null,
   }) {
     return _then(_$LogInStateImpl(
       emailValue: null == emailValue
@@ -122,10 +122,10 @@ class __$$LogInStateImplCopyWithImpl<$Res>
           ? _value.authError
           : authError // ignore: cast_nullable_to_non_nullable
               as String,
-      authCompleted: null == authCompleted
-          ? _value.authCompleted
-          : authCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      authStatus: null == authStatus
+          ? _value.authStatus
+          : authStatus // ignore: cast_nullable_to_non_nullable
+              as Status,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$LogInStateImpl extends _LogInState {
       {this.emailValue = '',
       this.passwordValue = '',
       this.authError = '',
-      this.authCompleted = false})
+      this.authStatus = Status.initial})
       : super._();
 
   @override
@@ -151,11 +151,11 @@ class _$LogInStateImpl extends _LogInState {
   final String authError;
   @override
   @JsonKey()
-  final bool authCompleted;
+  final Status authStatus;
 
   @override
   String toString() {
-    return 'LogInState(emailValue: $emailValue, passwordValue: $passwordValue, authError: $authError, authCompleted: $authCompleted)';
+    return 'LogInState(emailValue: $emailValue, passwordValue: $passwordValue, authError: $authError, authStatus: $authStatus)';
   }
 
   @override
@@ -169,13 +169,13 @@ class _$LogInStateImpl extends _LogInState {
                 other.passwordValue == passwordValue) &&
             (identical(other.authError, authError) ||
                 other.authError == authError) &&
-            (identical(other.authCompleted, authCompleted) ||
-                other.authCompleted == authCompleted));
+            (identical(other.authStatus, authStatus) ||
+                other.authStatus == authStatus));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, emailValue, passwordValue, authError, authCompleted);
+      runtimeType, emailValue, passwordValue, authError, authStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +189,7 @@ abstract class _LogInState extends LogInState {
       {final String emailValue,
       final String passwordValue,
       final String authError,
-      final bool authCompleted}) = _$LogInStateImpl;
+      final Status authStatus}) = _$LogInStateImpl;
   _LogInState._() : super._();
 
   @override
@@ -199,7 +199,7 @@ abstract class _LogInState extends LogInState {
   @override
   String get authError;
   @override
-  bool get authCompleted;
+  Status get authStatus;
   @override
   @JsonKey(ignore: true)
   _$$LogInStateImplCopyWith<_$LogInStateImpl> get copyWith =>
