@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -15,11 +15,11 @@ class ThemeSelectionPage extends StatelessWidget {
     required this.state,
   });
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RollShotCubit, RollShotState>(
+    return BlocBuilder<RootCubit, RootState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -39,7 +39,7 @@ class ThemeSelectionPage extends StatelessWidget {
                       settingsItems: [
                         SettingItemModel(
                           onTap: () {
-                            context.read<RollShotCubit>().setThemeDark();
+                            context.read<RootCubit>().setThemeDark();
                           },
                           title: AppLocalizations.of(context)!.dark,
                           trailing: state.selectedTheme == SelectedTheme.dark
@@ -48,7 +48,7 @@ class ThemeSelectionPage extends StatelessWidget {
                         ),
                         SettingItemModel(
                           onTap: () {
-                            context.read<RollShotCubit>().setThemeLight();
+                            context.read<RootCubit>().setThemeLight();
                           },
                           title: AppLocalizations.of(context)!.light,
                           trailing: state.selectedTheme == SelectedTheme.light
@@ -57,7 +57,7 @@ class ThemeSelectionPage extends StatelessWidget {
                         ),
                         SettingItemModel(
                           onTap: () {
-                            context.read<RollShotCubit>().setThemeSystem();
+                            context.read<RootCubit>().setThemeSystem();
                           },
                           title: AppLocalizations.of(context)!.system,
                           trailing: state.selectedTheme == SelectedTheme.system

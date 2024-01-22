@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/custom_main_button.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart';
@@ -18,7 +18,7 @@ class LogInPage extends StatelessWidget {
     required this.isCreatingAccount,
   });
 
-  final RollShotState rootState;
+  final RootState rootState;
   final bool isCreatingAccount;
 
   @override
@@ -27,7 +27,7 @@ class LogInPage extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => LogInCubit(),
-      child: BlocBuilder<RollShotCubit, RollShotState>(
+      child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           return BlocConsumer<LogInCubit, LogInState>(
             listener: (context, state) {

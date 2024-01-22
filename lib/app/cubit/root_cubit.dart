@@ -15,12 +15,12 @@ import 'package:shot_roulette/domain/models/shot_recipe_model.dart';
 import 'package:shot_roulette/domain/models/taste_note_model.dart';
 import 'package:shot_roulette/domain/models/unit_of_measurement_model.dart';
 
-part 'roll_shot_state.dart';
-part 'roll_shot_cubit.freezed.dart';
+part 'root_state.dart';
+part 'root_cubit.freezed.dart';
 
 @injectable
-class RollShotCubit extends Cubit<RollShotState> {
-  RollShotCubit() : super(RollShotState());
+class RootCubit extends Cubit<RootState> {
+  RootCubit() : super(RootState());
 
   StreamSubscription? _streamSubscription;
 

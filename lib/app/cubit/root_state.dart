@@ -1,8 +1,8 @@
-part of 'roll_shot_cubit.dart';
+part of 'root_cubit.dart';
 
 @freezed
-class RollShotState with _$RollShotState {
-  factory RollShotState({
+class RootState with _$RootState {
+  factory RootState({
     @Default([]) List<ShotRecipeModel> shotRecipes,
     @Default([]) List<TasteNoteModel> tasteNotes,
     @Default([]) List<IngredientNameModel> ingredientNames,
@@ -14,8 +14,8 @@ class RollShotState with _$RollShotState {
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
     User? user,
     @Default('') String errorMessage,
-  }) = _RollShotState;
-  const RollShotState._();
+  }) = _RootState;
+  const RootState._();
 
   double get ratingAverage {
     if (chosenRecipe == null || chosenRecipe!.ratings.isEmpty) {

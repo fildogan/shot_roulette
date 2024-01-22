@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 
 class RatingRow extends StatelessWidget {
   const RatingRow({
@@ -8,7 +8,7 @@ class RatingRow extends StatelessWidget {
     required this.state,
   });
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {

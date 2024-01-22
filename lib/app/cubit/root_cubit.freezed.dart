@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'roll_shot_cubit.dart';
+part of 'root_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RollShotState {
+mixin _$RootState {
   List<ShotRecipeModel> get shotRecipes => throw _privateConstructorUsedError;
   List<TasteNoteModel> get tasteNotes => throw _privateConstructorUsedError;
   List<IngredientNameModel> get ingredientNames =>
@@ -31,15 +31,14 @@ mixin _$RollShotState {
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RollShotStateCopyWith<RollShotState> get copyWith =>
+  $RootStateCopyWith<RootState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RollShotStateCopyWith<$Res> {
-  factory $RollShotStateCopyWith(
-          RollShotState value, $Res Function(RollShotState) then) =
-      _$RollShotStateCopyWithImpl<$Res, RollShotState>;
+abstract class $RootStateCopyWith<$Res> {
+  factory $RootStateCopyWith(RootState value, $Res Function(RootState) then) =
+      _$RootStateCopyWithImpl<$Res, RootState>;
   @useResult
   $Res call(
       {List<ShotRecipeModel> shotRecipes,
@@ -58,9 +57,9 @@ abstract class $RollShotStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
-    implements $RollShotStateCopyWith<$Res> {
-  _$RollShotStateCopyWithImpl(this._value, this._then);
+class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
+    implements $RootStateCopyWith<$Res> {
+  _$RootStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -144,11 +143,11 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
 }
 
 /// @nodoc
-abstract class _$$RollShotStateImplCopyWith<$Res>
-    implements $RollShotStateCopyWith<$Res> {
-  factory _$$RollShotStateImplCopyWith(
-          _$RollShotStateImpl value, $Res Function(_$RollShotStateImpl) then) =
-      __$$RollShotStateImplCopyWithImpl<$Res>;
+abstract class _$$RootStateImplCopyWith<$Res>
+    implements $RootStateCopyWith<$Res> {
+  factory _$$RootStateImplCopyWith(
+          _$RootStateImpl value, $Res Function(_$RootStateImpl) then) =
+      __$$RootStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -169,11 +168,11 @@ abstract class _$$RollShotStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RollShotStateImplCopyWithImpl<$Res>
-    extends _$RollShotStateCopyWithImpl<$Res, _$RollShotStateImpl>
-    implements _$$RollShotStateImplCopyWith<$Res> {
-  __$$RollShotStateImplCopyWithImpl(
-      _$RollShotStateImpl _value, $Res Function(_$RollShotStateImpl) _then)
+class __$$RootStateImplCopyWithImpl<$Res>
+    extends _$RootStateCopyWithImpl<$Res, _$RootStateImpl>
+    implements _$$RootStateImplCopyWith<$Res> {
+  __$$RootStateImplCopyWithImpl(
+      _$RootStateImpl _value, $Res Function(_$RootStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -191,7 +190,7 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
     Object? user = freezed,
     Object? errorMessage = null,
   }) {
-    return _then(_$RollShotStateImpl(
+    return _then(_$RootStateImpl(
       shotRecipes: null == shotRecipes
           ? _value._shotRecipes
           : shotRecipes // ignore: cast_nullable_to_non_nullable
@@ -242,8 +241,8 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RollShotStateImpl extends _RollShotState {
-  _$RollShotStateImpl(
+class _$RootStateImpl extends _RootState {
+  _$RootStateImpl(
       {final List<ShotRecipeModel> shotRecipes = const [],
       final List<TasteNoteModel> tasteNotes = const [],
       final List<IngredientNameModel> ingredientNames = const [],
@@ -320,14 +319,14 @@ class _$RollShotStateImpl extends _RollShotState {
 
   @override
   String toString() {
-    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
+    return 'RootState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RollShotStateImpl &&
+            other is _$RootStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._shotRecipes, _shotRecipes) &&
             const DeepCollectionEquality()
@@ -369,12 +368,12 @@ class _$RollShotStateImpl extends _RollShotState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
-      __$$RollShotStateImplCopyWithImpl<_$RollShotStateImpl>(this, _$identity);
+  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
+      __$$RootStateImplCopyWithImpl<_$RootStateImpl>(this, _$identity);
 }
 
-abstract class _RollShotState extends RollShotState {
-  factory _RollShotState(
+abstract class _RootState extends RootState {
+  factory _RootState(
       {final List<ShotRecipeModel> shotRecipes,
       final List<TasteNoteModel> tasteNotes,
       final List<IngredientNameModel> ingredientNames,
@@ -385,8 +384,8 @@ abstract class _RollShotState extends RollShotState {
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
-      final String errorMessage}) = _$RollShotStateImpl;
-  _RollShotState._() : super._();
+      final String errorMessage}) = _$RootStateImpl;
+  _RootState._() : super._();
 
   @override
   List<ShotRecipeModel> get shotRecipes;
@@ -412,6 +411,6 @@ abstract class _RollShotState extends RollShotState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
+  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

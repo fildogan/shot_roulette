@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 
 class NumberOfServingsRow extends StatelessWidget {
   const NumberOfServingsRow({
@@ -8,7 +8,7 @@ class NumberOfServingsRow extends StatelessWidget {
     required this.state,
   });
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class NumberOfServingsRow extends StatelessWidget {
         const Spacer(),
         IconButton(
           onPressed: () {
-            context.read<RollShotCubit>().decreaseNumberOfServings();
+            context.read<RootCubit>().decreaseNumberOfServings();
           },
           icon: const Icon(Icons.remove_circle_outline_rounded),
         ),
@@ -30,7 +30,7 @@ class NumberOfServingsRow extends StatelessWidget {
         const SizedBox(width: 15),
         IconButton(
           onPressed: () {
-            context.read<RollShotCubit>().increaseNumberOfServings();
+            context.read<RootCubit>().increaseNumberOfServings();
           },
           icon: const Icon(Icons.add_circle_outline_rounded),
         ),

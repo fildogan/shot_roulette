@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
 import 'package:shot_roulette/features/settings_page/pages/log_in/log_in_page.dart';
@@ -17,7 +17,7 @@ class SettingsPage extends StatelessWidget {
     required this.rootState,
   });
 
-  final RollShotState rootState;
+  final RootState rootState;
 
   @override
   Widget build(BuildContext context) {

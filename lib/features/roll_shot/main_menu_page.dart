@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/roll_shot_page.dart';
 import 'package:shot_roulette/features/settings_page/settings_page.dart';
 
@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key, required this.state});
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MainMenuPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: state.pageIndex,
         onTap: (newIndex) {
-          context.read<RollShotCubit>().changePageIndex(newIndex);
+          context.read<RootCubit>().changePageIndex(newIndex);
         },
         items: [
           BottomNavigationBarItem(
