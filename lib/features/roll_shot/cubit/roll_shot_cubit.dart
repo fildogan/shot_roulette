@@ -163,20 +163,6 @@ class RollShotCubit extends Cubit<RollShotState> {
     ));
   }
 
-  // ******************************** navigate settings page ********************************
-
-  Future<void> changeSettingsPage(Widget page) async {
-    emit(state.copyWith(
-      settingsMenuPage: page,
-    ));
-  }
-
-  Future<void> resetSettingsPage() async {
-    emit(state.copyWith(
-      settingsMenuPage: null,
-    ));
-  }
-
   Future<void> userSubscription() async {
     _streamSubscription =
         FirebaseAuth.instance.authStateChanges().listen((user) {
@@ -190,10 +176,6 @@ class RollShotCubit extends Cubit<RollShotState> {
               errorMessage: error.toString(),
             ));
           });
-  }
-
-  Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
   }
 
   @override

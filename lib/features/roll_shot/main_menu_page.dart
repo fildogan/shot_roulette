@@ -48,7 +48,7 @@ class MainMenuPage extends StatelessWidget {
       body: SafeArea(
         child: Builder(builder: (context) {
           if (state.pageIndex == 0) {
-            return SettingsPage(state: state);
+            return SettingsPage(rootState: state);
           } else if (state.pageIndex == 1) {
             return RollShotPage(
               mainContainerHeight: mainContainerHeight,

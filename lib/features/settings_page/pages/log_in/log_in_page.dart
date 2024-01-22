@@ -6,6 +6,7 @@ import 'package:shot_roulette/app/core/enums.dart';
 
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/widgets/custom_main_button.dart';
+import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
 
@@ -35,7 +36,7 @@ class LogInPage extends StatelessWidget {
                 _showErrorSnackBar(context, state.authError);
               }
               if (state.authStatus == Status.success) {
-                context.read<RollShotCubit>().resetSettingsPage();
+                context.read<SettingsPageCubit>().resetSettingsPage();
               }
             },
             builder: (context, state) {
