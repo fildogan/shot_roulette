@@ -9,6 +9,7 @@ class RollShotState with _$RollShotState {
     @Default([]) List<UnitOfMeasurementModel> unitsOfMeasurement,
     @Default(4) int numberOfServings,
     @Default(1) int pageIndex,
+    Widget? settingsMenuPage,
     ShotRecipeModel? chosenRecipe,
     @Default(SelectedLanguage.english) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,

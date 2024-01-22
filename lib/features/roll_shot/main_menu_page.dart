@@ -18,9 +18,13 @@ class MainMenuPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(state.chosenRecipe?.titleEN ?? 'Roll Shot'),
-      ),
+      appBar: state.pageIndex == 1
+          ? null
+          : AppBar(
+              title: Text(state.pageIndex == 0
+                  ? localizations.settings
+                  : state.chosenRecipe?.titleEN ?? 'Roll Shot'),
+            ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: state.pageIndex,
         onTap: (newIndex) {
@@ -41,18 +45,20 @@ class MainMenuPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Builder(builder: (context) {
-        if (state.pageIndex == 0) {
-          return SettingsPage(state: state);
-        } else if (state.pageIndex == 1) {
-          return RollShotPage(
-            mainContainerHeight: mainContainerHeight,
-            state: state,
-          );
-        } else {
-          return const Text('2');
-        }
-      }),
+      body: SafeArea(
+        child: Builder(builder: (context) {
+          if (state.pageIndex == 0) {
+            return SettingsPage(state: state);
+          } else if (state.pageIndex == 1) {
+            return RollShotPage(
+              mainContainerHeight: mainContainerHeight,
+              state: state,
+            );
+          } else {
+            return const Text('2');
+          }
+        }),
+      ),
     );
   }
 }

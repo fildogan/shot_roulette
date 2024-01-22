@@ -128,4 +128,48 @@ class RollShotCubit extends Cubit<RollShotState> {
       selectedTheme: SelectedTheme.dark,
     ));
   }
+
+  Future<void> setThemeLight() async {
+    PreferencesService().saveTheme(SelectedTheme.light);
+    emit(state.copyWith(
+      selectedTheme: SelectedTheme.light,
+    ));
+  }
+
+  Future<void> setThemeSystem() async {
+    PreferencesService().saveTheme(SelectedTheme.system);
+    emit(state.copyWith(
+      selectedTheme: SelectedTheme.system,
+    ));
+  }
+
+  // ******************************** set language ********************************
+
+  Future<void> setLanguageEnglish() async {
+    PreferencesService().saveLanguage(SelectedLanguage.english);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.english,
+    ));
+  }
+
+  Future<void> setLanguagePolish() async {
+    PreferencesService().saveLanguage(SelectedLanguage.polish);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.polish,
+    ));
+  }
+
+  // ******************************** navigate settings page ********************************
+
+  Future<void> changeSettingsPage(Widget page) async {
+    emit(state.copyWith(
+      settingsMenuPage: page,
+    ));
+  }
+
+  Future<void> resetSettingsPage() async {
+    emit(state.copyWith(
+      settingsMenuPage: null,
+    ));
+  }
 }

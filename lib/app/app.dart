@@ -1,6 +1,7 @@
 // This widget is the root of your application.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shot_roulette/app/core/config.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/roll_shot/main_menu_page.dart';
@@ -18,12 +19,20 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
             title: 'Shot Roulette',
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'), // English
+              Locale('pl'), // Polish
+            ],
             locale: state.locale,
-            theme: ThemeData.dark(
-                // primarySwatch: Colors.blue,
-                ),
+            theme: ThemeData.light(useMaterial3: true),
+            darkTheme: ThemeData.dark(useMaterial3: true),
+            themeMode: state.currentTheme,
             home: MainMenuPage(
               state: state,
             ),
