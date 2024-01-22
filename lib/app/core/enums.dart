@@ -2,7 +2,7 @@ enum Status { initial, loading, success, error }
 
 enum FormStatus { initial, submitting, success, error }
 
-enum SelectedLanguage { english, polish }
+enum SelectedLanguage { en, pl }
 
 enum SelectedTheme { dark, light, system }
 

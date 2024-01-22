@@ -11,7 +11,7 @@ class RollShotState with _$RollShotState {
     @Default(1) int pageIndex,
     Widget? settingsMenuPage,
     ShotRecipeModel? chosenRecipe,
-    @Default(SelectedLanguage.english) SelectedLanguage selectedLanguage,
+    @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
     @Default('') String errorMessage,
   }) = _RollShotState;
@@ -37,20 +37,19 @@ class RollShotState with _$RollShotState {
 
   Locale? get locale {
     switch (selectedLanguage) {
-      case SelectedLanguage.english:
+      case SelectedLanguage.en:
         return const Locale('en');
-      case SelectedLanguage.polish:
+      case SelectedLanguage.pl:
         return const Locale('pl');
-      // case SelectedLanguage.system:
-      //   return null;
     }
   }
 
   String get chosenRecipeTitle {
-    if (locale == const Locale('pl')) {
-      return chosenRecipe?.titlePL ?? '';
-    } else {
-      return chosenRecipe?.titleEN ?? '';
+    switch (selectedLanguage) {
+      case SelectedLanguage.en:
+        return chosenRecipe?.titleEN ?? '';
+      case SelectedLanguage.pl:
+        return chosenRecipe?.titlePL ?? '';
     }
   }
 

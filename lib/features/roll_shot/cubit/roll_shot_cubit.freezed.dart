@@ -252,7 +252,7 @@ class _$RollShotStateImpl extends _RollShotState {
       this.pageIndex = 1,
       this.settingsMenuPage,
       this.chosenRecipe,
-      this.selectedLanguage = SelectedLanguage.english,
+      this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.errorMessage = ''})
       : _shotRecipes = shotRecipes,

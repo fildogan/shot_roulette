@@ -146,16 +146,16 @@ class RollShotCubit extends Cubit<RollShotState> {
   // ******************************** set language ********************************
 
   Future<void> setLanguageEnglish() async {
-    PreferencesService().saveLanguage(SelectedLanguage.english);
+    PreferencesService().saveLanguage(SelectedLanguage.en);
     emit(state.copyWith(
-      selectedLanguage: SelectedLanguage.english,
+      selectedLanguage: SelectedLanguage.en,
     ));
   }
 
   Future<void> setLanguagePolish() async {
-    PreferencesService().saveLanguage(SelectedLanguage.polish);
+    PreferencesService().saveLanguage(SelectedLanguage.pl);
     emit(state.copyWith(
-      selectedLanguage: SelectedLanguage.polish,
+      selectedLanguage: SelectedLanguage.pl,
     ));
   }
 
