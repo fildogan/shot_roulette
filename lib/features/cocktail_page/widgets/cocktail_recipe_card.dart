@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_name.dart';
@@ -82,7 +84,18 @@ class CocktailRecipeCard extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: Text('Instructions: ${state.cocktail?.strInstructions}'),
+                child: BlocBuilder<RootCubit, RootState>(
+                  builder: (context, rootState) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Instructions:'),
+                        Text(state.chosenLanguageInstructions(
+                            rootState.selectedLanguage)),
+                      ],
+                    );
+                  },
+                ),
               ),
               if (state.cocktail?.strGlass != null)
                 Padding(

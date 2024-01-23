@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
@@ -16,13 +17,40 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
 
   final CocktailsRepository cocktailsRepository;
 
-  Future<void> rollShot() async {
-    final randomCocktailResponse =
-        await cocktailsRepository.getRandomCocktail();
-    final randomCocktail = randomCocktailResponse.drinks[0];
+  Future<void> rollShot(SelectedLanguage selectedLanguage, bool show) async {
+    emit(state.copyWith(status: Status.loading));
+    final randomCocktail = await chooseRandom(selectedLanguage, show);
     emit(
-      state.copyWith(cocktail: randomCocktail),
+      state.copyWith(
+        cocktail: randomCocktail,
+        status: Status.success,
+      ),
     );
+  }
+
+  Future<CocktailModel> chooseRandom(
+      SelectedLanguage selectedLanguage, bool show) async {
+    if (show == true) {
+      final randomCocktailResponse =
+          await cocktailsRepository.getRandomCocktail();
+      final randomCocktail = randomCocktailResponse.drinks[0];
+
+      return randomCocktail;
+    } else {
+      while (true) {
+        final randomCocktailResponse =
+            await cocktailsRepository.getRandomCocktail();
+        final randomCocktail = randomCocktailResponse.drinks[0];
+        emit(
+          state.copyWith(cocktail: randomCocktail),
+        );
+        if (state.doesTranslationExist(selectedLanguage)) {
+          return randomCocktail;
+        }
+        // Wait for a short duration before fetching another random cocktail
+        await Future.delayed(const Duration(seconds: 1));
+      }
+    }
   }
 
   Future<void> resetShot() async {
@@ -31,5 +59,13 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         cocktail: null,
       ),
     );
+  }
+
+  @override
+  Future<void> close() {
+    // Add any cleanup logic here, such as closing streams or disposing resources
+    // ...
+    // Call the super class's close method to ensure that the Cubit is properly closed
+    return super.close();
   }
 }

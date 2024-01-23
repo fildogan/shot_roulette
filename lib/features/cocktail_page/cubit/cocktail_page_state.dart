@@ -8,6 +8,52 @@ class CocktailPageState with _$CocktailPageState {
   }) = _CocktailPageState;
   const CocktailPageState._();
 
+  String chosenLanguageInstructions(SelectedLanguage selectedLanguage) {
+    switch (selectedLanguage) {
+      case SelectedLanguage.en:
+        return cocktail?.strInstructions ?? '';
+      case SelectedLanguage.es:
+        return cocktail?.strInstructionsES ?? cocktail?.strInstructions ?? '';
+      case SelectedLanguage.de:
+        return cocktail?.strInstructionsDE ?? cocktail?.strInstructions ?? '';
+      case SelectedLanguage.fr:
+        return cocktail?.strInstructionsFR ?? cocktail?.strInstructions ?? '';
+      case SelectedLanguage.it:
+        return cocktail?.strInstructionsIT ?? cocktail?.strInstructions ?? '';
+    }
+  }
+
+  bool doesTranslationExist(SelectedLanguage selectedLanguage) {
+    switch (selectedLanguage) {
+      case SelectedLanguage.en:
+        return true;
+      case SelectedLanguage.es:
+        if (cocktail?.strInstructionsES == null) {
+          return false;
+        } else {
+          return true;
+        }
+      case SelectedLanguage.de:
+        if (cocktail?.strInstructionsDE == null) {
+          return false;
+        } else {
+          return true;
+        }
+      case SelectedLanguage.fr:
+        if (cocktail?.strInstructionsFR == null) {
+          return false;
+        } else {
+          return true;
+        }
+      case SelectedLanguage.it:
+        if (cocktail?.strInstructionsIT == null) {
+          return false;
+        } else {
+          return true;
+        }
+    }
+  }
+
   List<String?> get ingredientNameList {
     final List<String?> ingredients = [
       cocktail?.strIngredient1,

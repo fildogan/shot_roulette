@@ -46,6 +46,12 @@ class RootCubit extends Cubit<RootState> {
     }
   }
 
+  Future<void> changeShowTranslationsBool() async {
+    final bool newBool = !state.showEnglishTranslations;
+
+    emit(state.copyWith(showEnglishTranslations: newBool));
+  }
+
   // ******************************** set theme ********************************
 
   Future<void> setThemeDark() async {
@@ -78,10 +84,31 @@ class RootCubit extends Cubit<RootState> {
     ));
   }
 
-  Future<void> setLanguagePolish() async {
-    PreferencesService().saveLanguage(SelectedLanguage.pl);
+  Future<void> setLanguageSpanish() async {
+    PreferencesService().saveLanguage(SelectedLanguage.es);
     emit(state.copyWith(
-      selectedLanguage: SelectedLanguage.pl,
+      selectedLanguage: SelectedLanguage.es,
+    ));
+  }
+
+  Future<void> setLanguageGerman() async {
+    PreferencesService().saveLanguage(SelectedLanguage.de);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.de,
+    ));
+  }
+
+  Future<void> setLanguageFrench() async {
+    PreferencesService().saveLanguage(SelectedLanguage.fr);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.fr,
+    ));
+  }
+
+  Future<void> setLanguageItalian() async {
+    PreferencesService().saveLanguage(SelectedLanguage.it);
+    emit(state.copyWith(
+      selectedLanguage: SelectedLanguage.it,
     ));
   }
 

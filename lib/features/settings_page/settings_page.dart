@@ -103,6 +103,22 @@ class SettingsPage extends StatelessWidget {
                           trailing: const Icon(Icons.chevron_right),
                         ),
                       ], header: localizations.account),
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text('show english translations?'),
+                          Switch(
+                              value: rootState.showEnglishTranslations,
+                              onChanged: ((value) {
+                                context
+                                    .read<RootCubit>()
+                                    .changeShowTranslationsBool();
+                              })),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

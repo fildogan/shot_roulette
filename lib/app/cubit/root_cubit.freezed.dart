@@ -20,6 +20,7 @@ mixin _$RootState {
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
+  bool get showEnglishTranslations => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,6 +38,7 @@ abstract class $RootStateCopyWith<$Res> {
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
+      bool showEnglishTranslations,
       String errorMessage});
 }
 
@@ -57,6 +59,7 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
+    Object? showEnglishTranslations = null,
     Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
@@ -76,6 +79,10 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      showEnglishTranslations: null == showEnglishTranslations
+          ? _value.showEnglishTranslations
+          : showEnglishTranslations // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -97,6 +104,7 @@ abstract class _$$RootStateImplCopyWith<$Res>
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
+      bool showEnglishTranslations,
       String errorMessage});
 }
 
@@ -115,6 +123,7 @@ class __$$RootStateImplCopyWithImpl<$Res>
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
+    Object? showEnglishTranslations = null,
     Object? errorMessage = null,
   }) {
     return _then(_$RootStateImpl(
@@ -134,6 +143,10 @@ class __$$RootStateImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      showEnglishTranslations: null == showEnglishTranslations
+          ? _value.showEnglishTranslations
+          : showEnglishTranslations // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -150,6 +163,7 @@ class _$RootStateImpl extends _RootState {
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
+      this.showEnglishTranslations = true,
       this.errorMessage = ''})
       : super._();
 
@@ -166,11 +180,14 @@ class _$RootStateImpl extends _RootState {
   final User? user;
   @override
   @JsonKey()
+  final bool showEnglishTranslations;
+  @override
+  @JsonKey()
   final String errorMessage;
 
   @override
   String toString() {
-    return 'RootState(pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
+    return 'RootState(pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, showEnglishTranslations: $showEnglishTranslations, errorMessage: $errorMessage)';
   }
 
   @override
@@ -185,13 +202,16 @@ class _$RootStateImpl extends _RootState {
             (identical(other.selectedTheme, selectedTheme) ||
                 other.selectedTheme == selectedTheme) &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(
+                    other.showEnglishTranslations, showEnglishTranslations) ||
+                other.showEnglishTranslations == showEnglishTranslations) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, pageIndex, selectedLanguage,
-      selectedTheme, user, errorMessage);
+      selectedTheme, user, showEnglishTranslations, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -206,6 +226,7 @@ abstract class _RootState extends RootState {
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
+      final bool showEnglishTranslations,
       final String errorMessage}) = _$RootStateImpl;
   _RootState._() : super._();
 
@@ -217,6 +238,8 @@ abstract class _RootState extends RootState {
   SelectedTheme get selectedTheme;
   @override
   User? get user;
+  @override
+  bool get showEnglishTranslations;
   @override
   String get errorMessage;
   @override
