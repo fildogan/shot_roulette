@@ -9,20 +9,26 @@ import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/preferences_service.dart';
 import 'package:shot_roulette/data/mock_data_sources/mock_list.dart';
+import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/domain/models/ingredient_name_model.dart';
 import 'package:shot_roulette/domain/models/settings_model.dart';
 import 'package:shot_roulette/domain/models/shot_recipe_model.dart';
 import 'package:shot_roulette/domain/models/taste_note_model.dart';
 import 'package:shot_roulette/domain/models/unit_of_measurement_model.dart';
+import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
 
 part 'root_state.dart';
 part 'root_cubit.freezed.dart';
 
 @injectable
 class RootCubit extends Cubit<RootState> {
-  RootCubit() : super(RootState());
+  RootCubit({
+    required this.cocktailsRepository,
+  }) : super(RootState());
 
   StreamSubscription? _streamSubscription;
+
+  final CocktailsRepository cocktailsRepository;
 
   Future<void> start() async {
     getSettings();
@@ -36,10 +42,12 @@ class RootCubit extends Cubit<RootState> {
   Future<void> rollShot() async {
     int maxLength = mockRecipes.length;
     int randomRoll = Random().nextInt(maxLength);
+    final randomCocktailResponse =
+        await cocktailsRepository.getRandomCocktail();
+    final randomCocktail = randomCocktailResponse.drinks[0];
     emit(
       state.copyWith(
-        chosenRecipe: mockRecipes[randomRoll],
-      ),
+          chosenRecipe: mockRecipes[randomRoll], cocktail: randomCocktail),
     );
   }
 

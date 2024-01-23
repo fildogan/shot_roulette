@@ -30,7 +30,9 @@ class ShotRecipeCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Center(
                       child: Text(
-                    state.chosenRecipeTitle,
+                    state.cocktail != null
+                        ? state.cocktail!.strDrink!
+                        : state.chosenRecipeTitle,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                 ),
@@ -40,11 +42,18 @@ class ShotRecipeCard extends StatelessWidget {
                   child: ClipRRect(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(8.0)),
-                      child: Image.asset(
-                        'assets/images/Mad-Dog.jpg',
-                        fit: BoxFit.fill,
-                        width: double.infinity,
-                      )),
+                      child: (state.cocktail != null &&
+                              state.cocktail!.strDrinkThumb != null)
+                          ? Image.network(
+                              state.cocktail!.strDrinkThumb!,
+                              fit: BoxFit.fill,
+                              width: double.infinity,
+                            )
+                          : Image.asset(
+                              'assets/images/Mad-Dog.jpg',
+                              fit: BoxFit.fill,
+                              width: double.infinity,
+                            )),
                 ),
               ),
               const SizedBox(height: 5),

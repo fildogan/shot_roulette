@@ -10,6 +10,7 @@ class RootState with _$RootState {
     @Default(4) int numberOfServings,
     @Default(1) int pageIndex,
     ShotRecipeModel? chosenRecipe,
+    CocktailModel? cocktail,
     @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
     User? user,
