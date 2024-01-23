@@ -48,7 +48,7 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   dio: ^5.4.0
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.1
   retrofit: ^4.0.1
 
 
