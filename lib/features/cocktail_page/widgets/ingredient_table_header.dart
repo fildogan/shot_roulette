@@ -5,10 +5,9 @@ class IngredientTableHeader extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
+    return Text(
       title,
       style: const TextStyle(fontWeight: FontWeight.bold),
-    ));
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shot_roulette/app/cubit/root_cubit.dart';
+import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
 
 class RolllShotButton extends StatelessWidget {
@@ -9,15 +9,15 @@ class RolllShotButton extends StatelessWidget {
     required this.state,
   });
 
-  final RootState state;
+  final CocktailPageState state;
 
   @override
   Widget build(BuildContext context) {
     return CustomMainButton(
       onPressed: () {
-        context.read<RootCubit>().rollShot();
+        context.read<CocktailPageCubit>().rollShot();
       },
-      title: state.chosenRecipe == null ? 'Roll Shot' : 'Roll Again',
+      title: state.cocktail == null ? 'Roll Shot' : 'Roll Again',
     );
   }
 }

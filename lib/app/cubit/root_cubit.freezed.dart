@@ -16,16 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RootState {
-  List<ShotRecipeModel> get shotRecipes => throw _privateConstructorUsedError;
-  List<TasteNoteModel> get tasteNotes => throw _privateConstructorUsedError;
-  List<IngredientNameModel> get ingredientNames =>
-      throw _privateConstructorUsedError;
-  List<UnitOfMeasurementModel> get unitsOfMeasurement =>
-      throw _privateConstructorUsedError;
-  int get numberOfServings => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
-  ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
-  CocktailModel? get cocktail => throw _privateConstructorUsedError;
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
@@ -42,21 +33,11 @@ abstract class $RootStateCopyWith<$Res> {
       _$RootStateCopyWithImpl<$Res, RootState>;
   @useResult
   $Res call(
-      {List<ShotRecipeModel> shotRecipes,
-      List<TasteNoteModel> tasteNotes,
-      List<IngredientNameModel> ingredientNames,
-      List<UnitOfMeasurementModel> unitsOfMeasurement,
-      int numberOfServings,
-      int pageIndex,
-      ShotRecipeModel? chosenRecipe,
-      CocktailModel? cocktail,
+      {int pageIndex,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
       String errorMessage});
-
-  $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
-  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -72,52 +53,17 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shotRecipes = null,
-    Object? tasteNotes = null,
-    Object? ingredientNames = null,
-    Object? unitsOfMeasurement = null,
-    Object? numberOfServings = null,
     Object? pageIndex = null,
-    Object? chosenRecipe = freezed,
-    Object? cocktail = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
     Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      shotRecipes: null == shotRecipes
-          ? _value.shotRecipes
-          : shotRecipes // ignore: cast_nullable_to_non_nullable
-              as List<ShotRecipeModel>,
-      tasteNotes: null == tasteNotes
-          ? _value.tasteNotes
-          : tasteNotes // ignore: cast_nullable_to_non_nullable
-              as List<TasteNoteModel>,
-      ingredientNames: null == ingredientNames
-          ? _value.ingredientNames
-          : ingredientNames // ignore: cast_nullable_to_non_nullable
-              as List<IngredientNameModel>,
-      unitsOfMeasurement: null == unitsOfMeasurement
-          ? _value.unitsOfMeasurement
-          : unitsOfMeasurement // ignore: cast_nullable_to_non_nullable
-              as List<UnitOfMeasurementModel>,
-      numberOfServings: null == numberOfServings
-          ? _value.numberOfServings
-          : numberOfServings // ignore: cast_nullable_to_non_nullable
-              as int,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      chosenRecipe: freezed == chosenRecipe
-          ? _value.chosenRecipe
-          : chosenRecipe // ignore: cast_nullable_to_non_nullable
-              as ShotRecipeModel?,
-      cocktail: freezed == cocktail
-          ? _value.cocktail
-          : cocktail // ignore: cast_nullable_to_non_nullable
-              as CocktailModel?,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
@@ -136,30 +82,6 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
               as String,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ShotRecipeModelCopyWith<$Res>? get chosenRecipe {
-    if (_value.chosenRecipe == null) {
-      return null;
-    }
-
-    return $ShotRecipeModelCopyWith<$Res>(_value.chosenRecipe!, (value) {
-      return _then(_value.copyWith(chosenRecipe: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CocktailModelCopyWith<$Res>? get cocktail {
-    if (_value.cocktail == null) {
-      return null;
-    }
-
-    return $CocktailModelCopyWith<$Res>(_value.cocktail!, (value) {
-      return _then(_value.copyWith(cocktail: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -171,23 +93,11 @@ abstract class _$$RootStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<ShotRecipeModel> shotRecipes,
-      List<TasteNoteModel> tasteNotes,
-      List<IngredientNameModel> ingredientNames,
-      List<UnitOfMeasurementModel> unitsOfMeasurement,
-      int numberOfServings,
-      int pageIndex,
-      ShotRecipeModel? chosenRecipe,
-      CocktailModel? cocktail,
+      {int pageIndex,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
       String errorMessage});
-
-  @override
-  $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
-  @override
-  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -201,52 +111,17 @@ class __$$RootStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shotRecipes = null,
-    Object? tasteNotes = null,
-    Object? ingredientNames = null,
-    Object? unitsOfMeasurement = null,
-    Object? numberOfServings = null,
     Object? pageIndex = null,
-    Object? chosenRecipe = freezed,
-    Object? cocktail = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
     Object? errorMessage = null,
   }) {
     return _then(_$RootStateImpl(
-      shotRecipes: null == shotRecipes
-          ? _value._shotRecipes
-          : shotRecipes // ignore: cast_nullable_to_non_nullable
-              as List<ShotRecipeModel>,
-      tasteNotes: null == tasteNotes
-          ? _value._tasteNotes
-          : tasteNotes // ignore: cast_nullable_to_non_nullable
-              as List<TasteNoteModel>,
-      ingredientNames: null == ingredientNames
-          ? _value._ingredientNames
-          : ingredientNames // ignore: cast_nullable_to_non_nullable
-              as List<IngredientNameModel>,
-      unitsOfMeasurement: null == unitsOfMeasurement
-          ? _value._unitsOfMeasurement
-          : unitsOfMeasurement // ignore: cast_nullable_to_non_nullable
-              as List<UnitOfMeasurementModel>,
-      numberOfServings: null == numberOfServings
-          ? _value.numberOfServings
-          : numberOfServings // ignore: cast_nullable_to_non_nullable
-              as int,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      chosenRecipe: freezed == chosenRecipe
-          ? _value.chosenRecipe
-          : chosenRecipe // ignore: cast_nullable_to_non_nullable
-              as ShotRecipeModel?,
-      cocktail: freezed == cocktail
-          ? _value.cocktail
-          : cocktail // ignore: cast_nullable_to_non_nullable
-              as CocktailModel?,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
@@ -271,71 +146,16 @@ class __$$RootStateImplCopyWithImpl<$Res>
 
 class _$RootStateImpl extends _RootState {
   _$RootStateImpl(
-      {final List<ShotRecipeModel> shotRecipes = const [],
-      final List<TasteNoteModel> tasteNotes = const [],
-      final List<IngredientNameModel> ingredientNames = const [],
-      final List<UnitOfMeasurementModel> unitsOfMeasurement = const [],
-      this.numberOfServings = 4,
-      this.pageIndex = 1,
-      this.chosenRecipe,
-      this.cocktail,
+      {this.pageIndex = 1,
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
       this.errorMessage = ''})
-      : _shotRecipes = shotRecipes,
-        _tasteNotes = tasteNotes,
-        _ingredientNames = ingredientNames,
-        _unitsOfMeasurement = unitsOfMeasurement,
-        super._();
+      : super._();
 
-  final List<ShotRecipeModel> _shotRecipes;
-  @override
-  @JsonKey()
-  List<ShotRecipeModel> get shotRecipes {
-    if (_shotRecipes is EqualUnmodifiableListView) return _shotRecipes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_shotRecipes);
-  }
-
-  final List<TasteNoteModel> _tasteNotes;
-  @override
-  @JsonKey()
-  List<TasteNoteModel> get tasteNotes {
-    if (_tasteNotes is EqualUnmodifiableListView) return _tasteNotes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tasteNotes);
-  }
-
-  final List<IngredientNameModel> _ingredientNames;
-  @override
-  @JsonKey()
-  List<IngredientNameModel> get ingredientNames {
-    if (_ingredientNames is EqualUnmodifiableListView) return _ingredientNames;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ingredientNames);
-  }
-
-  final List<UnitOfMeasurementModel> _unitsOfMeasurement;
-  @override
-  @JsonKey()
-  List<UnitOfMeasurementModel> get unitsOfMeasurement {
-    if (_unitsOfMeasurement is EqualUnmodifiableListView)
-      return _unitsOfMeasurement;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_unitsOfMeasurement);
-  }
-
-  @override
-  @JsonKey()
-  final int numberOfServings;
   @override
   @JsonKey()
   final int pageIndex;
-  @override
-  final ShotRecipeModel? chosenRecipe;
-  @override
-  final CocktailModel? cocktail;
   @override
   @JsonKey()
   final SelectedLanguage selectedLanguage;
@@ -350,7 +170,7 @@ class _$RootStateImpl extends _RootState {
 
   @override
   String toString() {
-    return 'RootState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, cocktail: $cocktail, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
+    return 'RootState(pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
   }
 
   @override
@@ -358,22 +178,8 @@ class _$RootStateImpl extends _RootState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RootStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._shotRecipes, _shotRecipes) &&
-            const DeepCollectionEquality()
-                .equals(other._tasteNotes, _tasteNotes) &&
-            const DeepCollectionEquality()
-                .equals(other._ingredientNames, _ingredientNames) &&
-            const DeepCollectionEquality()
-                .equals(other._unitsOfMeasurement, _unitsOfMeasurement) &&
-            (identical(other.numberOfServings, numberOfServings) ||
-                other.numberOfServings == numberOfServings) &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
-            (identical(other.chosenRecipe, chosenRecipe) ||
-                other.chosenRecipe == chosenRecipe) &&
-            (identical(other.cocktail, cocktail) ||
-                other.cocktail == cocktail) &&
             (identical(other.selectedLanguage, selectedLanguage) ||
                 other.selectedLanguage == selectedLanguage) &&
             (identical(other.selectedTheme, selectedTheme) ||
@@ -384,20 +190,8 @@ class _$RootStateImpl extends _RootState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_shotRecipes),
-      const DeepCollectionEquality().hash(_tasteNotes),
-      const DeepCollectionEquality().hash(_ingredientNames),
-      const DeepCollectionEquality().hash(_unitsOfMeasurement),
-      numberOfServings,
-      pageIndex,
-      chosenRecipe,
-      cocktail,
-      selectedLanguage,
-      selectedTheme,
-      user,
-      errorMessage);
+  int get hashCode => Object.hash(runtimeType, pageIndex, selectedLanguage,
+      selectedTheme, user, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -408,14 +202,7 @@ class _$RootStateImpl extends _RootState {
 
 abstract class _RootState extends RootState {
   factory _RootState(
-      {final List<ShotRecipeModel> shotRecipes,
-      final List<TasteNoteModel> tasteNotes,
-      final List<IngredientNameModel> ingredientNames,
-      final List<UnitOfMeasurementModel> unitsOfMeasurement,
-      final int numberOfServings,
-      final int pageIndex,
-      final ShotRecipeModel? chosenRecipe,
-      final CocktailModel? cocktail,
+      {final int pageIndex,
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
@@ -423,21 +210,7 @@ abstract class _RootState extends RootState {
   _RootState._() : super._();
 
   @override
-  List<ShotRecipeModel> get shotRecipes;
-  @override
-  List<TasteNoteModel> get tasteNotes;
-  @override
-  List<IngredientNameModel> get ingredientNames;
-  @override
-  List<UnitOfMeasurementModel> get unitsOfMeasurement;
-  @override
-  int get numberOfServings;
-  @override
   int get pageIndex;
-  @override
-  ShotRecipeModel? get chosenRecipe;
-  @override
-  CocktailModel? get cocktail;
   @override
   SelectedLanguage get selectedLanguage;
   @override

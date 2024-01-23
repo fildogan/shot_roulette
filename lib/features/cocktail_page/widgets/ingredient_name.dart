@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shot_roulette/app/cubit/root_cubit.dart';
+import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
 
 class IngredientName extends StatelessWidget {
   const IngredientName({
@@ -9,13 +9,10 @@ class IngredientName extends StatelessWidget {
   });
 
   final int i;
-  final RootState state;
+  final CocktailPageState state;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:
-          Text(state.chosenRecipe?.ingredients[i].ingredientNameId ?? 'null'),
-    );
+    return Text(state.ingredientNameList[i] ?? '');
   }
 }

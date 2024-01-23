@@ -18,12 +18,10 @@ class MainMenuPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: state.pageIndex == 1
+      appBar: state.pageIndex != 0
           ? null
           : AppBar(
-              title: Text(state.pageIndex == 0
-                  ? localizations.settings
-                  : state.chosenRecipe?.titleEN ?? 'Roll Shot'),
+              title: Text(state.pageIndex == 0 ? localizations.settings : ''),
             ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: state.pageIndex,
@@ -52,7 +50,7 @@ class MainMenuPage extends StatelessWidget {
           } else if (state.pageIndex == 1) {
             return CocktailPage(
               mainContainerHeight: mainContainerHeight,
-              state: state,
+              rootState: state,
             );
           } else {
             return const Text('2');
