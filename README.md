@@ -29,5 +29,9 @@ samples, guidance on mobile development, and a full API reference.
 [freezed_annotation](https://pub.dev/packages/freezed_annotation/license), 
 [get_it](https://pub.dev/packages/get_it/license), 
 [injectable](https://pub.dev/packages/injectable/license),
+[injectable_generator](https://pub.dev/packages/injectable_generator/license),
 [json_annotation](https://pub.dev/packages/json_annotation/license),
+[json_serializable](https://pub.dev/packages/json_serializable/license),
+[retrofit](https://pub.dev/packages/retrofit/license),
+[retrofit_generator](https://pub.dev/packages/retrofit_generator/license),
 [shared_preferences](https://pub.dev/packages/shared_preferences/license)
