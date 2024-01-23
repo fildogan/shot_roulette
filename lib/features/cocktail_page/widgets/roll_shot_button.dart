@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/custom_main_button.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
 
 class RolllShotButton extends StatelessWidget {
   const RolllShotButton({

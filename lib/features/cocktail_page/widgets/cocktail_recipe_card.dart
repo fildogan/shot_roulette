@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/ingredient_amount.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/ingredient_name.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/ingredient_table_header.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/ingredient_unit.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/number_of_servings_row.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/rating_row.dart';
-import 'package:shot_roulette/features/roll_shot/widgets/taste_notes_wrap.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_amount.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_name.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_table_header.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_unit.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/number_of_servings_row.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/rating_row.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/taste_notes_wrap.dart';
 
-class ShotRecipeCard extends StatelessWidget {
-  const ShotRecipeCard({
+class CocktailRecipeCard extends StatelessWidget {
+  const CocktailRecipeCard({
     super.key,
     required this.state,
   });
