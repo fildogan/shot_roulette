@@ -49,11 +49,41 @@ class LanguageSelectionPage extends StatelessWidget {
                         ),
                         SettingItemModel(
                           onTap: () {
-                            context.read<RootCubit>().setLanguagePolish();
+                            context.read<RootCubit>().setLanguageSpanish();
                           },
-                          title: 'Polski',
+                          title: 'Spanish',
                           trailing:
-                              state.selectedLanguage == SelectedLanguage.pl
+                              state.selectedLanguage == SelectedLanguage.es
+                                  ? const Icon(Icons.check_box)
+                                  : const Icon(Icons.check_box_outline_blank),
+                        ),
+                        SettingItemModel(
+                          onTap: () {
+                            context.read<RootCubit>().setLanguageGerman();
+                          },
+                          title: 'German',
+                          trailing:
+                              state.selectedLanguage == SelectedLanguage.de
+                                  ? const Icon(Icons.check_box)
+                                  : const Icon(Icons.check_box_outline_blank),
+                        ),
+                        SettingItemModel(
+                          onTap: () {
+                            context.read<RootCubit>().setLanguageFrench();
+                          },
+                          title: 'French',
+                          trailing:
+                              state.selectedLanguage == SelectedLanguage.fr
+                                  ? const Icon(Icons.check_box)
+                                  : const Icon(Icons.check_box_outline_blank),
+                        ),
+                        SettingItemModel(
+                          onTap: () {
+                            context.read<RootCubit>().setLanguageItalian();
+                          },
+                          title: 'Italian',
+                          trailing:
+                              state.selectedLanguage == SelectedLanguage.it
                                   ? const Icon(Icons.check_box)
                                   : const Icon(Icons.check_box_outline_blank),
                         ),
