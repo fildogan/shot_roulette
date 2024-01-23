@@ -12,7 +12,7 @@ void configureDependencies() => getIt.init();
 abstract class RegisterModule {
   // You can register named preemptive types like follows
   @Named("BaseUrl")
-  String get baseUrl => 'www.thecocktaildb.com/api/json/v1/1/';
+  String get baseUrl => 'https://www.thecocktaildb.com/api/json/v1/1/';
 
   @lazySingleton
   Dio dio(@Named('BaseUrl') String url) => Dio(BaseOptions(baseUrl: baseUrl));
