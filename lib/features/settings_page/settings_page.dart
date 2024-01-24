@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
+import 'package:shot_roulette/features/settings_page/pages/log_in/log_in_page.dart';
 import 'package:shot_roulette/features/settings_page/pages/theme_selection.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -51,6 +52,46 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ],
               ),
+              // Account if logged in
+              if (state.user != null)
+                SettingsItem(settingsItems: [
+                  SettingItemModel(
+                    onTap: () {
+                      context.read<RollShotCubit>().signOut();
+                    },
+                    title: localizations.logOut,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                ], header: localizations.account),
+
+              // Account if not logged in
+              if (state.user == null)
+                SettingsItem(settingsItems: [
+                  SettingItemModel(
+                    onTap: () {
+                      context
+                          .read<RollShotCubit>()
+                          .changeSettingsPage(LogInPage(
+                            rootState: state,
+                            isCreatingAccount: false,
+                          ));
+                    },
+                    title: localizations.logIn,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                  SettingItemModel(
+                    onTap: () {
+                      context
+                          .read<RollShotCubit>()
+                          .changeSettingsPage(LogInPage(
+                            rootState: state,
+                            isCreatingAccount: true,
+                          ));
+                    },
+                    title: localizations.signUp,
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                ], header: localizations.account),
             ],
           ),
         ),

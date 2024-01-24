@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575743655056",
+    "project_id": "shot-roulette-1308",
+    "storage_bucket": "shot-roulette-1308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575743655056:android:68d5c6773eb5ad8c89ec15",
+        "android_client_info": {
+          "package_name": "com.filipdoganowski.shot_roulette"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsviFX9SJQz29MaB2LUGShSKvE_W2J3RY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

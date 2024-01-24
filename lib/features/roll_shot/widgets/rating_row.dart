@@ -27,8 +27,9 @@ class RatingRow extends StatelessWidget {
           itemSize: 20.0,
         ),
         const Spacer(),
-        ElevatedButton(
-            onPressed: () {}, child: const Text('Change rating (2.5)')),
+        if (state.user != null)
+          ElevatedButton(
+              onPressed: () {}, child: const Text('Change rating (2.5)')),
       ],
     );
   }

@@ -19,6 +19,8 @@ samples, guidance on mobile development, and a full API reference.
 
 [build_runner](https://pub.dev/packages/build_runner/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
+[firebase_auth](https://pub.dev/packages/firebase_auth/license),
+[firebase_core](https://pub.dev/packages/firebase_core/license),
 [flutter_bloc](https://pub.dev/packages/flutter_bloc/license),
 [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons/license),
 [flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar/license),
