@@ -38,7 +38,13 @@ class RatingRow extends StatelessWidget {
                       ? Text('Change rating ${state.userRating.toString()}')
                       : const Text('Rate'));
             } else {
-              return const SizedBox();
+              return const Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Text(
+                  'Sign in to rate',
+                  style: TextStyle(fontSize: 12),
+                ),
+              );
             }
           },
         ),
