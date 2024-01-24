@@ -748,7 +748,7 @@ class __$$CocktailModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CocktailModelImpl implements _CocktailModel {
+class _$CocktailModelImpl extends _CocktailModel {
   _$CocktailModelImpl(
       this.idDrink,
       this.strDrink,
@@ -800,7 +800,8 @@ class _$CocktailModelImpl implements _CocktailModel {
       this.strImageSource,
       this.strImageAttribution,
       this.strCreativeCommonsConfirmed,
-      this.dateModified);
+      this.dateModified)
+      : super._();
 
   factory _$CocktailModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CocktailModelImplFromJson(json);
@@ -1085,7 +1086,7 @@ class _$CocktailModelImpl implements _CocktailModel {
   }
 }
 
-abstract class _CocktailModel implements CocktailModel {
+abstract class _CocktailModel extends CocktailModel {
   factory _CocktailModel(
       final String? idDrink,
       final String? strDrink,
@@ -1138,6 +1139,7 @@ abstract class _CocktailModel implements CocktailModel {
       final String? strImageAttribution,
       final String? strCreativeCommonsConfirmed,
       final String? dateModified) = _$CocktailModelImpl;
+  _CocktailModel._() : super._();
 
   factory _CocktailModel.fromJson(Map<String, dynamic> json) =
       _$CocktailModelImpl.fromJson;

@@ -4,25 +4,30 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/cocktail_model.dart';
+import 'package:shot_roulette/domain/models/rated_cocktail_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
+import 'package:shot_roulette/domain/repositories/ratings_repository.dart';
 
 part 'cocktail_page_state.dart';
 part 'cocktail_page_cubit.freezed.dart';
 
 @injectable
 class CocktailPageCubit extends Cubit<CocktailPageState> {
-  CocktailPageCubit({
-    required this.cocktailsRepository,
-  }) : super(CocktailPageState());
+  CocktailPageCubit(
+      {required this.cocktailsRepository, required this.ratingsRepository})
+      : super(CocktailPageState());
 
   final CocktailsRepository cocktailsRepository;
+  final RatingsRepository ratingsRepository;
 
   Future<void> rollShot(SelectedLanguage selectedLanguage, bool show) async {
     emit(state.copyWith(status: Status.loading));
     final randomCocktail = await chooseRandom(selectedLanguage, show);
+    final ratings = await getRatingsById(randomCocktail.idDrink ?? '');
     emit(
       state.copyWith(
         cocktail: randomCocktail,
+        ratings: ratings,
         status: Status.success,
       ),
     );
@@ -51,6 +56,12 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         await Future.delayed(const Duration(seconds: 1));
       }
     }
+  }
+
+  Future<RatedCocktailModel> getRatingsById(String id) async {
+    final RatedCocktailModel ratings =
+        await ratingsRepository.getRatingsById(id);
+    return ratings;
   }
 
   Future<void> resetShot() async {

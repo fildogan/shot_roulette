@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CocktailPageState {
   Status get status => throw _privateConstructorUsedError;
   CocktailModel? get cocktail => throw _privateConstructorUsedError;
+  RatedCocktailModel? get ratings => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CocktailPageStateCopyWith<CocktailPageState> get copyWith =>
@@ -30,9 +31,11 @@ abstract class $CocktailPageStateCopyWith<$Res> {
           CocktailPageState value, $Res Function(CocktailPageState) then) =
       _$CocktailPageStateCopyWithImpl<$Res, CocktailPageState>;
   @useResult
-  $Res call({Status status, CocktailModel? cocktail});
+  $Res call(
+      {Status status, CocktailModel? cocktail, RatedCocktailModel? ratings});
 
   $CocktailModelCopyWith<$Res>? get cocktail;
+  $RatedCocktailModelCopyWith<$Res>? get ratings;
 }
 
 /// @nodoc
@@ -50,6 +53,7 @@ class _$CocktailPageStateCopyWithImpl<$Res, $Val extends CocktailPageState>
   $Res call({
     Object? status = null,
     Object? cocktail = freezed,
+    Object? ratings = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -60,6 +64,10 @@ class _$CocktailPageStateCopyWithImpl<$Res, $Val extends CocktailPageState>
           ? _value.cocktail
           : cocktail // ignore: cast_nullable_to_non_nullable
               as CocktailModel?,
+      ratings: freezed == ratings
+          ? _value.ratings
+          : ratings // ignore: cast_nullable_to_non_nullable
+              as RatedCocktailModel?,
     ) as $Val);
   }
 
@@ -74,6 +82,18 @@ class _$CocktailPageStateCopyWithImpl<$Res, $Val extends CocktailPageState>
       return _then(_value.copyWith(cocktail: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RatedCocktailModelCopyWith<$Res>? get ratings {
+    if (_value.ratings == null) {
+      return null;
+    }
+
+    return $RatedCocktailModelCopyWith<$Res>(_value.ratings!, (value) {
+      return _then(_value.copyWith(ratings: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -84,10 +104,13 @@ abstract class _$$CocktailPageStateImplCopyWith<$Res>
       __$$CocktailPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Status status, CocktailModel? cocktail});
+  $Res call(
+      {Status status, CocktailModel? cocktail, RatedCocktailModel? ratings});
 
   @override
   $CocktailModelCopyWith<$Res>? get cocktail;
+  @override
+  $RatedCocktailModelCopyWith<$Res>? get ratings;
 }
 
 /// @nodoc
@@ -103,6 +126,7 @@ class __$$CocktailPageStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? cocktail = freezed,
+    Object? ratings = freezed,
   }) {
     return _then(_$CocktailPageStateImpl(
       status: null == status
@@ -113,6 +137,10 @@ class __$$CocktailPageStateImplCopyWithImpl<$Res>
           ? _value.cocktail
           : cocktail // ignore: cast_nullable_to_non_nullable
               as CocktailModel?,
+      ratings: freezed == ratings
+          ? _value.ratings
+          : ratings // ignore: cast_nullable_to_non_nullable
+              as RatedCocktailModel?,
     ));
   }
 }
@@ -120,7 +148,8 @@ class __$$CocktailPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CocktailPageStateImpl extends _CocktailPageState {
-  _$CocktailPageStateImpl({this.status = Status.initial, this.cocktail})
+  _$CocktailPageStateImpl(
+      {this.status = Status.initial, this.cocktail, this.ratings})
       : super._();
 
   @override
@@ -128,10 +157,12 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
   final Status status;
   @override
   final CocktailModel? cocktail;
+  @override
+  final RatedCocktailModel? ratings;
 
   @override
   String toString() {
-    return 'CocktailPageState(status: $status, cocktail: $cocktail)';
+    return 'CocktailPageState(status: $status, cocktail: $cocktail, ratings: $ratings)';
   }
 
   @override
@@ -141,11 +172,12 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
             other is _$CocktailPageStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.cocktail, cocktail) ||
-                other.cocktail == cocktail));
+                other.cocktail == cocktail) &&
+            (identical(other.ratings, ratings) || other.ratings == ratings));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, cocktail);
+  int get hashCode => Object.hash(runtimeType, status, cocktail, ratings);
 
   @JsonKey(ignore: true)
   @override
@@ -158,13 +190,16 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
 abstract class _CocktailPageState extends CocktailPageState {
   factory _CocktailPageState(
       {final Status status,
-      final CocktailModel? cocktail}) = _$CocktailPageStateImpl;
+      final CocktailModel? cocktail,
+      final RatedCocktailModel? ratings}) = _$CocktailPageStateImpl;
   _CocktailPageState._() : super._();
 
   @override
   Status get status;
   @override
   CocktailModel? get cocktail;
+  @override
+  RatedCocktailModel? get ratings;
   @override
   @JsonKey(ignore: true)
   _$$CocktailPageStateImplCopyWith<_$CocktailPageStateImpl> get copyWith =>
