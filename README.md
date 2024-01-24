@@ -23,6 +23,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Packages Used and Their Licenses:
 
 [build_runner](https://pub.dev/packages/build_runner/license),
+[cloud_firestore](https://pub.dev/packages/cloud_firestore/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
 [dio](https://pub.dev/packages/dio/license),
 [firebase_auth](https://pub.dev/packages/firebase_auth/license),
