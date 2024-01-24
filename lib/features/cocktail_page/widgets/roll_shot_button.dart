@@ -19,7 +19,9 @@ class RolllShotButton extends StatelessWidget {
         return CustomMainButton(
           onPressed: () {
             context.read<CocktailPageCubit>().rollShot(
-                rootState.selectedLanguage, rootState.showEnglishTranslations);
+                rootState.selectedLanguage,
+                rootState.showEnglishTranslations,
+                rootState.user?.uid);
           },
           title: state.cocktail == null ? 'Roll Shot' : 'Roll Again',
         );

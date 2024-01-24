@@ -33,7 +33,10 @@ class RatingRow extends StatelessWidget {
           builder: (context, rootState) {
             if (rootState.user != null) {
               return ElevatedButton(
-                  onPressed: () {}, child: const Text('Change rating (2.5)'));
+                  onPressed: () {},
+                  child: state.hasUserRated
+                      ? Text('Change rating ${state.userRating.toString()}')
+                      : const Text('Rate'));
             } else {
               return const SizedBox();
             }

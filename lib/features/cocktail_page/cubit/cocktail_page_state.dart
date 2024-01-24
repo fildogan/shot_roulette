@@ -6,6 +6,8 @@ class CocktailPageState with _$CocktailPageState {
     @Default(Status.initial) Status status,
     CocktailModel? cocktail,
     RatedCocktailModel? ratings,
+    @Default(false) bool hasUserRated,
+    double? userRating,
   }) = _CocktailPageState;
   const CocktailPageState._();
 

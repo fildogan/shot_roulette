@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/domain/models/rated_cocktail_model.dart';
+import 'package:shot_roulette/domain/models/rating_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
 import 'package:shot_roulette/domain/repositories/ratings_repository.dart';
 
@@ -20,15 +21,21 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   final CocktailsRepository cocktailsRepository;
   final RatingsRepository ratingsRepository;
 
-  Future<void> rollShot(SelectedLanguage selectedLanguage, bool show) async {
+  Future<void> rollShot(
+      SelectedLanguage selectedLanguage, bool show, String? userId) async {
     emit(state.copyWith(status: Status.loading));
     final randomCocktail = await chooseRandom(selectedLanguage, show);
     final ratings = await getRatingsById(randomCocktail.idDrink ?? '');
+    bool hasUserRated = false;
+    if (userId != null) {
+      hasUserRated = checkIfUserRated(ratings, userId);
+    }
     emit(
       state.copyWith(
         cocktail: randomCocktail,
         ratings: ratings,
         status: Status.success,
+        hasUserRated: hasUserRated,
       ),
     );
   }
@@ -62,6 +69,28 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     final RatedCocktailModel ratings =
         await ratingsRepository.getRatingsById(id);
     return ratings;
+  }
+
+  bool checkIfUserRated(RatedCocktailModel ratings, String userId) {
+    //Check if the userId exists in the ratings
+    if (ratings.ratingList != null && (ratings.ratingList ?? []).isNotEmpty) {
+      final bool check =
+          ratings.ratingList!.any((rating) => rating.userId == userId);
+
+      if (check) {
+        RatingModel ratingModel = ratings.ratingList!
+            .where((rating) => rating.userId == userId)
+            .toList()[0];
+
+        emit(
+          state.copyWith(userRating: ratingModel.value),
+        );
+      }
+
+      return check;
+    } else {
+      return false;
+    }
   }
 
   Future<void> resetShot() async {
