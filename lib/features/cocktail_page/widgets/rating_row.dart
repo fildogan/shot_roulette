@@ -34,15 +34,18 @@ class RatingRow extends StatelessWidget {
           builder: (context, rootState) {
             if (rootState.user != null) {
               return ElevatedButton(
-                  onPressed: () {
-                    showDialog(
+                  onPressed: () async {
+                    double result = await showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return ChangeRatingDialog(
                             userRating: state.userRating,
-                            cocktailId: state.cocktail?.idDrink,
                           );
                         });
+
+                    context
+                        .read<CocktailPageCubit>()
+                        .updateUserRating(result, rootState.user!.uid);
                   },
                   child: state.hasUserRated
                       ? Text('Change rating ${state.userRating.toString()}')
