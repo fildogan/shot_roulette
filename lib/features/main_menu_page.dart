@@ -14,8 +14,6 @@ class MainMenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double mainContainerHeight = screenHeight * 0.6;
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -52,7 +50,6 @@ class MainMenuPage extends StatelessWidget {
             return SettingsPage(rootState: state);
           } else if (state.pageIndex == 1) {
             return CocktailPage(
-              mainContainerHeight: mainContainerHeight,
               rootState: state,
             );
           } else {

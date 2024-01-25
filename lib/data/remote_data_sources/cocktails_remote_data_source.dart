@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 
 import 'package:retrofit/retrofit.dart';
 import 'package:shot_roulette/domain/responses/cocktail_list_response.dart';
-import 'package:shot_roulette/domain/responses/random_cocktail_response.dart';
 
 part 'cocktails_remote_data_source.g.dart';
 
@@ -25,6 +24,11 @@ abstract class CocktailsRemoteRetroFitDataSource {
     @Path('letter') required String letter,
   });
 
+  @GET('/lookup.php?i={id}')
+  Future<CocktailListResponse> getCocktailByIdResponse({
+    @Path('id') required String id,
+  });
+
   @GET('/random.php')
-  Future<RandomCocktailResponse> getRandomCocktailResponse();
+  Future<CocktailListResponse> getRandomCocktailResponse();
 }
