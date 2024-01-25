@@ -20,14 +20,14 @@ class _CocktailsRemoteRetroFitDataSource
   String? baseUrl;
 
   @override
-  Future<CocktailListByLetterResponse> getCocktailListByLetterResponse(
+  Future<CocktailListResponse> getCocktailListByLetterResponse(
       {required String letter}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CocktailListByLetterResponse>(Options(
+        _setStreamType<CocktailListResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,7 +43,37 @@ class _CocktailsRemoteRetroFitDataSource
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = CocktailListByLetterResponse.fromJson(_result.data!);
+    final value = CocktailListResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CocktailListResponse> getCocktailListFilterResponse({
+    required String filter,
+    required String letter,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CocktailListResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/filter.php?${letter}=${filter}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = CocktailListResponse.fromJson(_result.data!);
     return value;
   }
 

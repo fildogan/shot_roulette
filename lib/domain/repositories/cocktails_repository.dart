@@ -9,9 +9,14 @@ class CocktailsRepository {
 
   final CocktailsRemoteRetroFitDataSource remoteDataSource;
 
-  Future<CocktailListByLetterResponse> getCocktailListByLetter(
-      String letter) async {
+  Future<CocktailListResponse> getCocktailListByLetter(String letter) async {
     return remoteDataSource.getCocktailListByLetterResponse(letter: letter);
+  }
+
+  Future<CocktailListResponse> getCocktailListFilter(
+      String filter, String letter) async {
+    return remoteDataSource.getCocktailListFilterResponse(
+        filter: filter, letter: letter);
   }
 
   Future<RandomCocktailResponse> getRandomCocktail() async {

@@ -12,19 +12,25 @@ import 'package:dio/dio.dart' as _i9;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shot_roulette/app/cubit/root_cubit.dart' as _i7;
-import 'package:shot_roulette/app/injection_container.dart' as _i13;
+import 'package:shot_roulette/app/injection_container.dart' as _i16;
 import 'package:shot_roulette/data/remote_data_sources/cocktails_remote_data_source.dart'
+    as _i12;
+import 'package:shot_roulette/data/remote_data_sources/filters_remote_data_source.dart'
     as _i10;
 import 'package:shot_roulette/data/remote_data_sources/ratings_remote_data_source.dart'
     as _i5;
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart'
+    as _i13;
+import 'package:shot_roulette/domain/repositories/filter_repository.dart'
     as _i11;
 import 'package:shot_roulette/domain/repositories/ratings_repository.dart'
     as _i6;
 import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart'
-    as _i12;
+    as _i15;
 import 'package:shot_roulette/features/cocktail_page/widgets/change_rating_dialog/cubit/change_rating_cubit.dart'
     as _i3;
+import 'package:shot_roulette/features/database_page/cubit/database_page_cubit.dart'
+    as _i14;
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart'
     as _i8;
 import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart'
@@ -56,16 +62,24 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i9.Dio>(
         () => registerModule.dio(gh<String>(instanceName: 'BaseUrl')));
-    gh.factory<_i10.CocktailsRemoteRetroFitDataSource>(
-        () => _i10.CocktailsRemoteRetroFitDataSource(gh<_i9.Dio>()));
-    gh.factory<_i11.CocktailsRepository>(() => _i11.CocktailsRepository(
-        remoteDataSource: gh<_i10.CocktailsRemoteRetroFitDataSource>()));
-    gh.factory<_i12.CocktailPageCubit>(() => _i12.CocktailPageCubit(
-          cocktailsRepository: gh<_i11.CocktailsRepository>(),
+    gh.factory<_i10.FiltersRemoteRetroFitDataSource>(
+        () => _i10.FiltersRemoteRetroFitDataSource(gh<_i9.Dio>()));
+    gh.factory<_i11.FiltersRepository>(() => _i11.FiltersRepository(
+        remoteDataSource: gh<_i10.FiltersRemoteRetroFitDataSource>()));
+    gh.factory<_i12.CocktailsRemoteRetroFitDataSource>(
+        () => _i12.CocktailsRemoteRetroFitDataSource(gh<_i9.Dio>()));
+    gh.factory<_i13.CocktailsRepository>(() => _i13.CocktailsRepository(
+        remoteDataSource: gh<_i12.CocktailsRemoteRetroFitDataSource>()));
+    gh.factory<_i14.DatabasePageCubit>(() => _i14.DatabasePageCubit(
+          filtersRepository: gh<_i11.FiltersRepository>(),
+          cocktailsRepository: gh<_i13.CocktailsRepository>(),
+        ));
+    gh.factory<_i15.CocktailPageCubit>(() => _i15.CocktailPageCubit(
+          cocktailsRepository: gh<_i13.CocktailsRepository>(),
           ratingsRepository: gh<_i6.RatingsRepository>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i13.RegisterModule {}
+class _$RegisterModule extends _i16.RegisterModule {}

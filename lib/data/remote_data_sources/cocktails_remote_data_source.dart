@@ -16,8 +16,14 @@ abstract class CocktailsRemoteRetroFitDataSource {
   ) = _CocktailsRemoteRetroFitDataSource;
 
   @GET('/search.php?f={letter}')
-  Future<CocktailListByLetterResponse> getCocktailListByLetterResponse(
+  Future<CocktailListResponse> getCocktailListByLetterResponse(
       {@Path('letter') required String letter});
+
+  @GET('/filter.php?{letter}={category}')
+  Future<CocktailListResponse> getCocktailListFilterResponse({
+    @Path('category') required String filter,
+    @Path('letter') required String letter,
+  });
 
   @GET('/random.php')
   Future<RandomCocktailResponse> getRandomCocktailResponse();

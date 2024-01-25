@@ -31,5 +31,11 @@
   "logIn": "Log in",
   "logOut": "Log out",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+  "database": "Database",
+  "glassType": "Glass Type",
+  "ingredient": "Ingredient",
+  "alcoholicType": "Alcoholic Type"
+
+
 }
