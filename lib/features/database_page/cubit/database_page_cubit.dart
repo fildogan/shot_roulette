@@ -47,4 +47,26 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
       status: Status.success,
     ));
   }
+
+  Future<void> goBack() async {
+    emit(state.copyWith(status: Status.loading));
+
+    if (state.showCocktails == true) {
+      emit(state.copyWith(
+        showCocktails: false,
+        status: Status.success,
+      ));
+      return;
+    } else if (state.chosenFilter != null) {
+      emit(state.copyWith(
+        chosenFilter: null,
+        status: Status.success,
+      ));
+      return;
+    } else {
+      emit(state.copyWith(status: Status.success));
+
+      return;
+    }
+  }
 }

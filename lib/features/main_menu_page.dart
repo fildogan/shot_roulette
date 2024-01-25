@@ -19,7 +19,7 @@ class MainMenuPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: state.pageIndex == 1
+      appBar: state.pageIndex != 0
           ? null
           : AppBar(
               title: Text(state.pageIndex == 0

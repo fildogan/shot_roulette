@@ -16,11 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DatabasePageState {
-  Status get status =>
-      throw _privateConstructorUsedError; // @Default(false) bool showFilters,
+  Status get status => throw _privateConstructorUsedError;
   bool get showCocktails => throw _privateConstructorUsedError;
   List<FilterModel> get filterList => throw _privateConstructorUsedError;
   List<CocktailModel> get cocktailList => throw _privateConstructorUsedError;
+  CocktailModel? get cocktail => throw _privateConstructorUsedError;
   ChosenFilter? get chosenFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,7 +39,10 @@ abstract class $DatabasePageStateCopyWith<$Res> {
       bool showCocktails,
       List<FilterModel> filterList,
       List<CocktailModel> cocktailList,
+      CocktailModel? cocktail,
       ChosenFilter? chosenFilter});
+
+  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -59,6 +62,7 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
     Object? showCocktails = null,
     Object? filterList = null,
     Object? cocktailList = null,
+    Object? cocktail = freezed,
     Object? chosenFilter = freezed,
   }) {
     return _then(_value.copyWith(
@@ -78,11 +82,27 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
           ? _value.cocktailList
           : cocktailList // ignore: cast_nullable_to_non_nullable
               as List<CocktailModel>,
+      cocktail: freezed == cocktail
+          ? _value.cocktail
+          : cocktail // ignore: cast_nullable_to_non_nullable
+              as CocktailModel?,
       chosenFilter: freezed == chosenFilter
           ? _value.chosenFilter
           : chosenFilter // ignore: cast_nullable_to_non_nullable
               as ChosenFilter?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CocktailModelCopyWith<$Res>? get cocktail {
+    if (_value.cocktail == null) {
+      return null;
+    }
+
+    return $CocktailModelCopyWith<$Res>(_value.cocktail!, (value) {
+      return _then(_value.copyWith(cocktail: value) as $Val);
+    });
   }
 }
 
@@ -99,7 +119,11 @@ abstract class _$$DatabasePageStateImplCopyWith<$Res>
       bool showCocktails,
       List<FilterModel> filterList,
       List<CocktailModel> cocktailList,
+      CocktailModel? cocktail,
       ChosenFilter? chosenFilter});
+
+  @override
+  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -117,6 +141,7 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
     Object? showCocktails = null,
     Object? filterList = null,
     Object? cocktailList = null,
+    Object? cocktail = freezed,
     Object? chosenFilter = freezed,
   }) {
     return _then(_$DatabasePageStateImpl(
@@ -136,6 +161,10 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
           ? _value._cocktailList
           : cocktailList // ignore: cast_nullable_to_non_nullable
               as List<CocktailModel>,
+      cocktail: freezed == cocktail
+          ? _value.cocktail
+          : cocktail // ignore: cast_nullable_to_non_nullable
+              as CocktailModel?,
       chosenFilter: freezed == chosenFilter
           ? _value.chosenFilter
           : chosenFilter // ignore: cast_nullable_to_non_nullable
@@ -152,6 +181,7 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       this.showCocktails = false,
       final List<FilterModel> filterList = const [],
       final List<CocktailModel> cocktailList = const [],
+      this.cocktail,
       this.chosenFilter})
       : _filterList = filterList,
         _cocktailList = cocktailList,
@@ -160,7 +190,6 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
   @override
   @JsonKey()
   final Status status;
-// @Default(false) bool showFilters,
   @override
   @JsonKey()
   final bool showCocktails;
@@ -183,11 +212,13 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
   }
 
   @override
+  final CocktailModel? cocktail;
+  @override
   final ChosenFilter? chosenFilter;
 
   @override
   String toString() {
-    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, chosenFilter: $chosenFilter)';
+    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter)';
   }
 
   @override
@@ -202,6 +233,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
                 .equals(other._filterList, _filterList) &&
             const DeepCollectionEquality()
                 .equals(other._cocktailList, _cocktailList) &&
+            (identical(other.cocktail, cocktail) ||
+                other.cocktail == cocktail) &&
             (identical(other.chosenFilter, chosenFilter) ||
                 other.chosenFilter == chosenFilter));
   }
@@ -213,6 +246,7 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       showCocktails,
       const DeepCollectionEquality().hash(_filterList),
       const DeepCollectionEquality().hash(_cocktailList),
+      cocktail,
       chosenFilter);
 
   @JsonKey(ignore: true)
@@ -229,17 +263,20 @@ abstract class _DatabasePageState extends DatabasePageState {
       final bool showCocktails,
       final List<FilterModel> filterList,
       final List<CocktailModel> cocktailList,
+      final CocktailModel? cocktail,
       final ChosenFilter? chosenFilter}) = _$DatabasePageStateImpl;
   _DatabasePageState._() : super._();
 
   @override
   Status get status;
-  @override // @Default(false) bool showFilters,
+  @override
   bool get showCocktails;
   @override
   List<FilterModel> get filterList;
   @override
   List<CocktailModel> get cocktailList;
+  @override
+  CocktailModel? get cocktail;
   @override
   ChosenFilter? get chosenFilter;
   @override
