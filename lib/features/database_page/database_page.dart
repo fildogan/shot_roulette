@@ -31,7 +31,9 @@ class DatabasePage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(localizations.database),
-              leading: DatabaseBackButton(status: state.status),
+              leading: state.chosenFilter == null
+                  ? null
+                  : DatabaseBackButton(status: state.status),
             ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
