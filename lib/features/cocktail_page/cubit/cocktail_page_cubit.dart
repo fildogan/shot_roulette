@@ -105,8 +105,21 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
       if (!ratingList.any((ratingModel) => ratingModel.userId == userId)) {
         // If it doesn't add a new rating
         ratingList.add(RatingModel(userId: userId, value: rating));
+        if (state.ratings?.ratingList == null ||
+            (state.ratings?.ratingList ?? []).isEmpty) {
+          await ratingsRepository.create(
+              cocktailId: state.cocktail?.idDrink ?? '', value: rating);
+        } else {
+          await ratingsRepository.add(
+              cocktailId: state.cocktail?.idDrink ?? '', value: rating);
+        }
       } else {
         // If it does replace the rating
+        await ratingsRepository.remove(
+            cocktailId: state.cocktail?.idDrink ?? '',
+            value: state.userRating!);
+        await ratingsRepository.add(
+            cocktailId: state.cocktail?.idDrink ?? '', value: rating);
         int i = ratingList
             .indexWhere((ratingModel) => ratingModel.userId == userId);
 
