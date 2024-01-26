@@ -12,6 +12,10 @@ class CocktailsRepository {
     return remoteDataSource.getCocktailListByLetterResponse(letter: letter);
   }
 
+  Future<CocktailListResponse> getCocktailListByName(String name) async {
+    return remoteDataSource.getCocktailListByNameResponse(name: name);
+  }
+
   Future<CocktailListResponse> getCocktailListFilter(
       String filter, String letter) async {
     return remoteDataSource.getCocktailListFilterResponse(

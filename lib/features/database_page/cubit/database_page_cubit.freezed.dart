@@ -23,6 +23,7 @@ mixin _$DatabasePageState {
   CocktailModel? get cocktail => throw _privateConstructorUsedError;
   ChosenFilter? get chosenFilter => throw _privateConstructorUsedError;
   bool get showLetters => throw _privateConstructorUsedError;
+  String get searchText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DatabasePageStateCopyWith<DatabasePageState> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $DatabasePageStateCopyWith<$Res> {
       List<CocktailModel> cocktailList,
       CocktailModel? cocktail,
       ChosenFilter? chosenFilter,
-      bool showLetters});
+      bool showLetters,
+      String searchText});
 
   $CocktailModelCopyWith<$Res>? get cocktail;
 }
@@ -67,6 +69,7 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
     Object? cocktail = freezed,
     Object? chosenFilter = freezed,
     Object? showLetters = null,
+    Object? searchText = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -97,6 +100,10 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
           ? _value.showLetters
           : showLetters // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -128,7 +135,8 @@ abstract class _$$DatabasePageStateImplCopyWith<$Res>
       List<CocktailModel> cocktailList,
       CocktailModel? cocktail,
       ChosenFilter? chosenFilter,
-      bool showLetters});
+      bool showLetters,
+      String searchText});
 
   @override
   $CocktailModelCopyWith<$Res>? get cocktail;
@@ -152,6 +160,7 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
     Object? cocktail = freezed,
     Object? chosenFilter = freezed,
     Object? showLetters = null,
+    Object? searchText = null,
   }) {
     return _then(_$DatabasePageStateImpl(
       status: null == status
@@ -182,6 +191,10 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
           ? _value.showLetters
           : showLetters // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -196,7 +209,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       final List<CocktailModel> cocktailList = const [],
       this.cocktail,
       this.chosenFilter,
-      this.showLetters = false})
+      this.showLetters = false,
+      this.searchText = ''})
       : _filterList = filterList,
         _cocktailList = cocktailList,
         super._();
@@ -232,10 +246,13 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
   @override
   @JsonKey()
   final bool showLetters;
+  @override
+  @JsonKey()
+  final String searchText;
 
   @override
   String toString() {
-    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, showLetters: $showLetters)';
+    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, showLetters: $showLetters, searchText: $searchText)';
   }
 
   @override
@@ -255,7 +272,9 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
             (identical(other.chosenFilter, chosenFilter) ||
                 other.chosenFilter == chosenFilter) &&
             (identical(other.showLetters, showLetters) ||
-                other.showLetters == showLetters));
+                other.showLetters == showLetters) &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText));
   }
 
   @override
@@ -267,7 +286,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       const DeepCollectionEquality().hash(_cocktailList),
       cocktail,
       chosenFilter,
-      showLetters);
+      showLetters,
+      searchText);
 
   @JsonKey(ignore: true)
   @override
@@ -285,7 +305,8 @@ abstract class _DatabasePageState extends DatabasePageState {
       final List<CocktailModel> cocktailList,
       final CocktailModel? cocktail,
       final ChosenFilter? chosenFilter,
-      final bool showLetters}) = _$DatabasePageStateImpl;
+      final bool showLetters,
+      final String searchText}) = _$DatabasePageStateImpl;
   _DatabasePageState._() : super._();
 
   @override
@@ -302,6 +323,8 @@ abstract class _DatabasePageState extends DatabasePageState {
   ChosenFilter? get chosenFilter;
   @override
   bool get showLetters;
+  @override
+  String get searchText;
   @override
   @JsonKey(ignore: true)
   _$$DatabasePageStateImplCopyWith<_$DatabasePageStateImpl> get copyWith =>

@@ -62,6 +62,29 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     ));
   }
 
+  Future<void> getCocktailListByName(String? name) async {
+    emit(state.copyWith(status: Status.loading, searchText: name ?? ''));
+
+    if (name == null || name.isEmpty) {
+      emit(state.copyWith(
+        showCocktails: false,
+        cocktailList: [],
+        status: Status.success,
+      ));
+      return;
+    }
+
+    final cocktailListResponse =
+        await cocktailsRepository.getCocktailListByName(name);
+    final cocktailList = cocktailListResponse.drinks;
+
+    emit(state.copyWith(
+      showCocktails: true,
+      cocktailList: cocktailList ?? [],
+      status: Status.success,
+    ));
+  }
+
   Future<void> showLetters() async {
     emit(state.copyWith(status: Status.loading));
     emit(state.copyWith(

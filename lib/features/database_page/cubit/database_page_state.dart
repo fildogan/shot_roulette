@@ -10,6 +10,7 @@ class DatabasePageState with _$DatabasePageState {
     CocktailModel? cocktail,
     ChosenFilter? chosenFilter,
     @Default(false) bool showLetters,
+    @Default('') String searchText,
   }) = _DatabasePageState;
   const DatabasePageState._();
 }

@@ -36,5 +36,7 @@
   "glassType": "Glass Type",
   "ingredient": "Ingredient",
   "alcoholicType": "Alcoholic Type",
-  "letter": "Letter"
+  "letter": "Letter",
+  "search": "Search"
+
 }
