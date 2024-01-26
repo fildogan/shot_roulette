@@ -8,7 +8,7 @@ part 'cocktail_list_response.g.dart';
 @freezed
 class CocktailListResponse with _$CocktailListResponse {
   factory CocktailListResponse(
-    List<CocktailModel> drinks,
+    List<CocktailModel>? drinks,
   ) = _CocktailListResponse;
 
   factory CocktailListResponse.fromJson(Map<String, dynamic> json) =>

@@ -35,7 +35,6 @@
   "database": "Database",
   "glassType": "Glass Type",
   "ingredient": "Ingredient",
-  "alcoholicType": "Alcoholic Type"
-
-
+  "alcoholicType": "Alcoholic Type",
+  "letter": "Letter"
 }

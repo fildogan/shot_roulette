@@ -9,6 +9,7 @@ class DatabasePageState with _$DatabasePageState {
     @Default([]) List<CocktailModel> cocktailList,
     CocktailModel? cocktail,
     ChosenFilter? chosenFilter,
+    @Default(false) bool showLetters,
   }) = _DatabasePageState;
   const DatabasePageState._();
 }

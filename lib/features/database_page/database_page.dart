@@ -28,12 +28,16 @@ class DatabasePage extends StatelessWidget {
       create: (context) => getIt<DatabasePageCubit>(),
       child: BlocBuilder<DatabasePageCubit, DatabasePageState>(
         builder: (context, state) {
+          List<String> characters = List.generate(
+              26, (index) => String.fromCharCode('A'.codeUnitAt(0) + index))
+            ..addAll(List.generate(10, (index) => '$index'));
           return Scaffold(
             appBar: AppBar(
               title: Text(localizations.database),
-              leading: state.chosenFilter == null
-                  ? null
-                  : DatabaseBackButton(status: state.status),
+              leading:
+                  (state.chosenFilter == null && state.showLetters == false)
+                      ? null
+                      : DatabaseBackButton(status: state.status),
             ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -50,7 +54,6 @@ class DatabasePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               SettingsItem(
-                                header: 'Filter by:',
                                 settingsItems: state.showCocktails
                                     ? [
                                         for (final cocktail
@@ -94,53 +97,86 @@ class DatabasePage extends StatelessWidget {
                                                     Icons.chevron_right),
                                               ),
                                           ]
-                                        : [
-                                            SettingItemModel(
-                                              title: localizations.category,
-                                              onTap: () {
-                                                context
-                                                    .read<DatabasePageCubit>()
-                                                    .getFilterList(
-                                                        ChosenFilter.c);
-                                              },
-                                              trailing: const Icon(
-                                                  Icons.chevron_right),
-                                            ),
-                                            SettingItemModel(
-                                              title: localizations.glassType,
-                                              onTap: () {
-                                                context
-                                                    .read<DatabasePageCubit>()
-                                                    .getFilterList(
-                                                        ChosenFilter.g);
-                                              },
-                                              trailing: const Icon(
-                                                  Icons.chevron_right),
-                                            ),
-                                            SettingItemModel(
-                                              title: localizations.ingredient,
-                                              onTap: () {
-                                                context
-                                                    .read<DatabasePageCubit>()
-                                                    .getFilterList(
-                                                        ChosenFilter.i);
-                                              },
-                                              trailing: const Icon(
-                                                  Icons.chevron_right),
-                                            ),
-                                            SettingItemModel(
-                                              title:
-                                                  localizations.alcoholicType,
-                                              onTap: () {
-                                                context
-                                                    .read<DatabasePageCubit>()
-                                                    .getFilterList(
-                                                        ChosenFilter.a);
-                                              },
-                                              trailing: const Icon(
-                                                  Icons.chevron_right),
-                                            ),
-                                          ],
+                                        : state.showLetters == true
+                                            ? [
+                                                for (final letter in characters)
+                                                  SettingItemModel(
+                                                    title: letter,
+                                                    onTap: () {
+                                                      context
+                                                          .read<
+                                                              DatabasePageCubit>()
+                                                          .getCocktailListByLetter(
+                                                              letter);
+                                                    },
+                                                    trailing: const Icon(
+                                                        Icons.chevron_right),
+                                                  ),
+                                              ]
+                                            : [
+                                                SettingItemModel(
+                                                  title: localizations.category,
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            DatabasePageCubit>()
+                                                        .getFilterList(
+                                                            ChosenFilter.c);
+                                                  },
+                                                  trailing: const Icon(
+                                                      Icons.chevron_right),
+                                                ),
+                                                SettingItemModel(
+                                                  title:
+                                                      localizations.glassType,
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            DatabasePageCubit>()
+                                                        .getFilterList(
+                                                            ChosenFilter.g);
+                                                  },
+                                                  trailing: const Icon(
+                                                      Icons.chevron_right),
+                                                ),
+                                                SettingItemModel(
+                                                  title:
+                                                      localizations.ingredient,
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            DatabasePageCubit>()
+                                                        .getFilterList(
+                                                            ChosenFilter.i);
+                                                  },
+                                                  trailing: const Icon(
+                                                      Icons.chevron_right),
+                                                ),
+                                                SettingItemModel(
+                                                  title: localizations
+                                                      .alcoholicType,
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            DatabasePageCubit>()
+                                                        .getFilterList(
+                                                            ChosenFilter.a);
+                                                  },
+                                                  trailing: const Icon(
+                                                      Icons.chevron_right),
+                                                ),
+                                                SettingItemModel(
+                                                  title: localizations.letter,
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            DatabasePageCubit>()
+                                                        .showLetters();
+                                                  },
+                                                  trailing: const Icon(
+                                                      Icons.chevron_right),
+                                                ),
+                                              ],
                               ),
                             ],
                           ),
