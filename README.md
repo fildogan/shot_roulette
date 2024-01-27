@@ -41,4 +41,5 @@ samples, guidance on mobile development, and a full API reference.
 [json_serializable](https://pub.dev/packages/json_serializable/license),
 [retrofit](https://pub.dev/packages/retrofit/license),
 [retrofit_generator](https://pub.dev/packages/retrofit_generator/license),
-[shared_preferences](https://pub.dev/packages/shared_preferences/license)
+[shared_preferences](https://pub.dev/packages/shared_preferences/license),
+[youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter/license)
