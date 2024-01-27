@@ -77,8 +77,8 @@ class CocktailPage extends StatelessWidget {
                           ),
                         )
                       else
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
+                        const Padding(
+                          padding: EdgeInsets.all(10.0),
                           child: SizedBox(
                             height: 100,
                             // height: mainContainerHeight,

@@ -103,7 +103,7 @@ class SettingsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Text('show english translations?'),
+                          const Text('show english translations?'),
                           Switch(
                               value: rootState.showEnglishTranslations,
                               onChanged: ((value) {

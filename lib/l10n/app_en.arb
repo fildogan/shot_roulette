@@ -37,6 +37,8 @@
   "ingredient": "Ingredient",
   "alcoholicType": "Alcoholic Type",
   "letter": "Letter",
-  "search": "Search"
+  "search": "Search",
+  "cancel": "Cancel"
+
 
 }

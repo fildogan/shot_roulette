@@ -93,6 +93,18 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     ));
   }
 
+  Future<void> startSearch() async {
+    emit(state.copyWith(
+      isSearching: true,
+    ));
+  }
+
+  Future<void> stopSearch() async {
+    emit(state.copyWith(
+      isSearching: false,
+    ));
+  }
+
   Future<void> getCocktailById(String id) async {
     emit(state.copyWith(status: Status.loading));
 

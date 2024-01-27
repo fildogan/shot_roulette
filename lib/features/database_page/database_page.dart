@@ -47,6 +47,18 @@ class DatabasePage extends StatelessWidget {
                       state.cocktail == null)
                   ? null
                   : DatabaseBackButton(status: state.status),
+              actions: [
+                if (state.isSearching && state.cocktail == null)
+                  TextButton(
+                      onPressed: () {
+                        context
+                            .read<DatabasePageCubit>()
+                            .getCocktailListByName('');
+
+                        context.read<DatabasePageCubit>().stopSearch();
+                      },
+                      child: Text(localizations.cancel))
+              ],
             ),
             body: Column(
               children: [
@@ -55,6 +67,7 @@ class DatabasePage extends StatelessWidget {
                     state.cocktail == null)
                   CocktailSearchBar(
                     textEditingController: textEditingController,
+                    state: state,
                   ),
                 Expanded(
                   child: Padding(
@@ -72,7 +85,8 @@ class DatabasePage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     SettingsItem(
-                                      settingsItems: state.showCocktails
+                                      settingsItems: (state.showCocktails ||
+                                              state.isSearching)
                                           ? [
                                               for (final cocktail
                                                   in state.cocktailList)
