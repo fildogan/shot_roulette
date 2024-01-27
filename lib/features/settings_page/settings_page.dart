@@ -49,7 +49,6 @@ class SettingsPage extends StatelessWidget {
                                 .changeSettingsPage(
                                     ThemeSelectionPage(state: rootState));
                           },
-                          trailing: const Icon(Icons.chevron_right),
                         ),
                         SettingItemModel(
                           title: localizations.language,
@@ -59,7 +58,6 @@ class SettingsPage extends StatelessWidget {
                                 .changeSettingsPage(
                                     LanguageSelectionPage(state: rootState));
                           },
-                          trailing: const Icon(Icons.chevron_right),
                         ),
                       ],
                     ),
@@ -71,7 +69,6 @@ class SettingsPage extends StatelessWidget {
                             context.read<SettingsPageCubit>().signOut();
                           },
                           title: localizations.logOut,
-                          trailing: const Icon(Icons.chevron_right),
                         ),
                       ], header: localizations.account),
 
@@ -88,7 +85,6 @@ class SettingsPage extends StatelessWidget {
                                 ));
                           },
                           title: localizations.logIn,
-                          trailing: const Icon(Icons.chevron_right),
                         ),
                         SettingItemModel(
                           onTap: () {
@@ -100,7 +96,6 @@ class SettingsPage extends StatelessWidget {
                                 ));
                           },
                           title: localizations.signUp,
-                          trailing: const Icon(Icons.chevron_right),
                         ),
                       ], header: localizations.account),
 

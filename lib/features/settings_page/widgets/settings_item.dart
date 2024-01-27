@@ -43,7 +43,8 @@ class SettingsItem extends StatelessWidget {
                               ? ButtonPosition.bottom
                               : ButtonPosition.middle,
                   onTap: settingsItems[i].onTap,
-                  trailing: settingsItems[i].trailing,
+                  trailing: settingsItems[i].trailing ??
+                      const Icon(Icons.chevron_right),
                 ),
                 if (i != settingsItems.length - 1) const Seperator(),
               ]

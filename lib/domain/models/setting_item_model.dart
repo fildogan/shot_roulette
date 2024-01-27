@@ -9,7 +9,7 @@ part 'setting_item_model.freezed.dart';
 class SettingItemModel with _$SettingItemModel {
   const factory SettingItemModel({
     required String title,
-    required Widget trailing,
+    Widget? trailing,
     void Function()? onTap,
   }) = _SettingItemModel;
   const SettingItemModel._();

@@ -7,6 +7,7 @@ import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/cocktail_page.dart';
 import 'package:shot_roulette/features/database_page/cubit/database_page_cubit.dart';
 import 'package:shot_roulette/features/database_page/widgets/back_button.dart';
+import 'package:shot_roulette/features/database_page/widgets/cocktail_search_bar.dart';
 
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -52,22 +53,8 @@ class DatabasePage extends StatelessWidget {
                 if (state.showLetters == false &&
                     state.chosenFilter == null &&
                     state.cocktail == null)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: textEditingController,
-                      onChanged: (value) {
-                        context
-                            .read<DatabasePageCubit>()
-                            .getCocktailListByName(value);
-                      },
-                      decoration: InputDecoration(
-                        labelText: localizations.search,
-                        prefixIcon: const Icon(
-                          Icons.search,
-                        ),
-                      ),
-                    ),
+                  CocktailSearchBar(
+                    textEditingController: textEditingController,
                   ),
                 Expanded(
                   child: Padding(
@@ -100,8 +87,6 @@ class DatabasePage extends StatelessWidget {
                                                             cocktail.idDrink ??
                                                                 '');
                                                   },
-                                                  trailing: const Icon(
-                                                      Icons.chevron_right),
                                                 ),
                                             ]
                                           : state.chosenFilter != null
@@ -130,8 +115,6 @@ class DatabasePage extends StatelessWidget {
                                                                   '',
                                                             );
                                                       },
-                                                      trailing: const Icon(
-                                                          Icons.chevron_right),
                                                     ),
                                                 ]
                                               : state.showLetters == true
@@ -147,9 +130,6 @@ class DatabasePage extends StatelessWidget {
                                                                 .getCocktailListByLetter(
                                                                     letter);
                                                           },
-                                                          trailing: const Icon(
-                                                              Icons
-                                                                  .chevron_right),
                                                         ),
                                                     ]
                                                   : [
@@ -164,9 +144,6 @@ class DatabasePage extends StatelessWidget {
                                                                   ChosenFilter
                                                                       .c);
                                                         },
-                                                        trailing: const Icon(
-                                                            Icons
-                                                                .chevron_right),
                                                       ),
                                                       SettingItemModel(
                                                         title: localizations
@@ -179,9 +156,6 @@ class DatabasePage extends StatelessWidget {
                                                                   ChosenFilter
                                                                       .g);
                                                         },
-                                                        trailing: const Icon(
-                                                            Icons
-                                                                .chevron_right),
                                                       ),
                                                       SettingItemModel(
                                                         title: localizations
@@ -194,9 +168,6 @@ class DatabasePage extends StatelessWidget {
                                                                   ChosenFilter
                                                                       .i);
                                                         },
-                                                        trailing: const Icon(
-                                                            Icons
-                                                                .chevron_right),
                                                       ),
                                                       SettingItemModel(
                                                         title: localizations
@@ -209,9 +180,6 @@ class DatabasePage extends StatelessWidget {
                                                                   ChosenFilter
                                                                       .a);
                                                         },
-                                                        trailing: const Icon(
-                                                            Icons
-                                                                .chevron_right),
                                                       ),
                                                       SettingItemModel(
                                                         title: localizations
@@ -222,9 +190,6 @@ class DatabasePage extends StatelessWidget {
                                                                   DatabasePageCubit>()
                                                               .showLetters();
                                                         },
-                                                        trailing: const Icon(
-                                                            Icons
-                                                                .chevron_right),
                                                       ),
                                                     ],
                                     ),
