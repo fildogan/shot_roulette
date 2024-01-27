@@ -9,6 +9,7 @@ class RootState with _$RootState {
     User? user,
     @Default(true) bool showEnglishTranslations,
     @Default('') String errorMessage,
+    @Default(true) bool showStartImage,
   }) = _RootState;
   const RootState._();
 

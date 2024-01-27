@@ -21,6 +21,13 @@ class RootCubit extends Cubit<RootState> {
   Future<void> start() async {
     getSettings();
     userSubscription();
+    await Future.delayed(const Duration(seconds: 2));
+
+    emit(
+      state.copyWith(
+        showStartImage: false,
+      ),
+    );
   }
 
   Future<void> changePageIndex(int newIndex) async {

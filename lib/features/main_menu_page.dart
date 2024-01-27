@@ -16,49 +16,58 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      appBar: state.pageIndex != 0
-          ? null
-          : AppBar(
-              title: Text(state.pageIndex == 0
-                  ? localizations.settings
-                  : localizations.database),
+    return state.showStartImage
+        ? const Scaffold(
+            body: Center(
+              child: CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/cocktail_image.jpg'),
+              ),
             ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: state.pageIndex,
-        onTap: (newIndex) {
-          context.read<RootCubit>().changePageIndex(newIndex);
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.settings),
-            label: localizations.settings,
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.local_drink),
-            label: "Roll",
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.storage),
-            label: localizations.database,
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: Builder(builder: (context) {
-          if (state.pageIndex == 0) {
-            return SettingsPage(rootState: state);
-          } else if (state.pageIndex == 1) {
-            return CocktailPage(
-              rootState: state,
-            );
-          } else {
-            return DatabasePage(
-              rootState: state,
-            );
-          }
-        }),
-      ),
-    );
+          )
+        : Scaffold(
+            appBar: state.pageIndex != 0
+                ? null
+                : AppBar(
+                    title: Text(state.pageIndex == 0
+                        ? localizations.settings
+                        : localizations.database),
+                  ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: state.pageIndex,
+              onTap: (newIndex) {
+                context.read<RootCubit>().changePageIndex(newIndex);
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.settings),
+                  label: localizations.settings,
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.local_drink),
+                  label: "Roll",
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.storage),
+                  label: localizations.database,
+                ),
+              ],
+            ),
+            body: SafeArea(
+              child: Builder(builder: (context) {
+                if (state.pageIndex == 0) {
+                  return SettingsPage(rootState: state);
+                } else if (state.pageIndex == 1) {
+                  return CocktailPage(
+                    rootState: state,
+                  );
+                } else {
+                  return DatabasePage(
+                    rootState: state,
+                  );
+                }
+              }),
+            ),
+          );
   }
 }
