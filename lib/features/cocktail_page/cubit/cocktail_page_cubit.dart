@@ -133,6 +133,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         emit(state.copyWith(
           ratings: newRatedCocktailModel,
           userRating: rating,
+          hasUserRated: true,
         ));
       } else {
         RatedCocktailModel newRatedCocktailModel = RatedCocktailModel(
@@ -140,6 +141,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         emit(state.copyWith(
           ratings: newRatedCocktailModel,
           userRating: rating,
+          hasUserRated: true,
         ));
       }
     }
