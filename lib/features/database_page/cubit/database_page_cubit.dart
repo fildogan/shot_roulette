@@ -131,6 +131,7 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     } else if (state.showCocktails == true) {
       emit(state.copyWith(
         showCocktails: false,
+        cocktailList: [],
         status: Status.success,
       ));
       return;
