@@ -37,7 +37,10 @@ class CocktailPage extends StatelessWidget {
                           flex: 2,
                         ),
                         DefaultTextStyle(
-                          style: const TextStyle(
+                          style: TextStyle(
+                            color: rootState.currentTheme == ThemeMode.dark
+                                ? Colors.white70
+                                : Colors.black87,
                             fontSize: 32.0,
                             fontWeight: FontWeight.bold,
                           ),
