@@ -19,8 +19,6 @@ class CocktailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double mainContainerHeight = screenHeight * 0.6;
     return BlocProvider(
       create: (context) => getIt<CocktailPageCubit>()
         ..loadCocktail(cocktail, rootState.user?.uid),

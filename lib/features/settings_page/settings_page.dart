@@ -32,89 +32,94 @@ class SettingsPage extends StatelessWidget {
           } else if (state.settingsMenuPage != null) {
             return state.settingsMenuPage!;
           } else {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SettingsItem(
-                      header: localizations.application,
-                      settingsItems: [
-                        SettingItemModel(
-                          title: localizations.theme,
-                          onTap: () {
-                            context
-                                .read<SettingsPageCubit>()
-                                .changeSettingsPage(
-                                    ThemeSelectionPage(state: rootState));
-                          },
-                        ),
-                        SettingItemModel(
-                          title: localizations.language,
-                          onTap: () {
-                            context
-                                .read<SettingsPageCubit>()
-                                .changeSettingsPage(
-                                    LanguageSelectionPage(state: rootState));
-                          },
-                        ),
-                      ],
-                    ),
-                    // Account if logged in
-                    if (rootState.user != null)
-                      SettingsItem(settingsItems: [
-                        SettingItemModel(
-                          onTap: () {
-                            context.read<SettingsPageCubit>().signOut();
-                          },
-                          title: localizations.logOut,
-                        ),
-                      ], header: localizations.account),
-
-                    // Account if not logged in
-                    if (rootState.user == null)
-                      SettingsItem(settingsItems: [
-                        SettingItemModel(
-                          onTap: () {
-                            context
-                                .read<SettingsPageCubit>()
-                                .changeSettingsPage(LogInPage(
-                                  rootState: rootState,
-                                  isCreatingAccount: false,
-                                ));
-                          },
-                          title: localizations.logIn,
-                        ),
-                        SettingItemModel(
-                          onTap: () {
-                            context
-                                .read<SettingsPageCubit>()
-                                .changeSettingsPage(LogInPage(
-                                  rootState: rootState,
-                                  isCreatingAccount: true,
-                                ));
-                          },
-                          title: localizations.signUp,
-                        ),
-                      ], header: localizations.account),
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          const Text('show english translations?'),
-                          Switch(
-                              value: rootState.showEnglishTranslations,
-                              onChanged: ((value) {
-                                context
-                                    .read<RootCubit>()
-                                    .changeShowTranslationsBool();
-                              })),
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(localizations.settings),
+              ),
+              body: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SettingsItem(
+                        header: localizations.application,
+                        settingsItems: [
+                          SettingItemModel(
+                            title: localizations.theme,
+                            onTap: () {
+                              context
+                                  .read<SettingsPageCubit>()
+                                  .changeSettingsPage(
+                                      ThemeSelectionPage(state: rootState));
+                            },
+                          ),
+                          SettingItemModel(
+                            title: localizations.language,
+                            onTap: () {
+                              context
+                                  .read<SettingsPageCubit>()
+                                  .changeSettingsPage(
+                                      LanguageSelectionPage(state: rootState));
+                            },
+                          ),
                         ],
                       ),
-                    )
-                  ],
+                      // Account if logged in
+                      if (rootState.user != null)
+                        SettingsItem(settingsItems: [
+                          SettingItemModel(
+                            onTap: () {
+                              context.read<SettingsPageCubit>().signOut();
+                            },
+                            title: localizations.logOut,
+                          ),
+                        ], header: localizations.account),
+
+                      // Account if not logged in
+                      if (rootState.user == null)
+                        SettingsItem(settingsItems: [
+                          SettingItemModel(
+                            onTap: () {
+                              context
+                                  .read<SettingsPageCubit>()
+                                  .changeSettingsPage(LogInPage(
+                                    rootState: rootState,
+                                    isCreatingAccount: false,
+                                  ));
+                            },
+                            title: localizations.logIn,
+                          ),
+                          SettingItemModel(
+                            onTap: () {
+                              context
+                                  .read<SettingsPageCubit>()
+                                  .changeSettingsPage(LogInPage(
+                                    rootState: rootState,
+                                    isCreatingAccount: true,
+                                  ));
+                            },
+                            title: localizations.signUp,
+                          ),
+                        ], header: localizations.account),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            const Text('show english translations?'),
+                            Switch(
+                                value: rootState.showEnglishTranslations,
+                                onChanged: ((value) {
+                                  context
+                                      .read<RootCubit>()
+                                      .changeShowTranslationsBool();
+                                })),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );
