@@ -87,6 +87,7 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
 
   Future<void> showLetters() async {
     emit(state.copyWith(status: Status.loading));
+    await Future.delayed(const Duration(milliseconds: 10));
     emit(state.copyWith(
       showLetters: true,
       status: Status.success,
