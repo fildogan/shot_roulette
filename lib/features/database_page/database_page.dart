@@ -106,7 +106,7 @@ class DatabasePage extends StatelessWidget {
                                           : state.chosenFilter != null
                                               ? [
                                                   for (final filter
-                                                      in state.filterList)
+                                                      in state.sortedFilterList)
                                                     SettingItemModel(
                                                       title: filter.strCategory ??
                                                           filter.strGlass ??
