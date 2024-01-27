@@ -7,6 +7,7 @@ import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_name.dar
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_table_header.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/rating_row.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/tags_wrap.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/video_player.dart';
 
 class CocktailRecipeCard extends StatelessWidget {
   const CocktailRecipeCard({
@@ -18,6 +19,13 @@ class CocktailRecipeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // YoutubePlayerController youtubePlayerController = YoutubePlayerController(
+    //   initialVideoId: state.videoId,
+    //   flags: const YoutubePlayerFlags(
+    //     autoPlay: false,
+    //     mute: false,
+    //   ),
+    // );
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -115,6 +123,11 @@ class CocktailRecipeCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8.0, vertical: 4.0),
                   child: TagsWrap(state: state),
+                ),
+              if (state.cocktail?.strVideo != null)
+                VideoPlayer(
+                  state: state,
+                  // youtubePlayerController: youtubePlayerController,
                 ),
             ],
           ),

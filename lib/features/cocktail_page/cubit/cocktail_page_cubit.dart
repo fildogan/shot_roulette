@@ -8,6 +8,7 @@ import 'package:shot_roulette/domain/models/rated_cocktail_model.dart';
 import 'package:shot_roulette/domain/models/rating_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
 import 'package:shot_roulette/domain/repositories/ratings_repository.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 part 'cocktail_page_state.dart';
 part 'cocktail_page_cubit.freezed.dart';

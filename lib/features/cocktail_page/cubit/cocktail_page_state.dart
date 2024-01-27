@@ -125,6 +125,14 @@ class CocktailPageState with _$CocktailPageState {
     }
   }
 
+  String get videoId {
+    String id;
+
+    id = YoutubePlayer.convertUrlToId(cocktail?.strVideo ?? '') ?? '';
+
+    return id;
+  }
+
   double get ratingSum {
     if (ratings == null ||
         ratings!.ratingList!.isEmpty ||
