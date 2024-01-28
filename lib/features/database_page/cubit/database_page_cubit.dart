@@ -5,6 +5,7 @@ import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/domain/models/filter_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
+import 'package:shot_roulette/domain/repositories/favourites_repository.dart';
 import 'package:shot_roulette/domain/repositories/filter_repository.dart';
 
 part 'database_page_state.dart';
@@ -13,11 +14,14 @@ part 'database_page_cubit.freezed.dart';
 @injectable
 class DatabasePageCubit extends Cubit<DatabasePageState> {
   DatabasePageCubit(
-      {required this.filtersRepository, required this.cocktailsRepository})
+      {required this.filtersRepository,
+      required this.cocktailsRepository,
+      required this.favouritesRepository})
       : super(DatabasePageState());
 
   final FiltersRepository filtersRepository;
   final CocktailsRepository cocktailsRepository;
+  final FavouritesRepository favouritesRepository;
 
   Future<void> getFilterList(ChosenFilter chosenFilter) async {
     emit(state.copyWith(status: Status.loading));
@@ -29,6 +33,27 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     emit(state.copyWith(
       chosenFilter: chosenFilter,
       filterList: filterList,
+      status: Status.success,
+    ));
+  }
+
+  Future<void> getFavouriteCocktailList() async {
+    emit(state.copyWith(status: Status.loading));
+
+    final List<CocktailModel> cocktailList = [];
+
+    final favouriteIdList = await favouritesRepository.getFavouritesIdList();
+
+    for (final favouriteId in favouriteIdList) {
+      final CocktailModel cocktail;
+      cocktail = await getFavouriteCocktailById(favouriteId);
+      cocktailList.add(cocktail);
+    }
+
+    emit(state.copyWith(
+      showFavourites: true,
+      showCocktails: true,
+      cocktailList: cocktailList,
       status: Status.success,
     ));
   }
@@ -120,6 +145,13 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     // print(state.cocktail);
   }
 
+  Future<CocktailModel> getFavouriteCocktailById(String id) async {
+    final cocktailListResponse = await cocktailsRepository.getCocktailById(id);
+    final cocktail = (cocktailListResponse.drinks ?? [])[0];
+
+    return cocktail;
+  }
+
   Future<void> goBack() async {
     emit(state.copyWith(status: Status.loading));
     if (state.cocktail != null) {
@@ -127,10 +159,14 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
         cocktail: null,
         status: Status.success,
       ));
+      if (state.showFavourites) {
+        getFavouriteCocktailList();
+      }
       return;
     } else if (state.showCocktails == true) {
       emit(state.copyWith(
         showCocktails: false,
+        showFavourites: false,
         cocktailList: [],
         status: Status.success,
       ));

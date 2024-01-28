@@ -24,6 +24,7 @@ mixin _$DatabasePageState {
   ChosenFilter? get chosenFilter => throw _privateConstructorUsedError;
   bool get isSearching => throw _privateConstructorUsedError;
   bool get showLetters => throw _privateConstructorUsedError;
+  bool get showFavourites => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -46,6 +47,7 @@ abstract class $DatabasePageStateCopyWith<$Res> {
       ChosenFilter? chosenFilter,
       bool isSearching,
       bool showLetters,
+      bool showFavourites,
       String searchText});
 
   $CocktailModelCopyWith<$Res>? get cocktail;
@@ -72,6 +74,7 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
     Object? chosenFilter = freezed,
     Object? isSearching = null,
     Object? showLetters = null,
+    Object? showFavourites = null,
     Object? searchText = null,
   }) {
     return _then(_value.copyWith(
@@ -106,6 +109,10 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
       showLetters: null == showLetters
           ? _value.showLetters
           : showLetters // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showFavourites: null == showFavourites
+          ? _value.showFavourites
+          : showFavourites // ignore: cast_nullable_to_non_nullable
               as bool,
       searchText: null == searchText
           ? _value.searchText
@@ -144,6 +151,7 @@ abstract class _$$DatabasePageStateImplCopyWith<$Res>
       ChosenFilter? chosenFilter,
       bool isSearching,
       bool showLetters,
+      bool showFavourites,
       String searchText});
 
   @override
@@ -169,6 +177,7 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
     Object? chosenFilter = freezed,
     Object? isSearching = null,
     Object? showLetters = null,
+    Object? showFavourites = null,
     Object? searchText = null,
   }) {
     return _then(_$DatabasePageStateImpl(
@@ -204,6 +213,10 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
           ? _value.showLetters
           : showLetters // ignore: cast_nullable_to_non_nullable
               as bool,
+      showFavourites: null == showFavourites
+          ? _value.showFavourites
+          : showFavourites // ignore: cast_nullable_to_non_nullable
+              as bool,
       searchText: null == searchText
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
@@ -224,6 +237,7 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       this.chosenFilter,
       this.isSearching = false,
       this.showLetters = false,
+      this.showFavourites = false,
       this.searchText = ''})
       : _filterList = filterList,
         _cocktailList = cocktailList,
@@ -265,11 +279,14 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
   final bool showLetters;
   @override
   @JsonKey()
+  final bool showFavourites;
+  @override
+  @JsonKey()
   final String searchText;
 
   @override
   String toString() {
-    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, isSearching: $isSearching, showLetters: $showLetters, searchText: $searchText)';
+    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, isSearching: $isSearching, showLetters: $showLetters, showFavourites: $showFavourites, searchText: $searchText)';
   }
 
   @override
@@ -292,6 +309,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
                 other.isSearching == isSearching) &&
             (identical(other.showLetters, showLetters) ||
                 other.showLetters == showLetters) &&
+            (identical(other.showFavourites, showFavourites) ||
+                other.showFavourites == showFavourites) &&
             (identical(other.searchText, searchText) ||
                 other.searchText == searchText));
   }
@@ -307,6 +326,7 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       chosenFilter,
       isSearching,
       showLetters,
+      showFavourites,
       searchText);
 
   @JsonKey(ignore: true)
@@ -327,6 +347,7 @@ abstract class _DatabasePageState extends DatabasePageState {
       final ChosenFilter? chosenFilter,
       final bool isSearching,
       final bool showLetters,
+      final bool showFavourites,
       final String searchText}) = _$DatabasePageStateImpl;
   _DatabasePageState._() : super._();
 
@@ -346,6 +367,8 @@ abstract class _DatabasePageState extends DatabasePageState {
   bool get isSearching;
   @override
   bool get showLetters;
+  @override
+  bool get showFavourites;
   @override
   String get searchText;
   @override

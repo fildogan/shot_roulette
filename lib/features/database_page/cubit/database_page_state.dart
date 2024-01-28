@@ -11,6 +11,7 @@ class DatabasePageState with _$DatabasePageState {
     ChosenFilter? chosenFilter,
     @Default(false) bool isSearching,
     @Default(false) bool showLetters,
+    @Default(false) bool showFavourites,
     @Default('') String searchText,
   }) = _DatabasePageState;
   const DatabasePageState._();

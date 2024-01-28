@@ -43,8 +43,10 @@ class DatabasePage extends StatelessWidget {
             appBar: AppBar(
               title: Text(localizations.database),
               leading: (state.chosenFilter == null &&
-                      state.showLetters == false &&
-                      state.cocktail == null)
+                          state.showLetters == false &&
+                          state.cocktail == null &&
+                          !state.showCocktails ||
+                      (state.isSearching && state.cocktail == null))
                   ? null
                   : DatabaseBackButton(status: state.status),
               actions: [
@@ -64,7 +66,9 @@ class DatabasePage extends StatelessWidget {
               children: [
                 if (state.showLetters == false &&
                     state.chosenFilter == null &&
-                    state.cocktail == null)
+                    state.cocktail == null &&
+                    !state.showFavourites &&
+                    (!(state.status == Status.loading) || state.isSearching))
                   CocktailSearchBar(
                     textEditingController: textEditingController,
                     state: state,
@@ -207,6 +211,20 @@ class DatabasePage extends StatelessWidget {
                                                       ),
                                                     ],
                                     ),
+                                    if (!state.isSearching &&
+                                        state.chosenFilter == null &&
+                                        !state.showLetters &&
+                                        !state.showCocktails &&
+                                        state.cocktail == null)
+                                      SettingsItem(settingsItems: [
+                                        SettingItemModel(
+                                            title: 'Favourites',
+                                            onTap: () {
+                                              context
+                                                  .read<DatabasePageCubit>()
+                                                  .getFavouriteCocktailList();
+                                            })
+                                      ]),
                                   ],
                                 ),
                               ),

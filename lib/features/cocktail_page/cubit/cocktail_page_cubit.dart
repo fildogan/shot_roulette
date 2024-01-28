@@ -7,6 +7,7 @@ import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/domain/models/rated_cocktail_model.dart';
 import 'package:shot_roulette/domain/models/rating_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
+import 'package:shot_roulette/domain/repositories/favourites_repository.dart';
 import 'package:shot_roulette/domain/repositories/ratings_repository.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -16,11 +17,14 @@ part 'cocktail_page_cubit.freezed.dart';
 @injectable
 class CocktailPageCubit extends Cubit<CocktailPageState> {
   CocktailPageCubit(
-      {required this.cocktailsRepository, required this.ratingsRepository})
+      {required this.cocktailsRepository,
+      required this.ratingsRepository,
+      required this.favouritesRepository})
       : super(CocktailPageState());
 
   final CocktailsRepository cocktailsRepository;
   final RatingsRepository ratingsRepository;
+  final FavouritesRepository favouritesRepository;
 
   Future<void> rollShot(
       SelectedLanguage selectedLanguage, bool show, String? userId) async {
@@ -32,6 +36,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     if (userId != null) {
       hasUserRated = checkIfUserRated(ratings, userId);
     }
+    await checkFavourite(randomCocktail.idDrink ?? '');
     emit(
       state.copyWith(
         cocktail: randomCocktail,
@@ -93,6 +98,15 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     } else {
       return false;
     }
+  }
+
+  Future<void> checkFavourite(String cocktailId) async {
+    bool check =
+        await favouritesRepository.checkFavourite(cocktailId: cocktailId);
+
+    emit(
+      state.copyWith(isFavourite: check),
+    );
   }
 
   Future<void> updateUserRating(double rating, String userId) async {
@@ -166,9 +180,27 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     );
   }
 
+  Future<void> setToFavourite() async {
+    await favouritesRepository.add(cocktailId: state.cocktail?.idDrink ?? '');
+
+    emit(
+      state.copyWith(isFavourite: true),
+    );
+  }
+
+  Future<void> removeFromFavourite() async {
+    await favouritesRepository.remove(
+        cocktailId: state.cocktail?.idDrink ?? '');
+
+    emit(
+      state.copyWith(isFavourite: false),
+    );
+  }
+
   Future<void> loadCocktail(CocktailModel? cocktail, String? userId) async {
     if (cocktail != null) {
       emit(state.copyWith(status: Status.loading));
+      await checkFavourite(cocktail.idDrink ?? '');
 
       final ratings = await getRatingsById(cocktail.idDrink ?? '');
       bool hasUserRated = false;

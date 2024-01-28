@@ -37,10 +37,38 @@ class CocktailRecipeCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Center(
-                      child: Text(
-                    state.cocktail!.strDrink ?? '',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 24),
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        state.cocktail!.strDrink ?? '',
+                        maxLines: 2,
+                        softWrap: true,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            if (state.isFavourite) {
+                              context
+                                  .read<CocktailPageCubit>()
+                                  .removeFromFavourite();
+                            } else {
+                              context
+                                  .read<CocktailPageCubit>()
+                                  .setToFavourite();
+                            }
+                          },
+                          icon: state.isFavourite
+                              ? Icon(
+                                  Icons.star,
+                                  color: Colors.amber.shade300,
+                                )
+                              : const Icon(Icons.star_outline))
+                    ],
                   )),
                 ),
               Center(
