@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
@@ -40,15 +41,19 @@ class CocktailRecipeCard extends StatelessWidget {
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        state.cocktail!.strDrink ?? '',
-                        maxLines: 2,
-                        softWrap: true,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
-                      ),
                       const SizedBox(
-                        width: 8,
+                        width: 28,
+                      ),
+                      Expanded(
+                        child: AutoSizeText(
+                          state.cocktail!.strDrink ?? '',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 2,
+                        ),
                       ),
                       IconButton(
                           onPressed: () {
@@ -67,7 +72,10 @@ class CocktailRecipeCard extends StatelessWidget {
                                   Icons.star,
                                   color: Colors.amber.shade300,
                                 )
-                              : const Icon(Icons.star_outline))
+                              : const Icon(Icons.star_outline)),
+                      const SizedBox(
+                        width: 8,
+                      )
                     ],
                   )),
                 ),
