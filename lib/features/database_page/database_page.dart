@@ -17,9 +17,11 @@ class DatabasePage extends StatelessWidget {
   const DatabasePage({
     super.key,
     required this.rootState,
+    required this.orientation,
   });
 
   final RootState rootState;
+  final Orientation orientation;
 
   @override
   Widget build(BuildContext context) {
@@ -40,28 +42,30 @@ class DatabasePage extends StatelessWidget {
 
           textEditingController.text = searchQuery;
           return Scaffold(
-            appBar: AppBar(
-              title: Text(localizations.database),
-              leading: (state.chosenFilter == null &&
-                          state.showLetters == false &&
-                          state.cocktail == null &&
-                          !state.showCocktails ||
-                      (state.isSearching && state.cocktail == null))
-                  ? null
-                  : DatabaseBackButton(status: state.status),
-              actions: [
-                if (state.isSearching && state.cocktail == null)
-                  TextButton(
-                      onPressed: () {
-                        context
-                            .read<DatabasePageCubit>()
-                            .getCocktailListByName('');
+            appBar: orientation == Orientation.landscape
+                ? null
+                : AppBar(
+                    title: Text(localizations.database),
+                    leading: (state.chosenFilter == null &&
+                                state.showLetters == false &&
+                                state.cocktail == null &&
+                                !state.showCocktails ||
+                            (state.isSearching && state.cocktail == null))
+                        ? null
+                        : DatabaseBackButton(status: state.status),
+                    actions: [
+                      if (state.isSearching && state.cocktail == null)
+                        TextButton(
+                            onPressed: () {
+                              context
+                                  .read<DatabasePageCubit>()
+                                  .getCocktailListByName('');
 
-                        context.read<DatabasePageCubit>().stopSearch();
-                      },
-                      child: Text(localizations.cancel))
-              ],
-            ),
+                              context.read<DatabasePageCubit>().stopSearch();
+                            },
+                            child: Text(localizations.cancel))
+                    ],
+                  ),
             body: Column(
               children: [
                 if (state.showLetters == false &&
