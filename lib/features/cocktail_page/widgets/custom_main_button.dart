@@ -4,22 +4,26 @@ class CustomMainButton extends StatelessWidget {
   const CustomMainButton({
     super.key,
     required this.onPressed,
-    required this.title,
+    this.title,
+    this.widget,
   });
 
   final void Function() onPressed;
-  final String title;
+  final String? title;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100,
+      width: widget != null ? 200 : 100,
       child: ElevatedButton(
           onPressed: onPressed,
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-          )),
+          child: title != null
+              ? Text(
+                  title ?? '',
+                  textAlign: TextAlign.center,
+                )
+              : widget),
     );
   }
 }

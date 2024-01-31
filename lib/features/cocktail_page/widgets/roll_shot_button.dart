@@ -23,7 +23,18 @@ class RolllShotButton extends StatelessWidget {
                 rootState.showEnglishTranslations,
                 rootState.user?.uid);
           },
-          title: state.cocktail == null ? 'Roll Shot' : 'Roll Again',
+          // title: state.cocktail == null ? 'Roll Cocktail' : 'Roll Again',
+          widget: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Roll  '),
+              Image.asset(
+                'assets/images/dice.png',
+                width: 45,
+              ),
+              Text(state.cocktail == null ? '  Cocktail' : '  Again')
+            ],
+          ),
         );
       },
     );
