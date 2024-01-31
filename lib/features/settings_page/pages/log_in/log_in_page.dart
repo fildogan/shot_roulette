@@ -41,6 +41,7 @@ class LogInPage extends StatelessWidget {
             },
             builder: (context, state) {
               return Scaffold(
+                backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
                   leading: ResetSettingPageButton(

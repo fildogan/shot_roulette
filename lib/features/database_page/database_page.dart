@@ -42,9 +42,11 @@ class DatabasePage extends StatelessWidget {
 
           textEditingController.text = searchQuery;
           return Scaffold(
+            backgroundColor: Colors.transparent,
             appBar: orientation == Orientation.landscape
                 ? null
                 : AppBar(
+                    backgroundColor: Colors.transparent,
                     title: Text(localizations.database),
                     leading: (state.chosenFilter == null &&
                                 state.showLetters == false &&

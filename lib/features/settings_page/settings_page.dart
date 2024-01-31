@@ -33,7 +33,9 @@ class SettingsPage extends StatelessWidget {
             return state.settingsMenuPage!;
           } else {
             return Scaffold(
+              backgroundColor: Colors.transparent,
               appBar: AppBar(
+                backgroundColor: Colors.transparent,
                 title: Text(localizations.settings),
               ),
               body: Padding(

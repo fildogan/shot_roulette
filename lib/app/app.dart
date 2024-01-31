@@ -34,8 +34,14 @@ class MyApp extends StatelessWidget {
               Locale('it'), // Italian
             ],
             locale: state.locale,
-            theme: ThemeData.light(useMaterial3: true),
-            darkTheme: ThemeData.dark(useMaterial3: true),
+            theme:
+                // ThemeData.light(useMaterial3: true),
+                ThemeData(
+                    colorScheme: ColorScheme.fromSeed(
+                        seedColor: Colors.orange, brightness: Brightness.dark)),
+            darkTheme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(
+                    seedColor: Colors.brown, brightness: Brightness.dark)),
             themeMode: state.currentTheme,
             home: MainMenuPage(
               state: state,

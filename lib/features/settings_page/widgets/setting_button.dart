@@ -19,7 +19,7 @@ class SettingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      // tileColor: Colors.black26,
+      tileColor: Colors.black54,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         topLeft: buttonPosition == ButtonPosition.top ||

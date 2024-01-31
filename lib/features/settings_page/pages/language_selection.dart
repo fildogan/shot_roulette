@@ -22,6 +22,7 @@ class LanguageSelectionPage extends StatelessWidget {
     return BlocBuilder<RootCubit, RootState>(
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             leading: const ResetSettingPageButton(),

@@ -24,6 +24,7 @@ class CocktailRecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.black87,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(

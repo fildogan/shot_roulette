@@ -17,55 +17,62 @@ class MainMenuPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return state.showStartImage
-        ? const Scaffold(
-            body: Center(
-              child: CircleAvatar(
-                radius: 100,
-                backgroundImage: AssetImage('assets/images/cocktail_image.jpg'),
-              ),
-            ),
+        ? const Image(
+            image: AssetImage('assets/images/papercut_background.jpg'),
+            fit: BoxFit.fill,
           )
         : OrientationBuilder(
             builder: (BuildContext context, Orientation orientation) {
-            return Scaffold(
-              bottomNavigationBar: orientation == Orientation.landscape
-                  ? null
-                  : BottomNavigationBar(
-                      currentIndex: state.pageIndex,
-                      onTap: (newIndex) {
-                        context.read<RootCubit>().changePageIndex(newIndex);
-                      },
-                      items: [
-                        BottomNavigationBarItem(
-                          icon: const Icon(Icons.settings),
-                          label: localizations.settings,
+            return Stack(
+              children: [
+                const Image(
+                  image: AssetImage('assets/images/background_light.jpg'),
+                  fit: BoxFit.fill,
+                ),
+                Scaffold(
+                  backgroundColor: Colors.transparent,
+                  bottomNavigationBar: orientation == Orientation.landscape
+                      ? null
+                      : BottomNavigationBar(
+                          backgroundColor:
+                              const Color.fromARGB(255, 38, 21, 18),
+                          currentIndex: state.pageIndex,
+                          onTap: (newIndex) {
+                            context.read<RootCubit>().changePageIndex(newIndex);
+                          },
+                          items: [
+                            BottomNavigationBarItem(
+                              icon: const Icon(Icons.settings),
+                              label: localizations.settings,
+                            ),
+                            const BottomNavigationBarItem(
+                              icon: Icon(Icons.local_drink),
+                              label: "Roll",
+                            ),
+                            BottomNavigationBarItem(
+                              icon: const Icon(Icons.storage),
+                              label: localizations.database,
+                            ),
+                          ],
                         ),
-                        const BottomNavigationBarItem(
-                          icon: Icon(Icons.local_drink),
-                          label: "Roll",
-                        ),
-                        BottomNavigationBarItem(
-                          icon: const Icon(Icons.storage),
-                          label: localizations.database,
-                        ),
-                      ],
-                    ),
-              body: SafeArea(
-                child: Builder(builder: (context) {
-                  if (state.pageIndex == 0) {
-                    return SettingsPage(rootState: state);
-                  } else if (state.pageIndex == 1) {
-                    return CocktailPage(
-                      rootState: state,
-                    );
-                  } else {
-                    return DatabasePage(
-                      rootState: state,
-                      orientation: orientation,
-                    );
-                  }
-                }),
-              ),
+                  body: SafeArea(
+                    child: Builder(builder: (context) {
+                      if (state.pageIndex == 0) {
+                        return SettingsPage(rootState: state);
+                      } else if (state.pageIndex == 1) {
+                        return CocktailPage(
+                          rootState: state,
+                        );
+                      } else {
+                        return DatabasePage(
+                          rootState: state,
+                          orientation: orientation,
+                        );
+                      }
+                    }),
+                  ),
+                ),
+              ],
             );
           });
   }
