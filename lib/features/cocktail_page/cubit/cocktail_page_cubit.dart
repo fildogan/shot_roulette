@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -50,11 +53,27 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   Future<CocktailModel> chooseRandom(
       SelectedLanguage selectedLanguage, bool show) async {
     if (show == true) {
-      final randomCocktailResponse =
-          await cocktailsRepository.getRandomCocktail();
-      final randomCocktail = (randomCocktailResponse.drinks ?? [])[0];
-
-      return randomCocktail;
+      try {
+        final randomCocktailResponse =
+            await cocktailsRepository.getRandomCocktail();
+        final randomCocktail = (randomCocktailResponse.drinks ?? [])[0];
+        return randomCocktail;
+      } on DioException catch (e) {
+        print(e.message);
+        emit(
+          state.copyWith(status: Status.error, errorMessage: e.message ?? ''),
+        );
+        throw e;
+      } on SocketException catch (e) {
+        // Handle the SocketException here
+        print('SocketException: $e');
+        // You might want to show an error message to the user or take other appropriate actions
+        throw e;
+      } catch (e) {
+        // Catch any other exceptions that were not specifically handled
+        print('Unexpected error: $e');
+        throw e;
+      }
     } else {
       while (true) {
         final randomCocktailResponse =
@@ -73,9 +92,15 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   }
 
   Future<RatedCocktailModel> getRatingsById(String id) async {
-    final RatedCocktailModel ratings =
-        await ratingsRepository.getRatingsById(id);
-    return ratings;
+    try {
+      final RatedCocktailModel ratings =
+          await ratingsRepository.getRatingsById(id);
+      return ratings;
+    } on Exception catch (e) {
+      print(e);
+      throw e;
+      // TODO
+    }
   }
 
   bool checkIfUserRated(RatedCocktailModel ratings, String userId) {

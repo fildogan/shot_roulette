@@ -9,6 +9,7 @@ class CocktailPageState with _$CocktailPageState {
     @Default(false) bool hasUserRated,
     double? userRating,
     @Default(false) bool isFavourite,
+    @Default('') String errorMessage,
   }) = _CocktailPageState;
   const CocktailPageState._();
 

@@ -37,92 +37,98 @@ class CocktailPage extends StatelessWidget {
           return Center(
             child: state.status == Status.loading
                 ? const CircularProgressIndicator()
-                : SafeArea(
-                    child: YoutubePlayerBuilder(
-                        player: YoutubePlayer(
-                          controller: youtubePlayerController,
-                        ),
-                        builder: (context, player) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              if (isDatabase != true &&
-                                  state.cocktail == null &&
-                                  state.status != Status.loading) ...[
-                                const Spacer(
-                                  flex: 2,
-                                ),
-                                DefaultTextStyle(
-                                  style: TextStyle(
-                                    color:
-                                        rootState.currentTheme == ThemeMode.dark
+                : state.status == Status.error
+                    ? Text(state.errorMessage)
+                    : SafeArea(
+                        child: YoutubePlayerBuilder(
+                            player: YoutubePlayer(
+                              controller: youtubePlayerController,
+                            ),
+                            builder: (context, player) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  if (isDatabase != true &&
+                                      state.cocktail == null &&
+                                      state.status != Status.loading) ...[
+                                    const Spacer(
+                                      flex: 2,
+                                    ),
+                                    DefaultTextStyle(
+                                      style: TextStyle(
+                                        color: rootState.currentTheme ==
+                                                ThemeMode.dark
                                             ? Colors.white70
                                             : Colors.black87,
-                                    fontSize: 32.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  child: AnimatedTextKit(
-                                    pause: Duration.zero,
-                                    repeatForever: true,
-                                    animatedTexts: [
-                                      FadeAnimatedText('TAP ME!'),
-                                      FadeAnimatedText('For random beverage'),
-                                    ],
-                                  ),
-                                ),
-                                const Spacer(),
-                                GestureDetector(
-                                  onTap: () {
-                                    context.read<CocktailPageCubit>().rollShot(
-                                        rootState.selectedLanguage,
-                                        rootState.showEnglishTranslations,
-                                        rootState.user?.uid);
-                                  },
-                                  child: Image.asset(
-                                    'assets/images/bartender.png',
-                                    fit: BoxFit.fill,
-                                  ),
-                                )
-                              ] else if (state.cocktail != null)
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10, horizontal: 8),
-                                    child: SizedBox(
-                                      height: double.infinity,
-                                      child: CocktailRecipeCard(
-                                        state: state,
-                                        youtubePlayerController:
-                                            youtubePlayerController,
+                                        fontSize: 32.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      child: AnimatedTextKit(
+                                        pause: Duration.zero,
+                                        repeatForever: true,
+                                        animatedTexts: [
+                                          FadeAnimatedText('TAP ME!'),
+                                          FadeAnimatedText(
+                                              'For random beverage'),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                )
-                              else
-                                const Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: SizedBox(
-                                    height: 100,
-                                    // height: mainContainerHeight,
-                                    width: 150,
-                                    // child: Image.asset(
-                                    //     'assets/images/casino_roulette.png'),
-                                  ),
-                                ),
-                              // Spacer(),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        context
+                                            .read<CocktailPageCubit>()
+                                            .rollShot(
+                                                rootState.selectedLanguage,
+                                                rootState
+                                                    .showEnglishTranslations,
+                                                rootState.user?.uid);
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/bartender.png',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    )
+                                  ] else if (state.cocktail != null)
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 8),
+                                        child: SizedBox(
+                                          height: double.infinity,
+                                          child: CocktailRecipeCard(
+                                            state: state,
+                                            youtubePlayerController:
+                                                youtubePlayerController,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  else
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: SizedBox(
+                                        height: 100,
+                                        // height: mainContainerHeight,
+                                        width: 150,
+                                        // child: Image.asset(
+                                        //     'assets/images/casino_roulette.png'),
+                                      ),
+                                    ),
+                                  // Spacer(),
 
-                              if (isDatabase != true &&
-                                  state.cocktail != null &&
-                                  state.status != Status.loading)
-                                RolllShotButton(state: state),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              // if (state.chosenRecipe != null) const ResetButton()
-                            ],
-                          );
-                        }),
-                  ),
+                                  if (isDatabase != true &&
+                                      state.cocktail != null &&
+                                      state.status != Status.loading)
+                                    RolllShotButton(state: state),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  // if (state.chosenRecipe != null) const ResetButton()
+                                ],
+                              );
+                            }),
+                      ),
           );
         },
       ),
