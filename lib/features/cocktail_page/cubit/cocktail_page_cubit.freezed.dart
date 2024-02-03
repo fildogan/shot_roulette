@@ -23,6 +23,7 @@ mixin _$CocktailPageState {
   double? get userRating => throw _privateConstructorUsedError;
   bool get isFavourite => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  bool get isDatabase => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CocktailPageStateCopyWith<CocktailPageState> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $CocktailPageStateCopyWith<$Res> {
       bool hasUserRated,
       double? userRating,
       bool isFavourite,
-      String errorMessage});
+      String errorMessage,
+      bool isDatabase});
 
   $CocktailModelCopyWith<$Res>? get cocktail;
   $RatedCocktailModelCopyWith<$Res>? get ratings;
@@ -68,6 +70,7 @@ class _$CocktailPageStateCopyWithImpl<$Res, $Val extends CocktailPageState>
     Object? userRating = freezed,
     Object? isFavourite = null,
     Object? errorMessage = null,
+    Object? isDatabase = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -98,6 +101,10 @@ class _$CocktailPageStateCopyWithImpl<$Res, $Val extends CocktailPageState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isDatabase: null == isDatabase
+          ? _value.isDatabase
+          : isDatabase // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -141,7 +148,8 @@ abstract class _$$CocktailPageStateImplCopyWith<$Res>
       bool hasUserRated,
       double? userRating,
       bool isFavourite,
-      String errorMessage});
+      String errorMessage,
+      bool isDatabase});
 
   @override
   $CocktailModelCopyWith<$Res>? get cocktail;
@@ -167,6 +175,7 @@ class __$$CocktailPageStateImplCopyWithImpl<$Res>
     Object? userRating = freezed,
     Object? isFavourite = null,
     Object? errorMessage = null,
+    Object? isDatabase = null,
   }) {
     return _then(_$CocktailPageStateImpl(
       status: null == status
@@ -197,6 +206,10 @@ class __$$CocktailPageStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isDatabase: null == isDatabase
+          ? _value.isDatabase
+          : isDatabase // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -211,7 +224,8 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
       this.hasUserRated = false,
       this.userRating,
       this.isFavourite = false,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.isDatabase = false})
       : super._();
 
   @override
@@ -232,10 +246,13 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final bool isDatabase;
 
   @override
   String toString() {
-    return 'CocktailPageState(status: $status, cocktail: $cocktail, ratings: $ratings, hasUserRated: $hasUserRated, userRating: $userRating, isFavourite: $isFavourite, errorMessage: $errorMessage)';
+    return 'CocktailPageState(status: $status, cocktail: $cocktail, ratings: $ratings, hasUserRated: $hasUserRated, userRating: $userRating, isFavourite: $isFavourite, errorMessage: $errorMessage, isDatabase: $isDatabase)';
   }
 
   @override
@@ -254,12 +271,14 @@ class _$CocktailPageStateImpl extends _CocktailPageState {
             (identical(other.isFavourite, isFavourite) ||
                 other.isFavourite == isFavourite) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isDatabase, isDatabase) ||
+                other.isDatabase == isDatabase));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, cocktail, ratings,
-      hasUserRated, userRating, isFavourite, errorMessage);
+      hasUserRated, userRating, isFavourite, errorMessage, isDatabase);
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +296,8 @@ abstract class _CocktailPageState extends CocktailPageState {
       final bool hasUserRated,
       final double? userRating,
       final bool isFavourite,
-      final String errorMessage}) = _$CocktailPageStateImpl;
+      final String errorMessage,
+      final bool isDatabase}) = _$CocktailPageStateImpl;
   _CocktailPageState._() : super._();
 
   @override
@@ -294,6 +314,8 @@ abstract class _CocktailPageState extends CocktailPageState {
   bool get isFavourite;
   @override
   String get errorMessage;
+  @override
+  bool get isDatabase;
   @override
   @JsonKey(ignore: true)
   _$$CocktailPageStateImplCopyWith<_$CocktailPageStateImpl> get copyWith =>

@@ -22,7 +22,7 @@ class CocktailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<CocktailPageCubit>()
-        ..loadCocktail(cocktail, rootState.user?.uid),
+        ..loadCocktail(cocktail, rootState.user?.uid, isDatabase),
       child: BlocBuilder<CocktailPageCubit, CocktailPageState>(
         builder: (context, state) {
           YoutubePlayerController youtubePlayerController =
@@ -117,7 +117,7 @@ class CocktailPage extends StatelessWidget {
                                     ),
                                   // Spacer(),
 
-                                  if (isDatabase != true &&
+                                  if (state.isDatabase != true &&
                                       state.cocktail != null &&
                                       state.status != Status.loading)
                                     RolllShotButton(state: state),

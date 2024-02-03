@@ -9,6 +9,7 @@ import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_table_he
 import 'package:shot_roulette/features/cocktail_page/widgets/rating_row.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/tags_wrap.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/video_player.dart';
+import 'package:shot_roulette/features/database_page/widgets/back_button.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class CocktailRecipeCard extends StatelessWidget {
@@ -41,6 +42,8 @@ class CocktailRecipeCard extends StatelessWidget {
                       const SizedBox(
                         width: 28,
                       ),
+                      if (state.isDatabase)
+                        DatabaseBackButton(status: state.status),
                       Expanded(
                         child: AutoSizeText(
                           state.cocktail!.strDrink ?? '',

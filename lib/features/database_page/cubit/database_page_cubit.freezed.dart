@@ -26,6 +26,7 @@ mixin _$DatabasePageState {
   bool get showLetters => throw _privateConstructorUsedError;
   bool get showFavourites => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
+  String get filter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DatabasePageStateCopyWith<DatabasePageState> get copyWith =>
@@ -48,7 +49,8 @@ abstract class $DatabasePageStateCopyWith<$Res> {
       bool isSearching,
       bool showLetters,
       bool showFavourites,
-      String searchText});
+      String searchText,
+      String filter});
 
   $CocktailModelCopyWith<$Res>? get cocktail;
 }
@@ -76,6 +78,7 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
     Object? showLetters = null,
     Object? showFavourites = null,
     Object? searchText = null,
+    Object? filter = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -118,6 +121,10 @@ class _$DatabasePageStateCopyWithImpl<$Res, $Val extends DatabasePageState>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -152,7 +159,8 @@ abstract class _$$DatabasePageStateImplCopyWith<$Res>
       bool isSearching,
       bool showLetters,
       bool showFavourites,
-      String searchText});
+      String searchText,
+      String filter});
 
   @override
   $CocktailModelCopyWith<$Res>? get cocktail;
@@ -179,6 +187,7 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
     Object? showLetters = null,
     Object? showFavourites = null,
     Object? searchText = null,
+    Object? filter = null,
   }) {
     return _then(_$DatabasePageStateImpl(
       status: null == status
@@ -221,6 +230,10 @@ class __$$DatabasePageStateImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -238,7 +251,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       this.isSearching = false,
       this.showLetters = false,
       this.showFavourites = false,
-      this.searchText = ''})
+      this.searchText = '',
+      this.filter = ''})
       : _filterList = filterList,
         _cocktailList = cocktailList,
         super._();
@@ -283,10 +297,13 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
   @override
   @JsonKey()
   final String searchText;
+  @override
+  @JsonKey()
+  final String filter;
 
   @override
   String toString() {
-    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, isSearching: $isSearching, showLetters: $showLetters, showFavourites: $showFavourites, searchText: $searchText)';
+    return 'DatabasePageState(status: $status, showCocktails: $showCocktails, filterList: $filterList, cocktailList: $cocktailList, cocktail: $cocktail, chosenFilter: $chosenFilter, isSearching: $isSearching, showLetters: $showLetters, showFavourites: $showFavourites, searchText: $searchText, filter: $filter)';
   }
 
   @override
@@ -312,7 +329,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
             (identical(other.showFavourites, showFavourites) ||
                 other.showFavourites == showFavourites) &&
             (identical(other.searchText, searchText) ||
-                other.searchText == searchText));
+                other.searchText == searchText) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
@@ -327,7 +345,8 @@ class _$DatabasePageStateImpl extends _DatabasePageState {
       isSearching,
       showLetters,
       showFavourites,
-      searchText);
+      searchText,
+      filter);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +367,8 @@ abstract class _DatabasePageState extends DatabasePageState {
       final bool isSearching,
       final bool showLetters,
       final bool showFavourites,
-      final String searchText}) = _$DatabasePageStateImpl;
+      final String searchText,
+      final String filter}) = _$DatabasePageStateImpl;
   _DatabasePageState._() : super._();
 
   @override
@@ -371,6 +391,8 @@ abstract class _DatabasePageState extends DatabasePageState {
   bool get showFavourites;
   @override
   String get searchText;
+  @override
+  String get filter;
   @override
   @JsonKey(ignore: true)
   _$$DatabasePageStateImplCopyWith<_$DatabasePageStateImpl> get copyWith =>

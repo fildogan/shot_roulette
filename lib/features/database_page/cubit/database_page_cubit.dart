@@ -59,7 +59,7 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
   }
 
   Future<void> getCocktailListFilter(String filter) async {
-    emit(state.copyWith(status: Status.loading));
+    emit(state.copyWith(status: Status.loading, filter: filter));
 
     final cocktailListResponse =
         await cocktailsRepository.getCocktailListFilter(
@@ -74,7 +74,7 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
   }
 
   Future<void> getCocktailListByLetter(String letter) async {
-    emit(state.copyWith(status: Status.loading));
+    emit(state.copyWith(status: Status.loading, filter: letter));
 
     final cocktailListResponse =
         await cocktailsRepository.getCocktailListByLetter(letter);
@@ -168,6 +168,7 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
         showCocktails: false,
         showFavourites: false,
         cocktailList: [],
+        filter: '',
         status: Status.success,
       ));
       return;

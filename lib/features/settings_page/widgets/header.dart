@@ -21,7 +21,11 @@ class Header extends StatelessWidget {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Text(text ?? 'Error: null text'),
+                child: Text(
+                  text ?? 'Error: null text',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800, fontSize: 16),
+                ),
               ),
               const SizedBox(height: 10),
             ],

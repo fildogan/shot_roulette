@@ -63,16 +63,16 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         emit(
           state.copyWith(status: Status.error, errorMessage: e.message ?? ''),
         );
-        throw e;
+        rethrow;
       } on SocketException catch (e) {
         // Handle the SocketException here
         print('SocketException: $e');
         // You might want to show an error message to the user or take other appropriate actions
-        throw e;
+        rethrow;
       } catch (e) {
         // Catch any other exceptions that were not specifically handled
         print('Unexpected error: $e');
-        throw e;
+        rethrow;
       }
     } else {
       while (true) {
@@ -98,7 +98,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
       return ratings;
     } on Exception catch (e) {
       print(e);
-      throw e;
+      rethrow;
       // TODO
     }
   }
@@ -222,7 +222,8 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     );
   }
 
-  Future<void> loadCocktail(CocktailModel? cocktail, String? userId) async {
+  Future<void> loadCocktail(
+      CocktailModel? cocktail, String? userId, bool? isDatabase) async {
     if (cocktail != null) {
       emit(state.copyWith(status: Status.loading));
       await checkFavourite(cocktail.idDrink ?? '');
@@ -234,6 +235,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
       }
       emit(
         state.copyWith(
+          isDatabase: isDatabase ?? false,
           cocktail: cocktail,
           ratings: ratings,
           status: Status.success,

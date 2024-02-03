@@ -13,6 +13,7 @@ class DatabasePageState with _$DatabasePageState {
     @Default(false) bool showLetters,
     @Default(false) bool showFavourites,
     @Default('') String searchText,
+    @Default('') String filter,
   }) = _DatabasePageState;
   const DatabasePageState._();
 
@@ -50,6 +51,58 @@ class DatabasePageState with _$DatabasePageState {
         return myList;
       case null:
         return filterList;
+    }
+  }
+
+  String get appBarDatabaseTitle {
+    if (cocktail != null) {
+      if (showFavourites) {
+        return 'Favourite: ${cocktail?.strDrink}';
+      } else {
+        return cocktail?.strDrink ?? '';
+      }
+    } else if (showCocktails == true) {
+      if (chosenFilter != null) {
+        switch (chosenFilter) {
+          case ChosenFilter.c:
+            return 'Category: $filter';
+          case ChosenFilter.g:
+            return 'Glass: $filter';
+          case ChosenFilter.i:
+            return 'Ingredient: $filter';
+          case ChosenFilter.a:
+            return 'Alcoholic type: $filter';
+          case null:
+            return 'filterList';
+        }
+      } else if (showLetters == true) {
+        return 'Letter: ${filter.toUpperCase()}';
+      } else if (showFavourites == true) {
+        return 'Favourites';
+      } else if (isSearching) {
+        return 'Search Cocktail';
+      } else {
+        return '';
+      }
+    } else if (chosenFilter != null) {
+      switch (chosenFilter) {
+        case ChosenFilter.c:
+          return 'Categories';
+        case ChosenFilter.g:
+          return 'Glass types';
+        case ChosenFilter.i:
+          return 'Ingredients';
+        case ChosenFilter.a:
+          return 'Alcoholic types';
+        case null:
+          return 'filterList';
+      }
+    } else if (showLetters == true) {
+      return 'Letters';
+    } else if (isSearching) {
+      return 'Search Cocktail';
+    } else {
+      return 'Database';
     }
   }
 }

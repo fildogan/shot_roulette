@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/database_page/cubit/database_page_cubit.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
 class CocktailSearchBar extends StatelessWidget {
   const CocktailSearchBar(
@@ -19,18 +21,9 @@ class CocktailSearchBar extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        onTap: () {
-          context.read<DatabasePageCubit>().startSearch();
-        },
-        controller: textEditingController,
-        onChanged: (value) {
-          context.read<DatabasePageCubit>().getCocktailListByName(value);
-        },
-        decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          labelText: '  ${localizations.search}',
-          suffixIcon: state.searchText.isEmpty
+      child: SettingsItem(settingsItems: [
+        SettingItemModel(
+          trailing: state.searchText.isEmpty
               ? const Icon(
                   Icons.search,
                 )
@@ -42,9 +35,30 @@ class CocktailSearchBar extends StatelessWidget {
                     Icons.backspace,
                   ),
                 ),
-          prefix: const Text('  '),
+          onTap: null,
+          title: '',
+          titleWidget: TextField(
+            style: (const TextStyle(
+              fontWeight: FontWeight.w700,
+            )),
+            onTap: () {
+              context.read<DatabasePageCubit>().startSearch();
+            },
+            controller: textEditingController,
+            onChanged: (value) {
+              context.read<DatabasePageCubit>().getCocktailListByName(value);
+            },
+            decoration: InputDecoration(
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              labelText: '  ${localizations.search}',
+              prefix: const Text('  '),
+              labelStyle: const TextStyle(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
         ),
-      ),
+      ]),
     );
   }
 }
