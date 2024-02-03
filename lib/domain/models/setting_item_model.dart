@@ -10,6 +10,7 @@ class SettingItemModel with _$SettingItemModel {
   const factory SettingItemModel({
     required String title,
     Widget? trailing,
+    Widget? titleWidget,
     void Function()? onTap,
   }) = _SettingItemModel;
   const SettingItemModel._();

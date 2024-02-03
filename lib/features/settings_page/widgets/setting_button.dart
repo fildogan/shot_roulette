@@ -8,6 +8,7 @@ class SettingButton extends StatelessWidget {
     required this.onTap,
     required this.title,
     required this.trailing,
+    this.titleWidget,
     super.key,
   });
 
@@ -15,6 +16,7 @@ class SettingButton extends StatelessWidget {
   final ButtonPosition buttonPosition;
   final String title;
   final Widget trailing;
+  final Widget? titleWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,11 @@ class SettingButton extends StatelessWidget {
             : const Radius.circular(0),
       )),
       onTap: onTap,
-      title: Text(title),
+      title: titleWidget ??
+          Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
       trailing: trailing,
     );
   }

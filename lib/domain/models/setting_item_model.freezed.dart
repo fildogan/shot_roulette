@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingItemModel {
   String get title => throw _privateConstructorUsedError;
   Widget? get trailing => throw _privateConstructorUsedError;
+  Widget? get titleWidget => throw _privateConstructorUsedError;
   void Function()? get onTap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,11 @@ abstract class $SettingItemModelCopyWith<$Res> {
           SettingItemModel value, $Res Function(SettingItemModel) then) =
       _$SettingItemModelCopyWithImpl<$Res, SettingItemModel>;
   @useResult
-  $Res call({String title, Widget? trailing, void Function()? onTap});
+  $Res call(
+      {String title,
+      Widget? trailing,
+      Widget? titleWidget,
+      void Function()? onTap});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$SettingItemModelCopyWithImpl<$Res, $Val extends SettingItemModel>
   $Res call({
     Object? title = null,
     Object? trailing = freezed,
+    Object? titleWidget = freezed,
     Object? onTap = freezed,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +65,10 @@ class _$SettingItemModelCopyWithImpl<$Res, $Val extends SettingItemModel>
       trailing: freezed == trailing
           ? _value.trailing
           : trailing // ignore: cast_nullable_to_non_nullable
+              as Widget?,
+      titleWidget: freezed == titleWidget
+          ? _value.titleWidget
+          : titleWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
       onTap: freezed == onTap
           ? _value.onTap
@@ -76,7 +86,11 @@ abstract class _$$SettingItemModelImplCopyWith<$Res>
       __$$SettingItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, Widget? trailing, void Function()? onTap});
+  $Res call(
+      {String title,
+      Widget? trailing,
+      Widget? titleWidget,
+      void Function()? onTap});
 }
 
 /// @nodoc
@@ -92,6 +106,7 @@ class __$$SettingItemModelImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? trailing = freezed,
+    Object? titleWidget = freezed,
     Object? onTap = freezed,
   }) {
     return _then(_$SettingItemModelImpl(
@@ -102,6 +117,10 @@ class __$$SettingItemModelImplCopyWithImpl<$Res>
       trailing: freezed == trailing
           ? _value.trailing
           : trailing // ignore: cast_nullable_to_non_nullable
+              as Widget?,
+      titleWidget: freezed == titleWidget
+          ? _value.titleWidget
+          : titleWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
       onTap: freezed == onTap
           ? _value.onTap
@@ -114,7 +133,8 @@ class __$$SettingItemModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SettingItemModelImpl extends _SettingItemModel {
-  const _$SettingItemModelImpl({required this.title, this.trailing, this.onTap})
+  const _$SettingItemModelImpl(
+      {required this.title, this.trailing, this.titleWidget, this.onTap})
       : super._();
 
   @override
@@ -122,11 +142,13 @@ class _$SettingItemModelImpl extends _SettingItemModel {
   @override
   final Widget? trailing;
   @override
+  final Widget? titleWidget;
+  @override
   final void Function()? onTap;
 
   @override
   String toString() {
-    return 'SettingItemModel(title: $title, trailing: $trailing, onTap: $onTap)';
+    return 'SettingItemModel(title: $title, trailing: $trailing, titleWidget: $titleWidget, onTap: $onTap)';
   }
 
   @override
@@ -137,11 +159,14 @@ class _$SettingItemModelImpl extends _SettingItemModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.trailing, trailing) ||
                 other.trailing == trailing) &&
+            (identical(other.titleWidget, titleWidget) ||
+                other.titleWidget == titleWidget) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, trailing, onTap);
+  int get hashCode =>
+      Object.hash(runtimeType, title, trailing, titleWidget, onTap);
 
   @JsonKey(ignore: true)
   @override
@@ -155,6 +180,7 @@ abstract class _SettingItemModel extends SettingItemModel {
   const factory _SettingItemModel(
       {required final String title,
       final Widget? trailing,
+      final Widget? titleWidget,
       final void Function()? onTap}) = _$SettingItemModelImpl;
   const _SettingItemModel._() : super._();
 
@@ -162,6 +188,8 @@ abstract class _SettingItemModel extends SettingItemModel {
   String get title;
   @override
   Widget? get trailing;
+  @override
+  Widget? get titleWidget;
   @override
   void Function()? get onTap;
   @override

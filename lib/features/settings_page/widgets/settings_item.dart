@@ -25,7 +25,7 @@ class SettingsItem extends StatelessWidget {
         Header(header),
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Colors.black26),
+              borderRadius: BorderRadius.circular(10), color: Colors.black45),
           child: Column(
             children: [
               for (int i = 0;
@@ -34,6 +34,7 @@ class SettingsItem extends StatelessWidget {
                   // final item in settingsItems
                   ) ...[
                 SettingButton(
+                  titleWidget: settingsItems[i].titleWidget,
                   title: settingsItems[i].title,
                   buttonPosition: settingsItems.length == 1
                       ? ButtonPosition.single
