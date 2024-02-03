@@ -52,13 +52,13 @@ class CocktailPage extends StatelessWidget {
                                       state.cocktail == null &&
                                       state.status != Status.loading) ...[
                                     const Spacer(
-                                      flex: 2,
+                                      flex: 4,
                                     ),
                                     DefaultTextStyle(
                                       style: TextStyle(
                                         color: rootState.currentTheme ==
                                                 ThemeMode.dark
-                                            ? Colors.white70
+                                            ? Colors.blueAccent
                                             : Colors.black87,
                                         fontSize: 32.0,
                                         fontWeight: FontWeight.bold,
@@ -69,11 +69,11 @@ class CocktailPage extends StatelessWidget {
                                         animatedTexts: [
                                           FadeAnimatedText('TAP ME!'),
                                           FadeAnimatedText(
-                                              'For random beverage'),
+                                              'For random cocktail'),
                                         ],
                                       ),
                                     ),
-                                    const Spacer(),
+                                    // const Spacer(),
                                     GestureDetector(
                                       onTap: () {
                                         context

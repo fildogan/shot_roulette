@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/core/enums.dart';
+import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
@@ -24,7 +25,7 @@ class SettingsPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return BlocProvider(
-      create: (context) => SettingsPageCubit(),
+      create: (context) => getIt<SettingsPageCubit>(),
       child: BlocBuilder<SettingsPageCubit, SettingsPageState>(
         builder: (context, state) {
           if (state.status == Status.loading) {

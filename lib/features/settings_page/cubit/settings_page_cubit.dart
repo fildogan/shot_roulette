@@ -1,21 +1,25 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
+import 'package:shot_roulette/domain/repositories/auth_repository.dart';
 
 part 'settings_page_state.dart';
 part 'settings_page_cubit.freezed.dart';
 
 @injectable
 class SettingsPageCubit extends Cubit<SettingsPageState> {
-  SettingsPageCubit() : super(SettingsPageState());
+  SettingsPageCubit({
+    required this.authRepository,
+  }) : super(SettingsPageState());
+
+  final AuthRepository authRepository;
 
   Future<void> signOut() async {
     emit(state.copyWith(status: Status.loading));
-    FirebaseAuth.instance.signOut();
+    authRepository.signOut();
     emit(state.copyWith(status: Status.success));
   }
 

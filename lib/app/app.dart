@@ -5,8 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shot_roulette/app/core/config.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/app/injection_container.dart';
-import 'package:shot_roulette/features/main_menu_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shot_roulette/features/auth_gate/auth_gate.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<RootCubit>()..start(),
       child: BlocBuilder<RootCubit, RootState>(
-        builder: (context, state) {
+        builder: (context, rootState) {
           return MaterialApp(
             debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
             title: 'Cocktail Hub',
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
               Locale('fr'), // French
               Locale('it'), // Italian
             ],
-            locale: state.locale,
+            locale: rootState.locale,
             theme:
                 // ThemeData.light(useMaterial3: true),
                 ThemeData(
@@ -42,10 +42,8 @@ class MyApp extends StatelessWidget {
             darkTheme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
                     seedColor: Colors.brown, brightness: Brightness.dark)),
-            themeMode: state.currentTheme,
-            home: MainMenuPage(
-              state: state,
-            ),
+            themeMode: rootState.currentTheme,
+            home: AuthGate(rootState: rootState),
           );
         },
       ),

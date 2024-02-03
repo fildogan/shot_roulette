@@ -8,7 +8,8 @@ class FavouritesRemoteDataSource {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     final List<String> favouritesIdList = [];
     if (userID == null) {
-      throw Exception('User is not logged in');
+      // throw Exception('User is not logged in');
+      return [];
     }
     final favourites = await FirebaseFirestore.instance
         .collection('users')
@@ -28,7 +29,8 @@ class FavouritesRemoteDataSource {
   }) async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
-      throw Exception('User is not logged in');
+      // throw Exception('User is not logged in');
+      return;
     }
     await FirebaseFirestore.instance
         .collection('users')
@@ -43,7 +45,8 @@ class FavouritesRemoteDataSource {
   }) async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
-      throw Exception('User is not logged in');
+      // throw Exception('User is not logged in');
+      return;
     }
     await FirebaseFirestore.instance
         .collection('users')
@@ -58,7 +61,8 @@ class FavouritesRemoteDataSource {
   }) async {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
-      throw Exception('User is not logged in');
+      // throw Exception('User is not logged in');
+      return false;
     }
     DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
         .collection('users')

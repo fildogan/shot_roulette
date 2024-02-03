@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RootState {
+  Status get status => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
@@ -35,7 +36,8 @@ abstract class $RootStateCopyWith<$Res> {
       _$RootStateCopyWithImpl<$Res, RootState>;
   @useResult
   $Res call(
-      {int pageIndex,
+      {Status status,
+      int pageIndex,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
@@ -57,6 +59,7 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? pageIndex = null,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
@@ -66,6 +69,10 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
     Object? showStartImage = null,
   }) {
     return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
@@ -107,7 +114,8 @@ abstract class _$$RootStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int pageIndex,
+      {Status status,
+      int pageIndex,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
@@ -127,6 +135,7 @@ class __$$RootStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? pageIndex = null,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
@@ -136,6 +145,10 @@ class __$$RootStateImplCopyWithImpl<$Res>
     Object? showStartImage = null,
   }) {
     return _then(_$RootStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
@@ -172,7 +185,8 @@ class __$$RootStateImplCopyWithImpl<$Res>
 
 class _$RootStateImpl extends _RootState {
   _$RootStateImpl(
-      {this.pageIndex = 1,
+      {this.status = Status.initial,
+      this.pageIndex = 1,
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
@@ -181,6 +195,9 @@ class _$RootStateImpl extends _RootState {
       this.showStartImage = true})
       : super._();
 
+  @override
+  @JsonKey()
+  final Status status;
   @override
   @JsonKey()
   final int pageIndex;
@@ -204,7 +221,7 @@ class _$RootStateImpl extends _RootState {
 
   @override
   String toString() {
-    return 'RootState(pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, showEnglishTranslations: $showEnglishTranslations, errorMessage: $errorMessage, showStartImage: $showStartImage)';
+    return 'RootState(status: $status, pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, showEnglishTranslations: $showEnglishTranslations, errorMessage: $errorMessage, showStartImage: $showStartImage)';
   }
 
   @override
@@ -212,6 +229,7 @@ class _$RootStateImpl extends _RootState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RootStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
             (identical(other.selectedLanguage, selectedLanguage) ||
@@ -231,6 +249,7 @@ class _$RootStateImpl extends _RootState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      status,
       pageIndex,
       selectedLanguage,
       selectedTheme,
@@ -248,7 +267,8 @@ class _$RootStateImpl extends _RootState {
 
 abstract class _RootState extends RootState {
   factory _RootState(
-      {final int pageIndex,
+      {final Status status,
+      final int pageIndex,
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
@@ -257,6 +277,8 @@ abstract class _RootState extends RootState {
       final bool showStartImage}) = _$RootStateImpl;
   _RootState._() : super._();
 
+  @override
+  Status get status;
   @override
   int get pageIndex;
   @override

@@ -8,15 +8,15 @@ import 'package:shot_roulette/features/settings_page/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainMenuPage extends StatelessWidget {
-  const MainMenuPage({super.key, required this.state});
+  const MainMenuPage({super.key, required this.rootState});
 
-  final RootState state;
+  final RootState rootState;
 
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
 
-    return state.showStartImage
+    return rootState.showStartImage
         ? const Image(
             image: AssetImage('assets/images/papercut_background.jpg'),
             fit: BoxFit.fill,
@@ -36,7 +36,7 @@ class MainMenuPage extends StatelessWidget {
                       : BottomNavigationBar(
                           backgroundColor:
                               const Color.fromARGB(255, 38, 21, 18),
-                          currentIndex: state.pageIndex,
+                          currentIndex: rootState.pageIndex,
                           onTap: (newIndex) {
                             context.read<RootCubit>().changePageIndex(newIndex);
                           },
@@ -57,15 +57,15 @@ class MainMenuPage extends StatelessWidget {
                         ),
                   body: SafeArea(
                     child: Builder(builder: (context) {
-                      if (state.pageIndex == 0) {
-                        return SettingsPage(rootState: state);
-                      } else if (state.pageIndex == 1) {
+                      if (rootState.pageIndex == 0) {
+                        return SettingsPage(rootState: rootState);
+                      } else if (rootState.pageIndex == 1) {
                         return CocktailPage(
-                          rootState: state,
+                          rootState: rootState,
                         );
                       } else {
                         return DatabasePage(
-                          rootState: state,
+                          rootState: rootState,
                           orientation: orientation,
                         );
                       }

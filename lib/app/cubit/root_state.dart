@@ -3,6 +3,7 @@ part of 'root_cubit.dart';
 @freezed
 class RootState with _$RootState {
   factory RootState({
+    @Default(Status.initial) Status status,
     @Default(1) int pageIndex,
     @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,

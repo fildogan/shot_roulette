@@ -1,16 +1,18 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
+import 'package:shot_roulette/domain/repositories/auth_repository.dart';
 
 part 'log_in_state.dart';
 part 'log_in_cubit.freezed.dart';
 
 @injectable
 class LogInCubit extends Cubit<LogInState> {
-  LogInCubit() : super(LogInState());
+  LogInCubit({required this.authRepository}) : super(LogInState());
+
+  final AuthRepository authRepository;
 
   Future<void> changeEmail({
     required String value,
@@ -28,16 +30,22 @@ class LogInCubit extends Cubit<LogInState> {
     try {
       emit(state.copyWith(authStatus: Status.loading));
 
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await authRepository.createUserWithEmailAndPassword(
         email: state.emailValue,
         password: state.passwordValue,
       );
       emit(state.copyWith(authStatus: Status.success));
-    } on FirebaseAuthException catch (e) {
-      emit(state.copyWith(authError: e.toString()));
-      print(e);
     } on Exception catch (e) {
-      emit(state.copyWith(authError: e.toString()));
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
+      print(e);
+    } catch (e) {
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
       print(e);
     }
   }
@@ -46,16 +54,22 @@ class LogInCubit extends Cubit<LogInState> {
     try {
       emit(state.copyWith(authStatus: Status.loading));
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await authRepository.signInWithEmailAndPassword(
         email: state.emailValue,
         password: state.passwordValue,
       );
       emit(state.copyWith(authStatus: Status.success));
-    } on FirebaseAuthException catch (e) {
-      emit(state.copyWith(authError: e.toString()));
-      print(e);
     } on Exception catch (e) {
-      emit(state.copyWith(authError: e.toString()));
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
+      print(e);
+    } catch (e) {
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
       print(e);
     }
   }

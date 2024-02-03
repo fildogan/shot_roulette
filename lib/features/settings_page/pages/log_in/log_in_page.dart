@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
+import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart';
@@ -26,7 +27,7 @@ class LogInPage extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return BlocProvider(
-      create: (context) => LogInCubit(),
+      create: (context) => getIt<LogInCubit>(),
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           return BlocConsumer<LogInCubit, LogInState>(

@@ -8,19 +8,22 @@ import 'package:injectable/injectable.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/preferences_service.dart';
 import 'package:shot_roulette/domain/models/settings_model.dart';
+import 'package:shot_roulette/domain/repositories/auth_repository.dart';
 
 part 'root_state.dart';
 part 'root_cubit.freezed.dart';
 
 @injectable
 class RootCubit extends Cubit<RootState> {
-  RootCubit() : super(RootState());
+  RootCubit({required this.authRepository}) : super(RootState());
 
-  StreamSubscription? _streamSubscription;
+  final AuthRepository authRepository;
+
+  // StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
     getSettings();
-    userSubscription();
+    startUserSubscription();
     await Future.delayed(const Duration(seconds: 2));
 
     emit(
@@ -121,24 +124,43 @@ class RootCubit extends Cubit<RootState> {
 
   // ******************************** user ********************************
 
-  Future<void> userSubscription() async {
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
-      emit(state.copyWith(
-        user: user,
-      ));
-    })
-          ..onError((error) {
-            emit(state.copyWith(
-              user: null,
-              errorMessage: error.toString(),
-            ));
-          });
+  // Future<void> userSubscription() async {
+  //   _streamSubscription =
+  //       FirebaseAuth.instance.authStateChanges().listen((user) {
+  //     emit(state.copyWith(
+  //       user: user,
+  //     ));
+  //   })
+  //         ..onError((error) {
+  //           emit(state.copyWith(
+  //             user: null,
+  //             errorMessage: error.toString(),
+  //           ));
+  //         });
+  // }
+
+  Future<void> startUserSubscription() async {
+    authRepository.startUserSubscription(
+      (user) {
+        emit(state.copyWith(user: user));
+      },
+      (error) {
+        emit(state.copyWith(
+          user: null,
+          errorMessage: error.toString(),
+        ));
+      },
+    );
+  }
+
+  Future<void> cancelUserSubscription() async {
+    authRepository.cancelUserSubscription();
   }
 
   @override
   Future<void> close() {
-    _streamSubscription?.cancel();
+    cancelUserSubscription();
+    // _streamSubscription?.cancel();
     return super.close();
   }
 }
