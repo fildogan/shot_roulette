@@ -85,7 +85,7 @@ class CocktailPage extends StatelessWidget {
                                                 rootState.user?.uid);
                                       },
                                       child: Image.asset(
-                                        'assets/images/bartender.png',
+                                        'assets/images/bartender_2.png',
                                         fit: BoxFit.fill,
                                       ),
                                     )
