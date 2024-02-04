@@ -60,6 +60,22 @@ class AuthRepository {
     }
   }
 
+  Future<void> linkWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      await authRemoteDataSource.linkWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on Exception catch (e) {
+      print(e);
+      rethrow;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<void> startUserSubscription(
       Function(User?) onData, Function(Object?) onError) async {
     authRemoteDataSource.startUserSubscription(onData, onError);

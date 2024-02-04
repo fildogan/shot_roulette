@@ -68,9 +68,18 @@ class LogInPage extends StatelessWidget {
                                 CustomMainButton(
                                     onPressed: () {
                                       isCreatingAccount
-                                          ? context
-                                              .read<LogInCubit>()
-                                              .createUserWithEmailAndPassword()
+                                          ? (rootState.user == null
+                                              ? context
+                                                  .read<LogInCubit>()
+                                                  .createUserWithEmailAndPassword()
+                                              : context
+                                                  .read<LogInCubit>()
+                                                  .linkWithEmailAndPassword()
+                                                  .then((value) {
+                                                  context
+                                                      .read<RootCubit>()
+                                                      .startUserSubscription();
+                                                }))
                                           : context
                                               .read<LogInCubit>()
                                               .signInWithEmailAndPassword();
