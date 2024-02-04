@@ -9,10 +9,7 @@ import 'package:shot_roulette/features/auth/pages/auth_log_in.dart';
 class AuthPage extends StatelessWidget {
   const AuthPage({
     super.key,
-    // required this.rootState,
   });
-
-  // final RootState rootState;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +34,11 @@ class AuthPage extends StatelessWidget {
                       );
                     case AuthScreen.logIn:
                       return AuthLogInPage(
-                        isCreatingAccount: false,
+                        state: state,
                       );
                     case AuthScreen.signUp:
                       return AuthLogInPage(
-                        isCreatingAccount: true,
+                        state: state,
                       );
                   }
                 }),

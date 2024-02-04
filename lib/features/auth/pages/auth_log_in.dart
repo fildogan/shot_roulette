@@ -12,16 +12,16 @@ import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.
 class AuthLogInPage extends StatelessWidget {
   const AuthLogInPage({
     super.key,
-    // required this.rootState,
-    required this.isCreatingAccount,
+    required this.state,
   });
 
-  // final RootState rootState;
-  final bool isCreatingAccount;
+  final AuthPageState state;
 
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final bool isCreatingAccount =
+        (state.authScreen == AuthScreen.signUp ? true : false);
 
     return BlocBuilder<AuthPageCubit, AuthPageState>(
       builder: (context, state) {
