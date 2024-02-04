@@ -75,21 +75,36 @@ class AuthPageCubit extends Cubit<AuthPageState> {
     }
   }
 
-  Future<void> goLogInPage({
-    required String value,
-  }) async {
+  Future<void> signInAnonymously() async {
+    try {
+      emit(state.copyWith(authStatus: Status.loading));
+
+      await authRepository.signInAnonymously();
+      emit(state.copyWith(authStatus: Status.success));
+    } on Exception catch (e) {
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
+      print(e);
+    } catch (e) {
+      emit(state.copyWith(
+        authError: e.toString(),
+        authStatus: Status.error,
+      ));
+      print(e);
+    }
+  }
+
+  Future<void> goLogInPage() async {
     emit(state.copyWith(authScreen: AuthScreen.logIn));
   }
 
-  Future<void> goSignUp({
-    required String value,
-  }) async {
+  Future<void> goSignUp() async {
     emit(state.copyWith(authScreen: AuthScreen.signUp));
   }
 
-  Future<void> goHome({
-    required String value,
-  }) async {
+  Future<void> goHome() async {
     emit(state.copyWith(authScreen: AuthScreen.home));
   }
 }

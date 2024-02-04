@@ -48,6 +48,18 @@ class AuthRepository {
     }
   }
 
+  Future<void> signInAnonymously() async {
+    try {
+      await authRemoteDataSource.signInAnonymously();
+    } on Exception catch (e) {
+      print(e);
+      rethrow;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<void> startUserSubscription(
       Function(User?) onData, Function(Object?) onError) async {
     authRemoteDataSource.startUserSubscription(onData, onError);

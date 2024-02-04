@@ -66,6 +66,21 @@ class AuthRemoteDataSource {
     }
   }
 
+  Future<void> signInAnonymously() async {
+    try {
+      await FirebaseAuth.instance.signInAnonymously();
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case "operation-not-allowed":
+          print("Anonymous auth hasn't been enabled for this project.");
+          rethrow;
+        default:
+          print("Unknown error.");
+          rethrow;
+      }
+    }
+  }
+
   Future<void> startUserSubscription(
       Function(User?) onData, Function(Object?) onError) async {
     firebaseAuthService.startUserSubscription(onData, onError);
