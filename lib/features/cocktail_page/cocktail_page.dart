@@ -97,6 +97,7 @@ class CocktailPage extends StatelessWidget {
                                         child: SizedBox(
                                           height: double.infinity,
                                           child: CocktailRecipeCard(
+                                            rootState: rootState,
                                             state: state,
                                             youtubePlayerController:
                                                 youtubePlayerController,

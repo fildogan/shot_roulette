@@ -7,6 +7,7 @@ import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_amount.d
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_name.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_table_header.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/rating_row.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/sign_in_alert_dialog.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/tags_wrap.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/video_player.dart';
 import 'package:shot_roulette/features/database_page/widgets/back_button.dart';
@@ -16,10 +17,13 @@ class CocktailRecipeCard extends StatelessWidget {
   const CocktailRecipeCard({
     super.key,
     required this.state,
+    required this.rootState,
     required this.youtubePlayerController,
   });
 
   final CocktailPageState state;
+  final RootState rootState;
+
   final YoutubePlayerController youtubePlayerController;
 
   @override
@@ -57,7 +61,13 @@ class CocktailRecipeCard extends StatelessWidget {
                       ),
                       IconButton(
                           onPressed: () {
-                            if (state.isFavourite) {
+                            if (rootState.user?.isAnonymous ?? true) {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const SignInAlertDialog();
+                                  });
+                            } else if (state.isFavourite) {
                               context
                                   .read<CocktailPageCubit>()
                                   .removeFromFavourite();

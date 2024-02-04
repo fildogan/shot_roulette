@@ -5,6 +5,7 @@ import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/cocktail_page.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/sign_in_alert_dialog.dart';
 import 'package:shot_roulette/features/database_page/cubit/database_page_cubit.dart';
 import 'package:shot_roulette/features/database_page/widgets/back_button.dart';
 import 'package:shot_roulette/features/database_page/widgets/cocktail_search_bar.dart';
@@ -227,9 +228,20 @@ class DatabasePage extends StatelessWidget {
                                         SettingItemModel(
                                             title: 'Favourites',
                                             onTap: () {
-                                              context
-                                                  .read<DatabasePageCubit>()
-                                                  .getFavouriteCocktailList();
+                                              if ((rootState
+                                                      .user?.isAnonymous ??
+                                                  false)) {
+                                                showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return const SignInAlertDialog();
+                                                    });
+                                              } else {
+                                                context
+                                                    .read<DatabasePageCubit>()
+                                                    .getFavouriteCocktailList();
+                                              }
                                             })
                                       ]),
                                   ],
