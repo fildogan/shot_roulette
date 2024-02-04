@@ -84,4 +84,8 @@ class AuthRepository {
   Future<void> cancelUserSubscription() async {
     authRemoteDataSource.cancelUserSubscription();
   }
+
+  Future<void> deleteUser() async {
+    authRemoteDataSource.deleteUser();
+  }
 }

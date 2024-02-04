@@ -85,17 +85,17 @@ class SettingsPage extends StatelessWidget {
                       if (rootState.user == null ||
                           (rootState.user?.isAnonymous ?? false))
                         SettingsItem(settingsItems: [
-                          SettingItemModel(
-                            onTap: () {
-                              context
-                                  .read<SettingsPageCubit>()
-                                  .changeSettingsPage(LogInPage(
-                                    rootState: rootState,
-                                    isCreatingAccount: false,
-                                  ));
-                            },
-                            title: localizations.logIn,
-                          ),
+                          // SettingItemModel(
+                          //   onTap: () {
+                          //     context
+                          //         .read<SettingsPageCubit>()
+                          //         .changeSettingsPage(LogInPage(
+                          //           rootState: rootState,
+                          //           isCreatingAccount: false,
+                          //         ));
+                          //   },
+                          //   title: localizations.logIn,
+                          // ),
                           SettingItemModel(
                             onTap: () {
                               context
@@ -106,6 +106,12 @@ class SettingsPage extends StatelessWidget {
                                   ));
                             },
                             title: localizations.signUp,
+                          ),
+                          SettingItemModel(
+                            onTap: () {
+                              context.read<SettingsPageCubit>().deleteUser();
+                            },
+                            title: localizations.logOut,
                           ),
                         ], header: localizations.account),
 

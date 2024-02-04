@@ -119,4 +119,8 @@ class AuthRemoteDataSource {
   Future<void> cancelUserSubscription() async {
     firebaseAuthService.cancelUserSubscription();
   }
+
+  Future<void> deleteUser() async {
+    FirebaseAuth.instance.currentUser?.delete();
+  }
 }

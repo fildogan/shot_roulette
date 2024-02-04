@@ -23,6 +23,12 @@ class SettingsPageCubit extends Cubit<SettingsPageState> {
     emit(state.copyWith(status: Status.success));
   }
 
+  Future<void> deleteUser() async {
+    emit(state.copyWith(status: Status.loading));
+    authRepository.deleteUser();
+    emit(state.copyWith(status: Status.success));
+  }
+
   // ******************************** navigate settings page ********************************
 
   Future<void> changeSettingsPage(Widget page) async {
