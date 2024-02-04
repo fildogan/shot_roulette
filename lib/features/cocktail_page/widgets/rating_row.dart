@@ -32,7 +32,8 @@ class RatingRow extends StatelessWidget {
         const Spacer(),
         BlocBuilder<RootCubit, RootState>(
           builder: (context, rootState) {
-            if (rootState.user != null) {
+            if (rootState.user != null &&
+                !(rootState.user?.isAnonymous ?? false)) {
               return ElevatedButton(
                   onPressed: () async {
                     double? result = await showDialog(
