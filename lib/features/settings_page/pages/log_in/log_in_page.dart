@@ -6,6 +6,7 @@ import 'package:shot_roulette/app/core/enums.dart';
 
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/app/injection_container.dart';
+import 'package:shot_roulette/features/auth/widgets/go_auth_home_button.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart';
@@ -13,14 +14,15 @@ import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page
 
 @immutable
 class LogInPage extends StatelessWidget {
-  const LogInPage({
-    super.key,
-    required this.rootState,
-    required this.isCreatingAccount,
-  });
+  const LogInPage(
+      {super.key,
+      // required this.rootState,
+      required this.isCreatingAccount,
+      required this.isStartingPage});
 
-  final RootState rootState;
+  // final RootState rootState;
   final bool isCreatingAccount;
+  final bool isStartingPage;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class LogInPage extends StatelessWidget {
               if (state.authError.isNotEmpty) {
                 _showErrorSnackBar(context, state.authError);
               }
-              if (state.authStatus == Status.success) {
+              if (state.authStatus == Status.success && !isStartingPage) {
                 context.read<SettingsPageCubit>().resetSettingsPage();
               }
             },
@@ -45,9 +47,11 @@ class LogInPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
-                  leading: ResetSettingPageButton(
-                    status: state.authStatus,
-                  ),
+                  leading: isStartingPage
+                      ? const GoAuthHomeButton()
+                      : ResetSettingPageButton(
+                          status: state.authStatus,
+                        ),
                   title: Text(isCreatingAccount
                       ? localizations.signUp
                       : localizations.logIn),
@@ -66,27 +70,28 @@ class LogInPage extends StatelessWidget {
                                   height: 20,
                                 ),
                                 CustomMainButton(
-                                    onPressed: () {
-                                      isCreatingAccount
-                                          ? (rootState.user == null
-                                              ? context
-                                                  .read<LogInCubit>()
-                                                  .createUserWithEmailAndPassword()
-                                              : context
-                                                  .read<LogInCubit>()
-                                                  .linkWithEmailAndPassword()
-                                                  .then((value) {
-                                                  context
-                                                      .read<RootCubit>()
-                                                      .startUserSubscription();
-                                                }))
-                                          : context
-                                              .read<LogInCubit>()
-                                              .signInWithEmailAndPassword();
-                                    },
-                                    title: isCreatingAccount
-                                        ? localizations.signUp
-                                        : localizations.logIn),
+                                  onPressed: () {
+                                    isCreatingAccount
+                                        ? isStartingPage
+                                            ? context
+                                                .read<LogInCubit>()
+                                                .createUserWithEmailAndPassword()
+                                            : context
+                                                .read<LogInCubit>()
+                                                .linkWithEmailAndPassword()
+                                                .then((value) {
+                                                context
+                                                    .read<RootCubit>()
+                                                    .startUserSubscription();
+                                              })
+                                        : context
+                                            .read<LogInCubit>()
+                                            .signInWithEmailAndPassword();
+                                  },
+                                  title: isCreatingAccount
+                                      ? localizations.signUp
+                                      : localizations.logIn,
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),
@@ -132,6 +137,7 @@ class LogInPage extends StatelessWidget {
           onChanged: (value) {
             context.read<LogInCubit>().changePassword(value: value);
           },
+          obscureText: true,
           decoration: InputDecoration(
             border: const UnderlineInputBorder(),
             labelText: AppLocalizations.of(context)!.password,

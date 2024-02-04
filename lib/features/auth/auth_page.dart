@@ -4,12 +4,15 @@ import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/features/auth/cubit/auth_page_cubit.dart';
 import 'package:shot_roulette/features/auth/pages/auth_home.dart';
-import 'package:shot_roulette/features/auth/pages/auth_log_in.dart';
+import 'package:shot_roulette/features/settings_page/pages/log_in/log_in_page.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({
     super.key,
+    // required this.rootState,
   });
+
+  // final RootState rootState;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +36,14 @@ class AuthPage extends StatelessWidget {
                         state: state,
                       );
                     case AuthScreen.logIn:
-                      return AuthLogInPage(
-                        state: state,
+                      return const LogInPage(
+                        isCreatingAccount: false,
+                        isStartingPage: true,
                       );
                     case AuthScreen.signUp:
-                      return AuthLogInPage(
-                        state: state,
+                      return const LogInPage(
+                        isCreatingAccount: true,
+                        isStartingPage: true,
                       );
                   }
                 }),

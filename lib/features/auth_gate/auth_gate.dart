@@ -20,9 +20,7 @@ class AuthGate extends StatelessWidget {
             //   return const CircularProgressIndicator();
             // } else
             if (rootState.user == null) {
-              return const AuthPage(
-                  // rootState: rootState,
-                  );
+              return const AuthPage();
             } else {
               return MainMenuPage(rootState: rootState);
             }

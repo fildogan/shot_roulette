@@ -100,9 +100,9 @@ class SettingsPage extends StatelessWidget {
                             onTap: () {
                               context
                                   .read<SettingsPageCubit>()
-                                  .changeSettingsPage(LogInPage(
-                                    rootState: rootState,
+                                  .changeSettingsPage(const LogInPage(
                                     isCreatingAccount: true,
+                                    isStartingPage: false,
                                   ));
                             },
                             title: localizations.signUp,
