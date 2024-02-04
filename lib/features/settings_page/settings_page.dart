@@ -69,7 +69,8 @@ class SettingsPage extends StatelessWidget {
                         ],
                       ),
                       // Account if logged in
-                      if (rootState.user != null)
+                      if (rootState.user != null &&
+                          !(rootState.user?.isAnonymous ?? false))
                         SettingsItem(settingsItems: [
                           SettingItemModel(
                             onTap: () {
@@ -80,7 +81,9 @@ class SettingsPage extends StatelessWidget {
                         ], header: localizations.account),
 
                       // Account if not logged in
-                      if (rootState.user == null)
+
+                      if (rootState.user == null ||
+                          (rootState.user?.isAnonymous ?? false))
                         SettingsItem(settingsItems: [
                           SettingItemModel(
                             onTap: () {

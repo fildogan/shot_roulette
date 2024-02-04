@@ -16,64 +16,58 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
 
-    return rootState.showStartImage
-        ? const Image(
-            image: AssetImage('assets/images/papercut_background.jpg'),
+    return OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation) {
+      return Stack(
+        children: [
+          const Image(
+            image: AssetImage('assets/images/background_light.jpg'),
             fit: BoxFit.fill,
-          )
-        : OrientationBuilder(
-            builder: (BuildContext context, Orientation orientation) {
-            return Stack(
-              children: [
-                const Image(
-                  image: AssetImage('assets/images/background_light.jpg'),
-                  fit: BoxFit.fill,
-                ),
-                Scaffold(
-                  backgroundColor: Colors.transparent,
-                  bottomNavigationBar: orientation == Orientation.landscape
-                      ? null
-                      : BottomNavigationBar(
-                          backgroundColor:
-                              const Color.fromARGB(255, 38, 21, 18),
-                          currentIndex: rootState.pageIndex,
-                          onTap: (newIndex) {
-                            context.read<RootCubit>().changePageIndex(newIndex);
-                          },
-                          items: [
-                            BottomNavigationBarItem(
-                              icon: const Icon(Icons.settings),
-                              label: localizations.settings,
-                            ),
-                            const BottomNavigationBarItem(
-                              icon: Icon(Icons.local_drink),
-                              label: "Roll",
-                            ),
-                            BottomNavigationBarItem(
-                              icon: const Icon(Icons.storage),
-                              label: localizations.database,
-                            ),
-                          ],
-                        ),
-                  body: SafeArea(
-                    child: Builder(builder: (context) {
-                      if (rootState.pageIndex == 0) {
-                        return SettingsPage(rootState: rootState);
-                      } else if (rootState.pageIndex == 1) {
-                        return CocktailPage(
-                          rootState: rootState,
-                        );
-                      } else {
-                        return DatabasePage(
-                          rootState: rootState,
-                          orientation: orientation,
-                        );
-                      }
-                    }),
+          ),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            bottomNavigationBar: orientation == Orientation.landscape
+                ? null
+                : BottomNavigationBar(
+                    backgroundColor: const Color.fromARGB(255, 38, 21, 18),
+                    currentIndex: rootState.pageIndex,
+                    onTap: (newIndex) {
+                      context.read<RootCubit>().changePageIndex(newIndex);
+                    },
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.settings),
+                        label: localizations.settings,
+                      ),
+                      const BottomNavigationBarItem(
+                        icon: Icon(Icons.local_drink),
+                        label: "Roll",
+                      ),
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.storage),
+                        label: localizations.database,
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            );
-          });
+            body: SafeArea(
+              child: Builder(builder: (context) {
+                if (rootState.pageIndex == 0) {
+                  return SettingsPage(rootState: rootState);
+                } else if (rootState.pageIndex == 1) {
+                  return CocktailPage(
+                    rootState: rootState,
+                  );
+                } else {
+                  return DatabasePage(
+                    rootState: rootState,
+                    orientation: orientation,
+                  );
+                }
+              }),
+            ),
+          ),
+        ],
+      );
+    });
   }
 }
