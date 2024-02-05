@@ -4,7 +4,7 @@ import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/features/auth/cubit/auth_page_cubit.dart';
 import 'package:shot_roulette/features/auth/pages/auth_home.dart';
-import 'package:shot_roulette/features/settings_page/pages/log_in/log_in_page.dart';
+import 'package:shot_roulette/features/log_in/log_in_page.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({

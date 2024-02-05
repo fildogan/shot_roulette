@@ -40,10 +40,9 @@ import 'package:shot_roulette/features/cocktail_page/widgets/change_rating_dialo
     as _i3;
 import 'package:shot_roulette/features/database_page/cubit/database_page_cubit.dart'
     as _i20;
+import 'package:shot_roulette/features/log_in/cubit/log_in_cubit.dart' as _i14;
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart'
     as _i16;
-import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart'
-    as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

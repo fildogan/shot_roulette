@@ -4,9 +4,9 @@ import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
+import 'package:shot_roulette/features/log_in/log_in_page.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
-import 'package:shot_roulette/features/settings_page/pages/log_in/log_in_page.dart';
 import 'package:shot_roulette/features/settings_page/pages/theme_selection.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 

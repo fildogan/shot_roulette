@@ -8,8 +8,8 @@ import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/features/auth/widgets/go_auth_home_button.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
+import 'package:shot_roulette/features/log_in/cubit/log_in_cubit.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
-import 'package:shot_roulette/features/settings_page/pages/log_in/cubit/log_in_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
 
 @immutable
