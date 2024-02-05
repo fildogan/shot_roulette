@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LogInState {
   String get email => throw _privateConstructorUsedError;
-  String get repeatEmail => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get repeatPassword => throw _privateConstructorUsedError;
   String get authError => throw _privateConstructorUsedError;
   Status get authStatus => throw _privateConstructorUsedError;
 
@@ -35,8 +35,8 @@ abstract class $LogInStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String email,
-      String repeatEmail,
       String password,
+      String repeatPassword,
       String authError,
       Status authStatus});
 }
@@ -55,8 +55,8 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
   @override
   $Res call({
     Object? email = null,
-    Object? repeatEmail = null,
     Object? password = null,
+    Object? repeatPassword = null,
     Object? authError = null,
     Object? authStatus = null,
   }) {
@@ -65,13 +65,13 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      repeatEmail: null == repeatEmail
-          ? _value.repeatEmail
-          : repeatEmail // ignore: cast_nullable_to_non_nullable
-              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      repeatPassword: null == repeatPassword
+          ? _value.repeatPassword
+          : repeatPassword // ignore: cast_nullable_to_non_nullable
               as String,
       authError: null == authError
           ? _value.authError
@@ -95,8 +95,8 @@ abstract class _$$LogInStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String email,
-      String repeatEmail,
       String password,
+      String repeatPassword,
       String authError,
       Status authStatus});
 }
@@ -113,8 +113,8 @@ class __$$LogInStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
-    Object? repeatEmail = null,
     Object? password = null,
+    Object? repeatPassword = null,
     Object? authError = null,
     Object? authStatus = null,
   }) {
@@ -123,13 +123,13 @@ class __$$LogInStateImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      repeatEmail: null == repeatEmail
-          ? _value.repeatEmail
-          : repeatEmail // ignore: cast_nullable_to_non_nullable
-              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      repeatPassword: null == repeatPassword
+          ? _value.repeatPassword
+          : repeatPassword // ignore: cast_nullable_to_non_nullable
               as String,
       authError: null == authError
           ? _value.authError
@@ -148,8 +148,8 @@ class __$$LogInStateImplCopyWithImpl<$Res>
 class _$LogInStateImpl extends _LogInState {
   _$LogInStateImpl(
       {this.email = '',
-      this.repeatEmail = '',
       this.password = '',
+      this.repeatPassword = '',
       this.authError = '',
       this.authStatus = Status.initial})
       : super._();
@@ -159,10 +159,10 @@ class _$LogInStateImpl extends _LogInState {
   final String email;
   @override
   @JsonKey()
-  final String repeatEmail;
+  final String password;
   @override
   @JsonKey()
-  final String password;
+  final String repeatPassword;
   @override
   @JsonKey()
   final String authError;
@@ -172,7 +172,7 @@ class _$LogInStateImpl extends _LogInState {
 
   @override
   String toString() {
-    return 'LogInState(email: $email, repeatEmail: $repeatEmail, password: $password, authError: $authError, authStatus: $authStatus)';
+    return 'LogInState(email: $email, password: $password, repeatPassword: $repeatPassword, authError: $authError, authStatus: $authStatus)';
   }
 
   @override
@@ -181,10 +181,10 @@ class _$LogInStateImpl extends _LogInState {
         (other.runtimeType == runtimeType &&
             other is _$LogInStateImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.repeatEmail, repeatEmail) ||
-                other.repeatEmail == repeatEmail) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.repeatPassword, repeatPassword) ||
+                other.repeatPassword == repeatPassword) &&
             (identical(other.authError, authError) ||
                 other.authError == authError) &&
             (identical(other.authStatus, authStatus) ||
@@ -193,7 +193,7 @@ class _$LogInStateImpl extends _LogInState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, email, repeatEmail, password, authError, authStatus);
+      runtimeType, email, password, repeatPassword, authError, authStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -205,8 +205,8 @@ class _$LogInStateImpl extends _LogInState {
 abstract class _LogInState extends LogInState {
   factory _LogInState(
       {final String email,
-      final String repeatEmail,
       final String password,
+      final String repeatPassword,
       final String authError,
       final Status authStatus}) = _$LogInStateImpl;
   _LogInState._() : super._();
@@ -214,9 +214,9 @@ abstract class _LogInState extends LogInState {
   @override
   String get email;
   @override
-  String get repeatEmail;
-  @override
   String get password;
+  @override
+  String get repeatPassword;
   @override
   String get authError;
   @override

@@ -20,16 +20,16 @@ class LogInCubit extends Cubit<LogInState> {
     emit(state.copyWith(email: value));
   }
 
-  Future<void> changeRepeatEmail({
-    required String value,
-  }) async {
-    emit(state.copyWith(repeatEmail: value));
-  }
-
   Future<void> changePassword({
     required String value,
   }) async {
     emit(state.copyWith(password: value));
+  }
+
+  Future<void> changeRepeatPassword({
+    required String value,
+  }) async {
+    emit(state.copyWith(repeatPassword: value));
   }
 
   Future<void> createUserWithEmailAndPassword() async {

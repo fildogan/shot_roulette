@@ -14,6 +14,7 @@ class LogInTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
+        onTap: null,
         tileColor: Colors.black87,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(

@@ -49,22 +49,20 @@ class MainMenuPage extends StatelessWidget {
                       ),
                     ],
                   ),
-            body: SafeArea(
-              child: Builder(builder: (context) {
-                if (rootState.pageIndex == 0) {
-                  return SettingsPage(rootState: rootState);
-                } else if (rootState.pageIndex == 1) {
-                  return CocktailPage(
-                    rootState: rootState,
-                  );
-                } else {
-                  return DatabasePage(
-                    rootState: rootState,
-                    orientation: orientation,
-                  );
-                }
-              }),
-            ),
+            body: Builder(builder: (context) {
+              if (rootState.pageIndex == 0) {
+                return SettingsPage(rootState: rootState);
+              } else if (rootState.pageIndex == 1) {
+                return CocktailPage(
+                  rootState: rootState,
+                );
+              } else {
+                return DatabasePage(
+                  rootState: rootState,
+                  orientation: orientation,
+                );
+              }
+            }),
           ),
         ],
       );
