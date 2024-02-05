@@ -6,11 +6,14 @@ import 'package:shot_roulette/app/core/enums.dart';
 
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/app/injection_container.dart';
+import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/features/auth/widgets/go_auth_home_button.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/custom_main_button.dart';
 import 'package:shot_roulette/features/log_in/cubit/log_in_cubit.dart';
+import 'package:shot_roulette/features/log_in/widgets/log_in_text_field.dart';
 import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
+import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
 @immutable
 class LogInPage extends StatelessWidget {
@@ -62,9 +65,13 @@ class LogInPage extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: ListView(
+                            child: Column(
                               children: [
+                                const Spacer(
+                                  flex: 1,
+                                ),
                                 _emailField(state),
+                                if (isCreatingAccount) _repeatEmailField(state),
                                 _passwordField(state),
                                 const SizedBox(
                                   height: 20,
@@ -92,8 +99,8 @@ class LogInPage extends StatelessWidget {
                                       ? localizations.signUp
                                       : localizations.logIn,
                                 ),
-                                const SizedBox(
-                                  height: 20,
+                                const Spacer(
+                                  flex: 2,
                                 ),
                               ],
                             ),
@@ -111,19 +118,44 @@ class LogInPage extends StatelessWidget {
   Widget _emailField(LogInState state) {
     return BlocBuilder<LogInCubit, LogInState>(
       builder: (context, state) {
-        return TextFormField(
-          initialValue: state.emailValue,
-          onChanged: (value) {
-            context.read<LogInCubit>().changeEmail(value: value);
-          },
-          decoration: InputDecoration(
-            border: const UnderlineInputBorder(),
-            labelText: AppLocalizations.of(context)!.email,
-            contentPadding: const EdgeInsets.all(10),
+        return LogInTextField(
+          child: TextFormField(
+            initialValue: state.email,
+            onChanged: (value) {
+              context.read<LogInCubit>().changeEmail(value: value);
+            },
+            decoration: InputDecoration(
+              border: const UnderlineInputBorder(),
+              labelText: AppLocalizations.of(context)!.email,
+              contentPadding: const EdgeInsets.all(10),
+            ),
+            // validator: (value) => state.isNameValid
+            //     ? null
+            //     : AppLocalizations.of(context).pleaseEnterExpenseName,
           ),
-          // validator: (value) => state.isNameValid
-          //     ? null
-          //     : AppLocalizations.of(context).pleaseEnterExpenseName,
+        );
+      },
+    );
+  }
+
+  Widget _repeatEmailField(LogInState state) {
+    return BlocBuilder<LogInCubit, LogInState>(
+      builder: (context, state) {
+        return LogInTextField(
+          child: TextFormField(
+            initialValue: state.repeatEmail,
+            onChanged: (value) {
+              context.read<LogInCubit>().changeRepeatEmail(value: value);
+            },
+            decoration: InputDecoration(
+              border: const UnderlineInputBorder(),
+              labelText: AppLocalizations.of(context)!.email,
+              contentPadding: const EdgeInsets.all(10),
+            ),
+            // validator: (value) => state.isNameValid
+            //     ? null
+            //     : AppLocalizations.of(context).pleaseEnterExpenseName,
+          ),
         );
       },
     );
@@ -132,20 +164,22 @@ class LogInPage extends StatelessWidget {
   Widget _passwordField(LogInState state) {
     return BlocBuilder<LogInCubit, LogInState>(
       builder: (context, state) {
-        return TextFormField(
-          initialValue: state.passwordValue,
-          onChanged: (value) {
-            context.read<LogInCubit>().changePassword(value: value);
-          },
-          obscureText: true,
-          decoration: InputDecoration(
-            border: const UnderlineInputBorder(),
-            labelText: AppLocalizations.of(context)!.password,
-            contentPadding: const EdgeInsets.all(10),
+        return LogInTextField(
+          child: TextFormField(
+            initialValue: state.password,
+            onChanged: (value) {
+              context.read<LogInCubit>().changePassword(value: value);
+            },
+            obscureText: true,
+            decoration: InputDecoration(
+              border: const UnderlineInputBorder(),
+              labelText: AppLocalizations.of(context)!.password,
+              contentPadding: const EdgeInsets.all(10),
+            ),
+            // validator: (value) => state.isNameValid
+            //     ? null
+            //     : AppLocalizations.of(context).pleaseEnterExpenseName,
           ),
-          // validator: (value) => state.isNameValid
-          //     ? null
-          //     : AppLocalizations.of(context).pleaseEnterExpenseName,
         );
       },
     );

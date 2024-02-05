@@ -17,13 +17,19 @@ class LogInCubit extends Cubit<LogInState> {
   Future<void> changeEmail({
     required String value,
   }) async {
-    emit(state.copyWith(emailValue: value));
+    emit(state.copyWith(email: value));
+  }
+
+  Future<void> changeRepeatEmail({
+    required String value,
+  }) async {
+    emit(state.copyWith(repeatEmail: value));
   }
 
   Future<void> changePassword({
     required String value,
   }) async {
-    emit(state.copyWith(passwordValue: value));
+    emit(state.copyWith(password: value));
   }
 
   Future<void> createUserWithEmailAndPassword() async {
@@ -31,8 +37,8 @@ class LogInCubit extends Cubit<LogInState> {
       emit(state.copyWith(authStatus: Status.loading));
 
       await authRepository.createUserWithEmailAndPassword(
-        email: state.emailValue,
-        password: state.passwordValue,
+        email: state.email,
+        password: state.password,
       );
       emit(state.copyWith(authStatus: Status.success));
     } on Exception catch (e) {
@@ -55,8 +61,8 @@ class LogInCubit extends Cubit<LogInState> {
       emit(state.copyWith(authStatus: Status.loading));
 
       await authRepository.linkWithEmailAndPassword(
-        email: state.emailValue,
-        password: state.passwordValue,
+        email: state.email,
+        password: state.password,
       );
       emit(state.copyWith(authStatus: Status.success));
     } on Exception catch (e) {
@@ -79,8 +85,8 @@ class LogInCubit extends Cubit<LogInState> {
       emit(state.copyWith(authStatus: Status.loading));
 
       await authRepository.signInWithEmailAndPassword(
-        email: state.emailValue,
-        password: state.passwordValue,
+        email: state.email,
+        password: state.password,
       );
       emit(state.copyWith(authStatus: Status.success));
     } on Exception catch (e) {
