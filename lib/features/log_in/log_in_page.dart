@@ -127,6 +127,7 @@ class LogInPage extends StatelessWidget {
     return BlocBuilder<LogInCubit, LogInState>(
       builder: (context, state) {
         return LogInTextField(
+          state: state,
           child: TextFormField(
             initialValue: state.email,
             onChanged: (value) {
@@ -156,12 +157,14 @@ class LogInPage extends StatelessWidget {
     return BlocBuilder<LogInCubit, LogInState>(
       builder: (context, state) {
         return LogInTextField(
+          state: state,
+          isPassword: true,
           child: TextFormField(
             initialValue: state.password,
             onChanged: (value) {
               context.read<LogInCubit>().changePassword(value: value);
             },
-            obscureText: true,
+            obscureText: !state.showPassword,
             decoration: InputDecoration(
               border: const UnderlineInputBorder(),
               labelText: AppLocalizations.of(context)!.password,
@@ -195,12 +198,14 @@ class LogInPage extends StatelessWidget {
     return BlocBuilder<LogInCubit, LogInState>(
       builder: (context, state) {
         return LogInTextField(
+          state: state,
+          isPassword: true,
           child: TextFormField(
             initialValue: state.repeatPassword,
             onChanged: (value) {
               context.read<LogInCubit>().changeRepeatPassword(value: value);
             },
-            obscureText: true,
+            obscureText: !state.showPassword,
             decoration: InputDecoration(
               border: const UnderlineInputBorder(),
               labelText: 'Repeat ${AppLocalizations.of(context)!.password}',

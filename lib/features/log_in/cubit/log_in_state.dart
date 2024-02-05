@@ -5,6 +5,7 @@ class LogInState with _$LogInState {
   factory LogInState({
     @Default('') String email,
     @Default('') String password,
+    @Default(false) bool showPassword,
     @Default('') String repeatPassword,
     @Default('') String authError,
     @Default(Status.initial) Status authStatus,

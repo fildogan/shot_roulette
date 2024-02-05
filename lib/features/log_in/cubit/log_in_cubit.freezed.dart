@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LogInState {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  bool get showPassword => throw _privateConstructorUsedError;
   String get repeatPassword => throw _privateConstructorUsedError;
   String get authError => throw _privateConstructorUsedError;
   Status get authStatus => throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $LogInStateCopyWith<$Res> {
   $Res call(
       {String email,
       String password,
+      bool showPassword,
       String repeatPassword,
       String authError,
       Status authStatus});
@@ -56,6 +58,7 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? showPassword = null,
     Object? repeatPassword = null,
     Object? authError = null,
     Object? authStatus = null,
@@ -69,6 +72,10 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      showPassword: null == showPassword
+          ? _value.showPassword
+          : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
       repeatPassword: null == repeatPassword
           ? _value.repeatPassword
           : repeatPassword // ignore: cast_nullable_to_non_nullable
@@ -96,6 +103,7 @@ abstract class _$$LogInStateImplCopyWith<$Res>
   $Res call(
       {String email,
       String password,
+      bool showPassword,
       String repeatPassword,
       String authError,
       Status authStatus});
@@ -114,6 +122,7 @@ class __$$LogInStateImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? showPassword = null,
     Object? repeatPassword = null,
     Object? authError = null,
     Object? authStatus = null,
@@ -127,6 +136,10 @@ class __$$LogInStateImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      showPassword: null == showPassword
+          ? _value.showPassword
+          : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
       repeatPassword: null == repeatPassword
           ? _value.repeatPassword
           : repeatPassword // ignore: cast_nullable_to_non_nullable
@@ -149,6 +162,7 @@ class _$LogInStateImpl extends _LogInState {
   _$LogInStateImpl(
       {this.email = '',
       this.password = '',
+      this.showPassword = false,
       this.repeatPassword = '',
       this.authError = '',
       this.authStatus = Status.initial})
@@ -162,6 +176,9 @@ class _$LogInStateImpl extends _LogInState {
   final String password;
   @override
   @JsonKey()
+  final bool showPassword;
+  @override
+  @JsonKey()
   final String repeatPassword;
   @override
   @JsonKey()
@@ -172,7 +189,7 @@ class _$LogInStateImpl extends _LogInState {
 
   @override
   String toString() {
-    return 'LogInState(email: $email, password: $password, repeatPassword: $repeatPassword, authError: $authError, authStatus: $authStatus)';
+    return 'LogInState(email: $email, password: $password, showPassword: $showPassword, repeatPassword: $repeatPassword, authError: $authError, authStatus: $authStatus)';
   }
 
   @override
@@ -183,6 +200,8 @@ class _$LogInStateImpl extends _LogInState {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.showPassword, showPassword) ||
+                other.showPassword == showPassword) &&
             (identical(other.repeatPassword, repeatPassword) ||
                 other.repeatPassword == repeatPassword) &&
             (identical(other.authError, authError) ||
@@ -192,8 +211,8 @@ class _$LogInStateImpl extends _LogInState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, password, repeatPassword, authError, authStatus);
+  int get hashCode => Object.hash(runtimeType, email, password, showPassword,
+      repeatPassword, authError, authStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -206,6 +225,7 @@ abstract class _LogInState extends LogInState {
   factory _LogInState(
       {final String email,
       final String password,
+      final bool showPassword,
       final String repeatPassword,
       final String authError,
       final Status authStatus}) = _$LogInStateImpl;
@@ -215,6 +235,8 @@ abstract class _LogInState extends LogInState {
   String get email;
   @override
   String get password;
+  @override
+  bool get showPassword;
   @override
   String get repeatPassword;
   @override

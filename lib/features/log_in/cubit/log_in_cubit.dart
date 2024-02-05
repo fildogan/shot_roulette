@@ -32,6 +32,10 @@ class LogInCubit extends Cubit<LogInState> {
     emit(state.copyWith(repeatPassword: value));
   }
 
+  Future<void> changePasswordVisibility() async {
+    emit(state.copyWith(showPassword: !state.showPassword));
+  }
+
   Future<void> createUserWithEmailAndPassword() async {
     try {
       emit(state.copyWith(authStatus: Status.loading));
