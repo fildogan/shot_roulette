@@ -1,6 +1,6 @@
 enum Status { initial, loading, success, error }
 
-enum SelectedLanguage { en, pl }
+enum SelectedLanguage { en, es, de, fr, it }
 
 enum SelectedTheme { dark, light, system }
 
