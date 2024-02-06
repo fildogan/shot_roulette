@@ -15,12 +15,12 @@ import 'package:shot_roulette/domain/models/shot_recipe_model.dart';
 import 'package:shot_roulette/domain/models/taste_note_model.dart';
 import 'package:shot_roulette/domain/models/unit_of_measurement_model.dart';
 
-part 'roll_shot_state.dart';
-part 'roll_shot_cubit.freezed.dart';
+part 'root_state.dart';
+part 'root_cubit.freezed.dart';
 
 @injectable
-class RollShotCubit extends Cubit<RollShotState> {
-  RollShotCubit() : super(RollShotState());
+class RootCubit extends Cubit<RootState> {
+  RootCubit() : super(RootState());
 
   StreamSubscription? _streamSubscription;
 
@@ -163,20 +163,6 @@ class RollShotCubit extends Cubit<RollShotState> {
     ));
   }
 
-  // ******************************** navigate settings page ********************************
-
-  Future<void> changeSettingsPage(Widget page) async {
-    emit(state.copyWith(
-      settingsMenuPage: page,
-    ));
-  }
-
-  Future<void> resetSettingsPage() async {
-    emit(state.copyWith(
-      settingsMenuPage: null,
-    ));
-  }
-
   Future<void> userSubscription() async {
     _streamSubscription =
         FirebaseAuth.instance.authStateChanges().listen((user) {
@@ -190,10 +176,6 @@ class RollShotCubit extends Cubit<RollShotState> {
               errorMessage: error.toString(),
             ));
           });
-  }
-
-  Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
   }
 
   @override

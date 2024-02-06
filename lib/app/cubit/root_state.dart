@@ -1,23 +1,21 @@
-part of 'roll_shot_cubit.dart';
+part of 'root_cubit.dart';
 
 @freezed
-class RollShotState with _$RollShotState {
-  factory RollShotState({
+class RootState with _$RootState {
+  factory RootState({
     @Default([]) List<ShotRecipeModel> shotRecipes,
     @Default([]) List<TasteNoteModel> tasteNotes,
     @Default([]) List<IngredientNameModel> ingredientNames,
     @Default([]) List<UnitOfMeasurementModel> unitsOfMeasurement,
     @Default(4) int numberOfServings,
     @Default(1) int pageIndex,
-    Widget? settingsMenuPage,
     ShotRecipeModel? chosenRecipe,
     @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
     User? user,
     @Default('') String errorMessage,
-    @Default('') String authError,
-  }) = _RollShotState;
-  const RollShotState._();
+  }) = _RootState;
+  const RootState._();
 
   double get ratingAverage {
     if (chosenRecipe == null || chosenRecipe!.ratings.isEmpty) {

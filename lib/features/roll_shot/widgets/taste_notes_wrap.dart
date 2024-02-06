@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 
 class TasteNotesWrap extends StatelessWidget {
   const TasteNotesWrap({super.key, required this.state});
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {

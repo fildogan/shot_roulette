@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'roll_shot_cubit.dart';
+part of 'root_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RollShotState {
+mixin _$RootState {
   List<ShotRecipeModel> get shotRecipes => throw _privateConstructorUsedError;
   List<TasteNoteModel> get tasteNotes => throw _privateConstructorUsedError;
   List<IngredientNameModel> get ingredientNames =>
@@ -24,24 +24,21 @@ mixin _$RollShotState {
       throw _privateConstructorUsedError;
   int get numberOfServings => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
-  Widget? get settingsMenuPage => throw _privateConstructorUsedError;
   ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
-  String get authError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RollShotStateCopyWith<RollShotState> get copyWith =>
+  $RootStateCopyWith<RootState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RollShotStateCopyWith<$Res> {
-  factory $RollShotStateCopyWith(
-          RollShotState value, $Res Function(RollShotState) then) =
-      _$RollShotStateCopyWithImpl<$Res, RollShotState>;
+abstract class $RootStateCopyWith<$Res> {
+  factory $RootStateCopyWith(RootState value, $Res Function(RootState) then) =
+      _$RootStateCopyWithImpl<$Res, RootState>;
   @useResult
   $Res call(
       {List<ShotRecipeModel> shotRecipes,
@@ -50,21 +47,19 @@ abstract class $RollShotStateCopyWith<$Res> {
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
       int pageIndex,
-      Widget? settingsMenuPage,
       ShotRecipeModel? chosenRecipe,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
-      String errorMessage,
-      String authError});
+      String errorMessage});
 
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
 }
 
 /// @nodoc
-class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
-    implements $RollShotStateCopyWith<$Res> {
-  _$RollShotStateCopyWithImpl(this._value, this._then);
+class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
+    implements $RootStateCopyWith<$Res> {
+  _$RootStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,13 +75,11 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
     Object? unitsOfMeasurement = null,
     Object? numberOfServings = null,
     Object? pageIndex = null,
-    Object? settingsMenuPage = freezed,
     Object? chosenRecipe = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
     Object? errorMessage = null,
-    Object? authError = null,
   }) {
     return _then(_value.copyWith(
       shotRecipes: null == shotRecipes
@@ -113,10 +106,6 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      settingsMenuPage: freezed == settingsMenuPage
-          ? _value.settingsMenuPage
-          : settingsMenuPage // ignore: cast_nullable_to_non_nullable
-              as Widget?,
       chosenRecipe: freezed == chosenRecipe
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
@@ -137,10 +126,6 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
-      authError: null == authError
-          ? _value.authError
-          : authError // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 
@@ -158,11 +143,11 @@ class _$RollShotStateCopyWithImpl<$Res, $Val extends RollShotState>
 }
 
 /// @nodoc
-abstract class _$$RollShotStateImplCopyWith<$Res>
-    implements $RollShotStateCopyWith<$Res> {
-  factory _$$RollShotStateImplCopyWith(
-          _$RollShotStateImpl value, $Res Function(_$RollShotStateImpl) then) =
-      __$$RollShotStateImplCopyWithImpl<$Res>;
+abstract class _$$RootStateImplCopyWith<$Res>
+    implements $RootStateCopyWith<$Res> {
+  factory _$$RootStateImplCopyWith(
+          _$RootStateImpl value, $Res Function(_$RootStateImpl) then) =
+      __$$RootStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -172,24 +157,22 @@ abstract class _$$RollShotStateImplCopyWith<$Res>
       List<UnitOfMeasurementModel> unitsOfMeasurement,
       int numberOfServings,
       int pageIndex,
-      Widget? settingsMenuPage,
       ShotRecipeModel? chosenRecipe,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
-      String errorMessage,
-      String authError});
+      String errorMessage});
 
   @override
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
 }
 
 /// @nodoc
-class __$$RollShotStateImplCopyWithImpl<$Res>
-    extends _$RollShotStateCopyWithImpl<$Res, _$RollShotStateImpl>
-    implements _$$RollShotStateImplCopyWith<$Res> {
-  __$$RollShotStateImplCopyWithImpl(
-      _$RollShotStateImpl _value, $Res Function(_$RollShotStateImpl) _then)
+class __$$RootStateImplCopyWithImpl<$Res>
+    extends _$RootStateCopyWithImpl<$Res, _$RootStateImpl>
+    implements _$$RootStateImplCopyWith<$Res> {
+  __$$RootStateImplCopyWithImpl(
+      _$RootStateImpl _value, $Res Function(_$RootStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -201,15 +184,13 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
     Object? unitsOfMeasurement = null,
     Object? numberOfServings = null,
     Object? pageIndex = null,
-    Object? settingsMenuPage = freezed,
     Object? chosenRecipe = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
     Object? errorMessage = null,
-    Object? authError = null,
   }) {
-    return _then(_$RollShotStateImpl(
+    return _then(_$RootStateImpl(
       shotRecipes: null == shotRecipes
           ? _value._shotRecipes
           : shotRecipes // ignore: cast_nullable_to_non_nullable
@@ -234,10 +215,6 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      settingsMenuPage: freezed == settingsMenuPage
-          ? _value.settingsMenuPage
-          : settingsMenuPage // ignore: cast_nullable_to_non_nullable
-              as Widget?,
       chosenRecipe: freezed == chosenRecipe
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
@@ -258,31 +235,25 @@ class __$$RollShotStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
-      authError: null == authError
-          ? _value.authError
-          : authError // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RollShotStateImpl extends _RollShotState {
-  _$RollShotStateImpl(
+class _$RootStateImpl extends _RootState {
+  _$RootStateImpl(
       {final List<ShotRecipeModel> shotRecipes = const [],
       final List<TasteNoteModel> tasteNotes = const [],
       final List<IngredientNameModel> ingredientNames = const [],
       final List<UnitOfMeasurementModel> unitsOfMeasurement = const [],
       this.numberOfServings = 4,
       this.pageIndex = 1,
-      this.settingsMenuPage,
       this.chosenRecipe,
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
-      this.errorMessage = '',
-      this.authError = ''})
+      this.errorMessage = ''})
       : _shotRecipes = shotRecipes,
         _tasteNotes = tasteNotes,
         _ingredientNames = ingredientNames,
@@ -333,8 +304,6 @@ class _$RollShotStateImpl extends _RollShotState {
   @JsonKey()
   final int pageIndex;
   @override
-  final Widget? settingsMenuPage;
-  @override
   final ShotRecipeModel? chosenRecipe;
   @override
   @JsonKey()
@@ -347,20 +316,17 @@ class _$RollShotStateImpl extends _RollShotState {
   @override
   @JsonKey()
   final String errorMessage;
-  @override
-  @JsonKey()
-  final String authError;
 
   @override
   String toString() {
-    return 'RollShotState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, settingsMenuPage: $settingsMenuPage, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage, authError: $authError)';
+    return 'RootState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RollShotStateImpl &&
+            other is _$RootStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._shotRecipes, _shotRecipes) &&
             const DeepCollectionEquality()
@@ -373,8 +339,6 @@ class _$RollShotStateImpl extends _RollShotState {
                 other.numberOfServings == numberOfServings) &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
-            (identical(other.settingsMenuPage, settingsMenuPage) ||
-                other.settingsMenuPage == settingsMenuPage) &&
             (identical(other.chosenRecipe, chosenRecipe) ||
                 other.chosenRecipe == chosenRecipe) &&
             (identical(other.selectedLanguage, selectedLanguage) ||
@@ -383,9 +347,7 @@ class _$RollShotStateImpl extends _RollShotState {
                 other.selectedTheme == selectedTheme) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.authError, authError) ||
-                other.authError == authError));
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -397,37 +359,33 @@ class _$RollShotStateImpl extends _RollShotState {
       const DeepCollectionEquality().hash(_unitsOfMeasurement),
       numberOfServings,
       pageIndex,
-      settingsMenuPage,
       chosenRecipe,
       selectedLanguage,
       selectedTheme,
       user,
-      errorMessage,
-      authError);
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
-      __$$RollShotStateImplCopyWithImpl<_$RollShotStateImpl>(this, _$identity);
+  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
+      __$$RootStateImplCopyWithImpl<_$RootStateImpl>(this, _$identity);
 }
 
-abstract class _RollShotState extends RollShotState {
-  factory _RollShotState(
+abstract class _RootState extends RootState {
+  factory _RootState(
       {final List<ShotRecipeModel> shotRecipes,
       final List<TasteNoteModel> tasteNotes,
       final List<IngredientNameModel> ingredientNames,
       final List<UnitOfMeasurementModel> unitsOfMeasurement,
       final int numberOfServings,
       final int pageIndex,
-      final Widget? settingsMenuPage,
       final ShotRecipeModel? chosenRecipe,
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
-      final String errorMessage,
-      final String authError}) = _$RollShotStateImpl;
-  _RollShotState._() : super._();
+      final String errorMessage}) = _$RootStateImpl;
+  _RootState._() : super._();
 
   @override
   List<ShotRecipeModel> get shotRecipes;
@@ -442,8 +400,6 @@ abstract class _RollShotState extends RollShotState {
   @override
   int get pageIndex;
   @override
-  Widget? get settingsMenuPage;
-  @override
   ShotRecipeModel? get chosenRecipe;
   @override
   SelectedLanguage get selectedLanguage;
@@ -454,9 +410,7 @@ abstract class _RollShotState extends RollShotState {
   @override
   String get errorMessage;
   @override
-  String get authError;
-  @override
   @JsonKey(ignore: true)
-  _$$RollShotStateImplCopyWith<_$RollShotStateImpl> get copyWith =>
+  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

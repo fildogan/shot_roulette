@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
-import 'package:shot_roulette/features/roll_shot/cubit/roll_shot_cubit.dart';
+import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/settings_page/widgets/reset_settings_page_button.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
 
@@ -15,11 +15,11 @@ class LanguageSelectionPage extends StatelessWidget {
     required this.state,
   });
 
-  final RollShotState state;
+  final RootState state;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RollShotCubit, RollShotState>(
+    return BlocBuilder<RootCubit, RootState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -39,7 +39,7 @@ class LanguageSelectionPage extends StatelessWidget {
                       settingsItems: [
                         SettingItemModel(
                           onTap: () {
-                            context.read<RollShotCubit>().setLanguageEnglish();
+                            context.read<RootCubit>().setLanguageEnglish();
                           },
                           title: 'English',
                           trailing:
@@ -49,7 +49,7 @@ class LanguageSelectionPage extends StatelessWidget {
                         ),
                         SettingItemModel(
                           onTap: () {
-                            context.read<RollShotCubit>().setLanguagePolish();
+                            context.read<RootCubit>().setLanguagePolish();
                           },
                           title: 'Polski',
                           trailing:
