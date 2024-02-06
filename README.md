@@ -15,10 +15,16 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Cocktail Database API:
+
+[thecocktaildb.com](https://www.thecocktaildb.com),
+
+
 ## Packages Used and Their Licenses:
 
 [build_runner](https://pub.dev/packages/build_runner/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
+[dio](https://pub.dev/packages/dio/license),
 [firebase_auth](https://pub.dev/packages/firebase_auth/license),
 [firebase_core](https://pub.dev/packages/firebase_core/license),
 [flutter_bloc](https://pub.dev/packages/flutter_bloc/license),
@@ -28,4 +34,9 @@ samples, guidance on mobile development, and a full API reference.
 [freezed_annotation](https://pub.dev/packages/freezed_annotation/license), 
 [get_it](https://pub.dev/packages/get_it/license), 
 [injectable](https://pub.dev/packages/injectable/license),
+[injectable_generator](https://pub.dev/packages/injectable_generator/license),
+[json_annotation](https://pub.dev/packages/json_annotation/license),
+[json_serializable](https://pub.dev/packages/json_serializable/license),
+[retrofit](https://pub.dev/packages/retrofit/license),
+[retrofit_generator](https://pub.dev/packages/retrofit_generator/license),
 [shared_preferences](https://pub.dev/packages/shared_preferences/license)

@@ -25,6 +25,7 @@ mixin _$RootState {
   int get numberOfServings => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
   ShotRecipeModel? get chosenRecipe => throw _privateConstructorUsedError;
+  CocktailModel? get cocktail => throw _privateConstructorUsedError;
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
@@ -48,12 +49,14 @@ abstract class $RootStateCopyWith<$Res> {
       int numberOfServings,
       int pageIndex,
       ShotRecipeModel? chosenRecipe,
+      CocktailModel? cocktail,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
       String errorMessage});
 
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
+  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -76,6 +79,7 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
     Object? numberOfServings = null,
     Object? pageIndex = null,
     Object? chosenRecipe = freezed,
+    Object? cocktail = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
@@ -110,6 +114,10 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
               as ShotRecipeModel?,
+      cocktail: freezed == cocktail
+          ? _value.cocktail
+          : cocktail // ignore: cast_nullable_to_non_nullable
+              as CocktailModel?,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
@@ -140,6 +148,18 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
       return _then(_value.copyWith(chosenRecipe: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CocktailModelCopyWith<$Res>? get cocktail {
+    if (_value.cocktail == null) {
+      return null;
+    }
+
+    return $CocktailModelCopyWith<$Res>(_value.cocktail!, (value) {
+      return _then(_value.copyWith(cocktail: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -158,6 +178,7 @@ abstract class _$$RootStateImplCopyWith<$Res>
       int numberOfServings,
       int pageIndex,
       ShotRecipeModel? chosenRecipe,
+      CocktailModel? cocktail,
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
@@ -165,6 +186,8 @@ abstract class _$$RootStateImplCopyWith<$Res>
 
   @override
   $ShotRecipeModelCopyWith<$Res>? get chosenRecipe;
+  @override
+  $CocktailModelCopyWith<$Res>? get cocktail;
 }
 
 /// @nodoc
@@ -185,6 +208,7 @@ class __$$RootStateImplCopyWithImpl<$Res>
     Object? numberOfServings = null,
     Object? pageIndex = null,
     Object? chosenRecipe = freezed,
+    Object? cocktail = freezed,
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
@@ -219,6 +243,10 @@ class __$$RootStateImplCopyWithImpl<$Res>
           ? _value.chosenRecipe
           : chosenRecipe // ignore: cast_nullable_to_non_nullable
               as ShotRecipeModel?,
+      cocktail: freezed == cocktail
+          ? _value.cocktail
+          : cocktail // ignore: cast_nullable_to_non_nullable
+              as CocktailModel?,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
           : selectedLanguage // ignore: cast_nullable_to_non_nullable
@@ -250,6 +278,7 @@ class _$RootStateImpl extends _RootState {
       this.numberOfServings = 4,
       this.pageIndex = 1,
       this.chosenRecipe,
+      this.cocktail,
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
@@ -306,6 +335,8 @@ class _$RootStateImpl extends _RootState {
   @override
   final ShotRecipeModel? chosenRecipe;
   @override
+  final CocktailModel? cocktail;
+  @override
   @JsonKey()
   final SelectedLanguage selectedLanguage;
   @override
@@ -319,7 +350,7 @@ class _$RootStateImpl extends _RootState {
 
   @override
   String toString() {
-    return 'RootState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
+    return 'RootState(shotRecipes: $shotRecipes, tasteNotes: $tasteNotes, ingredientNames: $ingredientNames, unitsOfMeasurement: $unitsOfMeasurement, numberOfServings: $numberOfServings, pageIndex: $pageIndex, chosenRecipe: $chosenRecipe, cocktail: $cocktail, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, errorMessage: $errorMessage)';
   }
 
   @override
@@ -341,6 +372,8 @@ class _$RootStateImpl extends _RootState {
                 other.pageIndex == pageIndex) &&
             (identical(other.chosenRecipe, chosenRecipe) ||
                 other.chosenRecipe == chosenRecipe) &&
+            (identical(other.cocktail, cocktail) ||
+                other.cocktail == cocktail) &&
             (identical(other.selectedLanguage, selectedLanguage) ||
                 other.selectedLanguage == selectedLanguage) &&
             (identical(other.selectedTheme, selectedTheme) ||
@@ -360,6 +393,7 @@ class _$RootStateImpl extends _RootState {
       numberOfServings,
       pageIndex,
       chosenRecipe,
+      cocktail,
       selectedLanguage,
       selectedTheme,
       user,
@@ -381,6 +415,7 @@ abstract class _RootState extends RootState {
       final int numberOfServings,
       final int pageIndex,
       final ShotRecipeModel? chosenRecipe,
+      final CocktailModel? cocktail,
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
@@ -401,6 +436,8 @@ abstract class _RootState extends RootState {
   int get pageIndex;
   @override
   ShotRecipeModel? get chosenRecipe;
+  @override
+  CocktailModel? get cocktail;
   @override
   SelectedLanguage get selectedLanguage;
   @override
