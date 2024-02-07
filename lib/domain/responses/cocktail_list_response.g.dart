@@ -9,8 +9,8 @@ part of 'cocktail_list_response.dart';
 _$CocktailListResponseImpl _$$CocktailListResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CocktailListResponseImpl(
-      (json['drinks'] as List<dynamic>)
-          .map((e) => CocktailModel.fromJson(e as Map<String, dynamic>))
+      (json['drinks'] as List<dynamic>?)
+          ?.map((e) => CocktailModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

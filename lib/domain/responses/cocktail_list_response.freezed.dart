@@ -20,7 +20,7 @@ CocktailListResponse _$CocktailListResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CocktailListResponse {
-  List<CocktailModel> get drinks => throw _privateConstructorUsedError;
+  List<CocktailModel>? get drinks => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $CocktailListResponseCopyWith<$Res> {
           $Res Function(CocktailListResponse) then) =
       _$CocktailListResponseCopyWithImpl<$Res, CocktailListResponse>;
   @useResult
-  $Res call({List<CocktailModel> drinks});
+  $Res call({List<CocktailModel>? drinks});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$CocktailListResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? drinks = null,
+    Object? drinks = freezed,
   }) {
     return _then(_value.copyWith(
-      drinks: null == drinks
+      drinks: freezed == drinks
           ? _value.drinks
           : drinks // ignore: cast_nullable_to_non_nullable
-              as List<CocktailModel>,
+              as List<CocktailModel>?,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$CocktailListResponseImplCopyWith<$Res>
       __$$CocktailListResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CocktailModel> drinks});
+  $Res call({List<CocktailModel>? drinks});
 }
 
 /// @nodoc
@@ -84,13 +84,13 @@ class __$$CocktailListResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? drinks = null,
+    Object? drinks = freezed,
   }) {
     return _then(_$CocktailListResponseImpl(
-      null == drinks
+      freezed == drinks
           ? _value._drinks
           : drinks // ignore: cast_nullable_to_non_nullable
-              as List<CocktailModel>,
+              as List<CocktailModel>?,
     ));
   }
 }
@@ -98,18 +98,20 @@ class __$$CocktailListResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CocktailListResponseImpl implements _CocktailListResponse {
-  _$CocktailListResponseImpl(final List<CocktailModel> drinks)
+  _$CocktailListResponseImpl(final List<CocktailModel>? drinks)
       : _drinks = drinks;
 
   factory _$CocktailListResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CocktailListResponseImplFromJson(json);
 
-  final List<CocktailModel> _drinks;
+  final List<CocktailModel>? _drinks;
   @override
-  List<CocktailModel> get drinks {
+  List<CocktailModel>? get drinks {
+    final value = _drinks;
+    if (value == null) return null;
     if (_drinks is EqualUnmodifiableListView) return _drinks;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_drinks);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -147,14 +149,14 @@ class _$CocktailListResponseImpl implements _CocktailListResponse {
 }
 
 abstract class _CocktailListResponse implements CocktailListResponse {
-  factory _CocktailListResponse(final List<CocktailModel> drinks) =
+  factory _CocktailListResponse(final List<CocktailModel>? drinks) =
       _$CocktailListResponseImpl;
 
   factory _CocktailListResponse.fromJson(Map<String, dynamic> json) =
       _$CocktailListResponseImpl.fromJson;
 
   @override
-  List<CocktailModel> get drinks;
+  List<CocktailModel>? get drinks;
   @override
   @JsonKey(ignore: true)
   _$$CocktailListResponseImplCopyWith<_$CocktailListResponseImpl>

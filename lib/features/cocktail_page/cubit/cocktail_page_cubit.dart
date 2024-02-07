@@ -46,14 +46,14 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     if (show == true) {
       final randomCocktailResponse =
           await cocktailsRepository.getRandomCocktail();
-      final randomCocktail = randomCocktailResponse.drinks[0];
+      final randomCocktail = (randomCocktailResponse.drinks ?? [])[0];
 
       return randomCocktail;
     } else {
       while (true) {
         final randomCocktailResponse =
             await cocktailsRepository.getRandomCocktail();
-        final randomCocktail = randomCocktailResponse.drinks[0];
+        final randomCocktail = (randomCocktailResponse.drinks ?? [])[0];
         emit(
           state.copyWith(cocktail: randomCocktail),
         );
