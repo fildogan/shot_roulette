@@ -5,6 +5,9 @@ class CocktailPageState with _$CocktailPageState {
   factory CocktailPageState({
     @Default(Status.initial) Status status,
     CocktailModel? cocktail,
+    RatedCocktailModel? ratings,
+    @Default(false) bool hasUserRated,
+    double? userRating,
   }) = _CocktailPageState;
   const CocktailPageState._();
 
@@ -110,5 +113,27 @@ class CocktailPageState with _$CocktailPageState {
     }
 
     return list;
+  }
+
+  double get ratingAverage {
+    if (ratings == null ||
+        ratings!.ratingList!.isEmpty ||
+        ratings?.ratingList == null) {
+      return 0.0;
+    } else {
+      return ratingSum / ratings!.ratingList!.length;
+    }
+  }
+
+  double get ratingSum {
+    if (ratings == null ||
+        ratings!.ratingList!.isEmpty ||
+        ratings?.ratingList == null) {
+      return 0.0;
+    } else {
+      return ratings!.ratingList!
+          .map((rating) => rating.value)
+          .fold(0.0, (a, b) => a + b);
+    }
   }
 }

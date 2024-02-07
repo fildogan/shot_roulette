@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+RatingModel _$RatingModelFromJson(Map<String, dynamic> json) {
+  return _RatingModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$RatingModel {
   String get userId => throw _privateConstructorUsedError;
-  double get rating => throw _privateConstructorUsedError;
+  double get value => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RatingModelCopyWith<RatingModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -30,7 +35,7 @@ abstract class $RatingModelCopyWith<$Res> {
           RatingModel value, $Res Function(RatingModel) then) =
       _$RatingModelCopyWithImpl<$Res, RatingModel>;
   @useResult
-  $Res call({String userId, double rating});
+  $Res call({String userId, double value});
 }
 
 /// @nodoc
@@ -47,16 +52,16 @@ class _$RatingModelCopyWithImpl<$Res, $Val extends RatingModel>
   @override
   $Res call({
     Object? userId = null,
-    Object? rating = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as double,
     ) as $Val);
   }
@@ -70,7 +75,7 @@ abstract class _$$RatingModelImplCopyWith<$Res>
       __$$RatingModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, double rating});
+  $Res call({String userId, double value});
 }
 
 /// @nodoc
@@ -85,35 +90,38 @@ class __$$RatingModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? rating = null,
+    Object? value = null,
   }) {
     return _then(_$RatingModelImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$RatingModelImpl extends _RatingModel {
-  const _$RatingModelImpl({required this.userId, required this.rating})
+  const _$RatingModelImpl({required this.userId, required this.value})
       : super._();
+
+  factory _$RatingModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RatingModelImplFromJson(json);
 
   @override
   final String userId;
   @override
-  final double rating;
+  final double value;
 
   @override
   String toString() {
-    return 'RatingModel(userId: $userId, rating: $rating)';
+    return 'RatingModel(userId: $userId, value: $value)';
   }
 
   @override
@@ -122,29 +130,40 @@ class _$RatingModelImpl extends _RatingModel {
         (other.runtimeType == runtimeType &&
             other is _$RatingModelImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.rating, rating) || other.rating == rating));
+            (identical(other.value, value) || other.value == value));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, rating);
+  int get hashCode => Object.hash(runtimeType, userId, value);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RatingModelImplCopyWith<_$RatingModelImpl> get copyWith =>
       __$$RatingModelImplCopyWithImpl<_$RatingModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RatingModelImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _RatingModel extends RatingModel {
   const factory _RatingModel(
       {required final String userId,
-      required final double rating}) = _$RatingModelImpl;
+      required final double value}) = _$RatingModelImpl;
   const _RatingModel._() : super._();
+
+  factory _RatingModel.fromJson(Map<String, dynamic> json) =
+      _$RatingModelImpl.fromJson;
 
   @override
   String get userId;
   @override
-  double get rating;
+  double get value;
   @override
   @JsonKey(ignore: true)
   _$$RatingModelImplCopyWith<_$RatingModelImpl> get copyWith =>

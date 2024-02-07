@@ -60,6 +60,8 @@ class CocktailModel with _$CocktailModel {
     String? dateModified,
   ) = _CocktailModel;
 
+  const CocktailModel._();
+
   factory CocktailModel.fromJson(Map<String, dynamic> json) =>
       _$CocktailModelFromJson(json);
 }
