@@ -1,7 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/injection_container.dart';
+import 'package:shot_roulette/app/url_launches.dart';
 import 'package:shot_roulette/domain/models/setting_item_model.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/log_in/log_in_page.dart';
@@ -84,25 +86,64 @@ class SettingsPage extends StatelessWidget {
 
                       if (rootState.user == null ||
                           (rootState.user?.isAnonymous ?? false))
-                        SettingsItem(settingsItems: [
-                          SettingItemModel(
-                            onTap: () {
-                              context
-                                  .read<SettingsPageCubit>()
-                                  .changeSettingsPage(const LogInPage(
-                                    isCreatingAccount: true,
-                                    isStartingPage: false,
-                                  ));
-                            },
-                            title: localizations.signUp,
-                          ),
-                          SettingItemModel(
-                            onTap: () {
-                              context.read<SettingsPageCubit>().deleteUser();
-                            },
-                            title: localizations.logOut,
-                          ),
-                        ], header: localizations.account),
+                        SettingsItem(
+                          settingsItems: [
+                            SettingItemModel(
+                              onTap: () {
+                                context
+                                    .read<SettingsPageCubit>()
+                                    .changeSettingsPage(const LogInPage(
+                                      isCreatingAccount: true,
+                                      isStartingPage: false,
+                                    ));
+                              },
+                              title: localizations.signUp,
+                            ),
+                            SettingItemModel(
+                              onTap: () {
+                                context.read<SettingsPageCubit>().deleteUser();
+                              },
+                              title: localizations.logOut,
+                            ),
+                          ],
+                          header: localizations.account,
+                        ),
+
+                      // Legal
+                      SettingsItem(settingsItems: [
+                        SettingItemModel(
+                          title: localizations.termsOfUse,
+                          trailing: const Icon(Icons.chevron_right),
+                          onTap: () => launchUrlSite(
+                              url: 'https://flutterdog.com/shotroulette/terms'),
+                        ),
+                        SettingItemModel(
+                          title: localizations.privacyPolicy,
+                          trailing: const Icon(Icons.chevron_right),
+                          onTap: () => launchUrlSite(
+                              url:
+                                  'https://flutterdog.com/shotroulette/privacy'),
+                        )
+                      ], header: localizations.legal),
+                      const SizedBox(height: 20),
+                      Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset(
+                          'assets/images/cocktail_image_2.jpg',
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      // const SizedBox(height: 20),
+                      // Center(
+                      //   child: AutoSizeText(
+                      //     'Cocktail Hub ${packageinfo.version} (${packageinfo.buildNumber})',
+                      //     maxLines: 1,
+                      //   ),
+                      // ),
+                      // const SizedBox(height: 20),
 
                       // a switch for toggling english or native instructions
 
