@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
+import 'package:shot_roulette/features/cocktail_page/widgets/change_rating_dialog/change_rating_dialog.dart';
 
 class RatingRow extends StatelessWidget {
   const RatingRow({
@@ -33,12 +34,31 @@ class RatingRow extends StatelessWidget {
           builder: (context, rootState) {
             if (rootState.user != null) {
               return ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    double? result = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return ChangeRatingDialog(
+                            userRating: state.userRating,
+                          );
+                        });
+                    if (result != null) {
+                      context
+                          .read<CocktailPageCubit>()
+                          .updateUserRating(result, rootState.user!.uid);
+                    }
+                  },
                   child: state.hasUserRated
                       ? Text('Change rating ${state.userRating.toString()}')
                       : const Text('Rate'));
             } else {
-              return const SizedBox();
+              return const Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Text(
+                  'Sign in to rate',
+                  style: TextStyle(fontSize: 12),
+                ),
+              );
             }
           },
         ),

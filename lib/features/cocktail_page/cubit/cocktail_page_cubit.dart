@@ -24,6 +24,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   Future<void> rollShot(
       SelectedLanguage selectedLanguage, bool show, String? userId) async {
     emit(state.copyWith(status: Status.loading));
+    await resetData();
     final randomCocktail = await chooseRandom(selectedLanguage, show);
     final ratings = await getRatingsById(randomCocktail.idDrink ?? '');
     bool hasUserRated = false;
@@ -91,6 +92,67 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     } else {
       return false;
     }
+  }
+
+  Future<void> updateUserRating(double rating, String userId) async {
+    // If new rating is the same do nothing
+    if (rating == state.userRating) {
+      return;
+    } else {
+      final List<RatingModel> ratingList =
+          List.from(state.ratings?.ratingList ?? []);
+      // Check if userId exists in the rating list
+      if (!ratingList.any((ratingModel) => ratingModel.userId == userId)) {
+        // If it doesn't add a new rating
+        ratingList.add(RatingModel(userId: userId, value: rating));
+        if (state.ratings?.ratingList == null ||
+            (state.ratings?.ratingList ?? []).isEmpty) {
+          await ratingsRepository.create(
+              cocktailId: state.cocktail?.idDrink ?? '', value: rating);
+        } else {
+          await ratingsRepository.add(
+              cocktailId: state.cocktail?.idDrink ?? '', value: rating);
+        }
+      } else {
+        // If it does replace the rating
+        await ratingsRepository.remove(
+            cocktailId: state.cocktail?.idDrink ?? '',
+            value: state.userRating!);
+        await ratingsRepository.add(
+            cocktailId: state.cocktail?.idDrink ?? '', value: rating);
+        int i = ratingList
+            .indexWhere((ratingModel) => ratingModel.userId == userId);
+
+        ratingList[i] = RatingModel(userId: userId, value: rating);
+      }
+
+      if (state.ratings != null) {
+        RatedCocktailModel newRatedCocktailModel =
+            state.ratings!.copyWith(ratingList: ratingList);
+        emit(state.copyWith(
+          ratings: newRatedCocktailModel,
+          userRating: rating,
+        ));
+      } else {
+        RatedCocktailModel newRatedCocktailModel = RatedCocktailModel(
+            id: state.cocktail?.idDrink ?? '', ratingList: ratingList);
+        emit(state.copyWith(
+          ratings: newRatedCocktailModel,
+          userRating: rating,
+        ));
+      }
+    }
+  }
+
+  Future<void> resetData() async {
+    emit(
+      state.copyWith(
+        cocktail: null,
+        hasUserRated: false,
+        ratings: null,
+        userRating: null,
+      ),
+    );
   }
 
   Future<void> resetShot() async {

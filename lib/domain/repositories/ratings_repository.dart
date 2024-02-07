@@ -11,4 +11,25 @@ class RatingsRepository {
   Future<RatedCocktailModel> getRatingsById(String id) async {
     return remoteDataSource.getRatingsById(id);
   }
+
+  Future<void> add({
+    required String cocktailId,
+    required double value,
+  }) async {
+    remoteDataSource.add(cocktailId: cocktailId, value: value);
+  }
+
+  Future<void> remove({
+    required String cocktailId,
+    required double value,
+  }) async {
+    remoteDataSource.remove(cocktailId: cocktailId, value: value);
+  }
+
+  Future<void> create({
+    required String cocktailId,
+    required double value,
+  }) async {
+    remoteDataSource.create(cocktailId: cocktailId, value: value);
+  }
 }
