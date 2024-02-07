@@ -85,17 +85,6 @@ class SettingsPage extends StatelessWidget {
                       if (rootState.user == null ||
                           (rootState.user?.isAnonymous ?? false))
                         SettingsItem(settingsItems: [
-                          // SettingItemModel(
-                          //   onTap: () {
-                          //     context
-                          //         .read<SettingsPageCubit>()
-                          //         .changeSettingsPage(LogInPage(
-                          //           rootState: rootState,
-                          //           isCreatingAccount: false,
-                          //         ));
-                          //   },
-                          //   title: localizations.logIn,
-                          // ),
                           SettingItemModel(
                             onTap: () {
                               context
@@ -115,21 +104,23 @@ class SettingsPage extends StatelessWidget {
                           ),
                         ], header: localizations.account),
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            const Text('show english translations?'),
-                            Switch(
-                                value: rootState.showEnglishTranslations,
-                                onChanged: ((value) {
-                                  context
-                                      .read<RootCubit>()
-                                      .changeShowTranslationsBool();
-                                })),
-                          ],
-                        ),
-                      )
+                      // a switch for toggling english or native instructions
+
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Row(
+                      //     children: [
+                      //       const Text('show english translations?'),
+                      //       Switch(
+                      //           value: rootState.showEnglishTranslations,
+                      //           onChanged: ((value) {
+                      //             context
+                      //                 .read<RootCubit>()
+                      //                 .changeShowTranslationsBool();
+                      //           })),
+                      //     ],
+                      //   ),
+                      // )
                     ],
                   ),
                 ),
