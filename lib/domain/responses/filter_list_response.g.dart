@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'random_cocktail_response.dart';
+part of 'filter_list_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RandomCocktailResponseImpl _$$RandomCocktailResponseImplFromJson(
+_$FilterListResponseImpl _$$FilterListResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$RandomCocktailResponseImpl(
+    _$FilterListResponseImpl(
       (json['drinks'] as List<dynamic>)
-          .map((e) => CocktailModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => FilterModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$RandomCocktailResponseImplToJson(
-        _$RandomCocktailResponseImpl instance) =>
+Map<String, dynamic> _$$FilterListResponseImplToJson(
+        _$FilterListResponseImpl instance) =>
     <String, dynamic>{
       'drinks': instance.drinks,
     };

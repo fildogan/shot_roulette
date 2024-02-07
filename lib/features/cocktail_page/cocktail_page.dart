@@ -3,24 +3,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
 import 'package:shot_roulette/app/injection_container.dart';
+import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/roll_shot_button.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/cocktail_recipe_card.dart';
 
 class CocktailPage extends StatelessWidget {
-  const CocktailPage({
-    super.key,
-    required this.mainContainerHeight,
-    required this.rootState,
-  });
+  const CocktailPage(
+      {super.key, required this.rootState, this.cocktail, this.isDatabase});
 
-  final double mainContainerHeight;
   final RootState rootState;
+  final CocktailModel? cocktail;
+  final bool? isDatabase;
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double mainContainerHeight = screenHeight * 0.6;
     return BlocProvider(
-      create: (context) => getIt<CocktailPageCubit>(),
+      create: (context) => getIt<CocktailPageCubit>()
+        ..loadCocktail(cocktail, rootState.user?.uid),
       child: BlocBuilder<CocktailPageCubit, CocktailPageState>(
         builder: (context, state) {
           return Center(
@@ -51,7 +53,8 @@ class CocktailPage extends StatelessWidget {
                           ),
                         ),
                       // Spacer(),
-                      RolllShotButton(state: state),
+
+                      if (isDatabase != true) RolllShotButton(state: state),
                       const SizedBox(
                         height: 10,
                       ),

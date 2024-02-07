@@ -6,16 +6,16 @@ part of 'cocktail_list_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CocktailListByLetterResponseImpl _$$CocktailListByLetterResponseImplFromJson(
+_$CocktailListResponseImpl _$$CocktailListResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$CocktailListByLetterResponseImpl(
+    _$CocktailListResponseImpl(
       (json['drinks'] as List<dynamic>)
           .map((e) => CocktailModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$CocktailListByLetterResponseImplToJson(
-        _$CocktailListByLetterResponseImpl instance) =>
+Map<String, dynamic> _$$CocktailListResponseImplToJson(
+        _$CocktailListResponseImpl instance) =>
     <String, dynamic>{
       'drinks': instance.drinks,
     };

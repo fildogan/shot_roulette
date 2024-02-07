@@ -163,6 +163,26 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     );
   }
 
+  Future<void> loadCocktail(CocktailModel? cocktail, String? userId) async {
+    if (cocktail != null) {
+      emit(state.copyWith(status: Status.loading));
+
+      final ratings = await getRatingsById(cocktail.idDrink ?? '');
+      bool hasUserRated = false;
+      if (userId != null) {
+        hasUserRated = checkIfUserRated(ratings, userId);
+      }
+      emit(
+        state.copyWith(
+          cocktail: cocktail,
+          ratings: ratings,
+          status: Status.success,
+          hasUserRated: hasUserRated,
+        ),
+      );
+    }
+  }
+
   @override
   Future<void> close() {
     // Add any cleanup logic here, such as closing streams or disposing resources
