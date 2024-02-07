@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/core/enums.dart';
@@ -31,7 +32,40 @@ class CocktailPage extends StatelessWidget {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      if (state.cocktail != null)
+                      if (isDatabase != true &&
+                          state.cocktail == null &&
+                          state.status != Status.loading) ...[
+                        const Spacer(
+                          flex: 2,
+                        ),
+                        DefaultTextStyle(
+                          style: const TextStyle(
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          child: AnimatedTextKit(
+                            pause: Duration.zero,
+                            repeatForever: true,
+                            animatedTexts: [
+                              FadeAnimatedText('TAP ME!'),
+                              FadeAnimatedText('For random beverage'),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            context.read<CocktailPageCubit>().rollShot(
+                                rootState.selectedLanguage,
+                                rootState.showEnglishTranslations,
+                                rootState.user?.uid);
+                          },
+                          child: Image.asset(
+                            'assets/images/bartender.png',
+                            fit: BoxFit.fill,
+                          ),
+                        )
+                      ] else if (state.cocktail != null)
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -46,15 +80,19 @@ class CocktailPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: SizedBox(
-                            height: mainContainerHeight,
+                            height: 100,
+                            // height: mainContainerHeight,
                             width: 150,
-                            child: Image.asset(
-                                'assets/images/casino_roulette.png'),
+                            // child: Image.asset(
+                            //     'assets/images/casino_roulette.png'),
                           ),
                         ),
                       // Spacer(),
 
-                      if (isDatabase != true) RolllShotButton(state: state),
+                      if (isDatabase != true &&
+                          state.cocktail != null &&
+                          state.status != Status.loading)
+                        RolllShotButton(state: state),
                       const SizedBox(
                         height: 10,
                       ),

@@ -22,6 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Packages Used and Their Licenses:
 
+[animated_text_kit](https://pub.dev/packages/animated_text_kit/license),
 [build_runner](https://pub.dev/packages/build_runner/license),
 [cloud_firestore](https://pub.dev/packages/cloud_firestore/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
