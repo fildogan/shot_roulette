@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/app/preferences_service.dart';
 import 'package:shot_roulette/domain/models/settings_model.dart';
@@ -24,6 +25,7 @@ class RootCubit extends Cubit<RootState> {
   Future<void> start() async {
     getSettings();
     startUserSubscription();
+    await setPackageInfo();
     await Future.delayed(const Duration(seconds: 2));
 
     emit(
@@ -50,6 +52,17 @@ class RootCubit extends Cubit<RootState> {
         selectedTheme: selectedTheme,
         selectedLanguage: selectedLanguage,
       ));
+    } on Exception catch (e) {
+      print(e.toString());
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> setPackageInfo() async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+
+      emit(state.copyWith(packageInfo: packageInfo));
     } on Exception catch (e) {
       print(e.toString());
       emit(state.copyWith(errorMessage: e.toString()));

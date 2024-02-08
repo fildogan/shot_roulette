@@ -8,6 +8,7 @@ class RootState with _$RootState {
     @Default(SelectedLanguage.en) SelectedLanguage selectedLanguage,
     @Default(SelectedTheme.system) SelectedTheme selectedTheme,
     User? user,
+    PackageInfo? packageInfo,
     @Default(true) bool showEnglishTranslations,
     @Default('') String errorMessage,
     @Default(true) bool showStartImage,

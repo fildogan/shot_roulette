@@ -21,6 +21,7 @@ mixin _$RootState {
   SelectedLanguage get selectedLanguage => throw _privateConstructorUsedError;
   SelectedTheme get selectedTheme => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
+  PackageInfo? get packageInfo => throw _privateConstructorUsedError;
   bool get showEnglishTranslations => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   bool get showStartImage => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $RootStateCopyWith<$Res> {
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
+      PackageInfo? packageInfo,
       bool showEnglishTranslations,
       String errorMessage,
       bool showStartImage});
@@ -64,6 +66,7 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
+    Object? packageInfo = freezed,
     Object? showEnglishTranslations = null,
     Object? errorMessage = null,
     Object? showStartImage = null,
@@ -89,6 +92,10 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      packageInfo: freezed == packageInfo
+          ? _value.packageInfo
+          : packageInfo // ignore: cast_nullable_to_non_nullable
+              as PackageInfo?,
       showEnglishTranslations: null == showEnglishTranslations
           ? _value.showEnglishTranslations
           : showEnglishTranslations // ignore: cast_nullable_to_non_nullable
@@ -119,6 +126,7 @@ abstract class _$$RootStateImplCopyWith<$Res>
       SelectedLanguage selectedLanguage,
       SelectedTheme selectedTheme,
       User? user,
+      PackageInfo? packageInfo,
       bool showEnglishTranslations,
       String errorMessage,
       bool showStartImage});
@@ -140,6 +148,7 @@ class __$$RootStateImplCopyWithImpl<$Res>
     Object? selectedLanguage = null,
     Object? selectedTheme = null,
     Object? user = freezed,
+    Object? packageInfo = freezed,
     Object? showEnglishTranslations = null,
     Object? errorMessage = null,
     Object? showStartImage = null,
@@ -165,6 +174,10 @@ class __$$RootStateImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      packageInfo: freezed == packageInfo
+          ? _value.packageInfo
+          : packageInfo // ignore: cast_nullable_to_non_nullable
+              as PackageInfo?,
       showEnglishTranslations: null == showEnglishTranslations
           ? _value.showEnglishTranslations
           : showEnglishTranslations // ignore: cast_nullable_to_non_nullable
@@ -190,6 +203,7 @@ class _$RootStateImpl extends _RootState {
       this.selectedLanguage = SelectedLanguage.en,
       this.selectedTheme = SelectedTheme.system,
       this.user,
+      this.packageInfo,
       this.showEnglishTranslations = true,
       this.errorMessage = '',
       this.showStartImage = true})
@@ -210,6 +224,8 @@ class _$RootStateImpl extends _RootState {
   @override
   final User? user;
   @override
+  final PackageInfo? packageInfo;
+  @override
   @JsonKey()
   final bool showEnglishTranslations;
   @override
@@ -221,7 +237,7 @@ class _$RootStateImpl extends _RootState {
 
   @override
   String toString() {
-    return 'RootState(status: $status, pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, showEnglishTranslations: $showEnglishTranslations, errorMessage: $errorMessage, showStartImage: $showStartImage)';
+    return 'RootState(status: $status, pageIndex: $pageIndex, selectedLanguage: $selectedLanguage, selectedTheme: $selectedTheme, user: $user, packageInfo: $packageInfo, showEnglishTranslations: $showEnglishTranslations, errorMessage: $errorMessage, showStartImage: $showStartImage)';
   }
 
   @override
@@ -237,6 +253,8 @@ class _$RootStateImpl extends _RootState {
             (identical(other.selectedTheme, selectedTheme) ||
                 other.selectedTheme == selectedTheme) &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(other.packageInfo, packageInfo) ||
+                other.packageInfo == packageInfo) &&
             (identical(
                     other.showEnglishTranslations, showEnglishTranslations) ||
                 other.showEnglishTranslations == showEnglishTranslations) &&
@@ -254,6 +272,7 @@ class _$RootStateImpl extends _RootState {
       selectedLanguage,
       selectedTheme,
       user,
+      packageInfo,
       showEnglishTranslations,
       errorMessage,
       showStartImage);
@@ -272,6 +291,7 @@ abstract class _RootState extends RootState {
       final SelectedLanguage selectedLanguage,
       final SelectedTheme selectedTheme,
       final User? user,
+      final PackageInfo? packageInfo,
       final bool showEnglishTranslations,
       final String errorMessage,
       final bool showStartImage}) = _$RootStateImpl;
@@ -287,6 +307,8 @@ abstract class _RootState extends RootState {
   SelectedTheme get selectedTheme;
   @override
   User? get user;
+  @override
+  PackageInfo? get packageInfo;
   @override
   bool get showEnglishTranslations;
   @override

@@ -11,6 +11,7 @@ import 'package:shot_roulette/features/settings_page/cubit/settings_page_cubit.d
 import 'package:shot_roulette/features/settings_page/pages/language_selection.dart';
 import 'package:shot_roulette/features/settings_page/pages/theme_selection.dart';
 import 'package:shot_roulette/features/settings_page/widgets/settings_item.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -30,6 +31,13 @@ class SettingsPage extends StatelessWidget {
       create: (context) => getIt<SettingsPageCubit>(),
       child: BlocBuilder<SettingsPageCubit, SettingsPageState>(
         builder: (context, state) {
+          final PackageInfo packageinfo = rootState.packageInfo ??
+              PackageInfo(
+                appName: 'Unknown',
+                packageName: 'Unknown',
+                version: 'Unknown',
+                buildNumber: 'Unknown',
+              );
           if (state.status == Status.loading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state.settingsMenuPage != null) {
@@ -136,14 +144,14 @@ class SettingsPage extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      // const SizedBox(height: 20),
-                      // Center(
-                      //   child: AutoSizeText(
-                      //     'Cocktail Hub ${packageinfo.version} (${packageinfo.buildNumber})',
-                      //     maxLines: 1,
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 20),
+                      const SizedBox(height: 20),
+                      Center(
+                        child: AutoSizeText(
+                          'Cocktail Hub ${packageinfo.version} (${packageinfo.buildNumber})',
+                          maxLines: 1,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
 
                       // a switch for toggling english or native instructions
 
