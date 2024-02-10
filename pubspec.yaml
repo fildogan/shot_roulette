@@ -57,6 +57,7 @@ dependencies:
   url_launcher: ^6.2.4
   package_info_plus: ^5.0.1
   sensors_plus: ^4.0.2
+  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -91,6 +92,7 @@ flutter:
   assets:
     - assets/images/
   #   - images/a_dot_ham.jpeg
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -31,6 +31,7 @@ samples, guidance on mobile development, and a full API reference.
 [firebase_auth](https://pub.dev/packages/firebase_auth/license),
 [firebase_core](https://pub.dev/packages/firebase_core/license),
 [flutter_bloc](https://pub.dev/packages/flutter_bloc/license),
+[flutter_dotenv](https://pub.dev/packages/flutter_dotenv/license),
 [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons/license),
 [flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar/license),
 [freezed](https://pub.dev/packages/freezed/license),
