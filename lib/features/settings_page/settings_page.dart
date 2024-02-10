@@ -147,7 +147,7 @@ class SettingsPage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Center(
                         child: AutoSizeText(
-                          'Cocktail Hub ${packageinfo.version} (${packageinfo.buildNumber})',
+                          'Cocktail Lounge ${packageinfo.version} (${packageinfo.buildNumber})',
                           maxLines: 1,
                         ),
                       ),

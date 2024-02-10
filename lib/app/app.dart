@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         builder: (context, rootState) {
           return MaterialApp(
             debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
-            title: 'Cocktail Hub',
+            title: 'Cocktail Lounge',
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
