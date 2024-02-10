@@ -43,5 +43,6 @@ samples, guidance on mobile development, and a full API reference.
 [package_info_plus](https://pub.dev/packages/package_info_plus/license),
 [retrofit](https://pub.dev/packages/retrofit/license),
 [retrofit_generator](https://pub.dev/packages/retrofit_generator/license),
+[sensors_plus](https://pub.dev/packages/sensors_plus/license),
 [shared_preferences](https://pub.dev/packages/shared_preferences/license),
 [youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter/license)
