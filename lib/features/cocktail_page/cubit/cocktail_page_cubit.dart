@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -5,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 import 'package:shot_roulette/app/core/enums.dart';
 import 'package:shot_roulette/domain/models/cocktail_model.dart';
 import 'package:shot_roulette/domain/models/rated_cocktail_model.dart';
@@ -29,6 +31,12 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   final RatingsRepository ratingsRepository;
   final FavouritesRepository favouritesRepository;
 
+  late StreamSubscription<AccelerometerEvent> _accelerometerSubscription;
+
+  final double shakeThreshold = 20.0;
+  AccelerometerEvent? lastEvent;
+  DateTime lastTimeShakeDetected = DateTime.now();
+
   Future<void> rollShot(
       SelectedLanguage selectedLanguage, bool show, String? userId) async {
     emit(state.copyWith(status: Status.loading));
@@ -48,6 +56,29 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
         hasUserRated: hasUserRated,
       ),
     );
+  }
+
+  void startAccelerometerStream(String? userId) {
+    _accelerometerSubscription = accelerometerEventStream().listen((event) {
+      if (lastEvent != null) {
+        final deltaX = event.x - lastEvent!.x;
+        final deltaY = event.y - lastEvent!.y;
+        final deltaZ = event.z - lastEvent!.z;
+        final accelerationChange = deltaX.abs() + deltaY.abs() + deltaZ.abs();
+
+        if (accelerationChange > shakeThreshold &&
+            DateTime.now().difference(lastTimeShakeDetected) >
+                Duration(seconds: 1)) {
+          // Shake detected, emit ShakeDetectedState
+          // emit(ShakeDetectedState());
+          print('shake');
+          rollShot(SelectedLanguage.en, true, userId);
+          lastTimeShakeDetected = DateTime.now();
+        }
+      }
+      lastEvent = event;
+      print(event);
+    });
   }
 
   Future<CocktailModel> chooseRandom(
@@ -224,6 +255,9 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
 
   Future<void> loadCocktail(
       CocktailModel? cocktail, String? userId, bool? isDatabase) async {
+    if (!(isDatabase ?? false)) {
+      startAccelerometerStream(userId);
+    }
     if (cocktail != null) {
       emit(state.copyWith(status: Status.loading));
       await checkFavourite(cocktail.idDrink ?? '');
@@ -249,6 +283,8 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   Future<void> close() {
     // Add any cleanup logic here, such as closing streams or disposing resources
     // ...
+    _accelerometerSubscription.cancel();
+
     // Call the super class's close method to ensure that the Cubit is properly closed
     return super.close();
   }
