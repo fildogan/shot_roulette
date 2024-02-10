@@ -25,7 +25,7 @@ class AuthPage extends StatelessWidget {
             children: [
               const Image(
                 image: AssetImage('assets/images/papercut_background.jpg'),
-                fit: BoxFit.fill,
+                fit: BoxFit.fitHeight,
               ),
               Scaffold(
                 backgroundColor: Colors.transparent,
