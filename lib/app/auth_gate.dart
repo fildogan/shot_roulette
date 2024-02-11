@@ -13,7 +13,7 @@ class AuthGate extends StatelessWidget {
     return rootState.showStartImage
         ? const Image(
             image: AssetImage('assets/images/papercut_background.jpg'),
-            fit: BoxFit.fill,
+            fit: BoxFit.fitHeight,
           )
         : Builder(builder: (context) {
             // if (rootState.status == Status.loading) {
