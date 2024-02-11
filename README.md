@@ -27,6 +27,7 @@ samples, guidance on mobile development, and a full API reference.
 [build_runner](https://pub.dev/packages/build_runner/license),
 [cloud_firestore](https://pub.dev/packages/cloud_firestore/license),
 [cupertino_icons](https://pub.dev/packages/cupertino_icons/license),
+[dart_openai](https://pub.dev/packages/dart_openai/license),
 [dio](https://pub.dev/packages/dio/license),
 [firebase_auth](https://pub.dev/packages/firebase_auth/license),
 [firebase_core](https://pub.dev/packages/firebase_core/license),
