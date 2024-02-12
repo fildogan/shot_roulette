@@ -31,7 +31,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   final RatingsRepository ratingsRepository;
   final FavouritesRepository favouritesRepository;
 
-  late StreamSubscription<AccelerometerEvent> _accelerometerSubscription;
+  StreamSubscription<AccelerometerEvent>? _accelerometerSubscription;
 
   final double shakeThreshold = 20.0;
   AccelerometerEvent? lastEvent;
@@ -260,22 +260,33 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
     }
     if (cocktail != null) {
       emit(state.copyWith(status: Status.loading));
-      await checkFavourite(cocktail.idDrink ?? '');
 
-      final ratings = await getRatingsById(cocktail.idDrink ?? '');
-      bool hasUserRated = false;
-      if (userId != null) {
-        hasUserRated = checkIfUserRated(ratings, userId);
+      if (cocktail.idDrink != null) {
+        await checkFavourite(cocktail.idDrink ?? '');
+
+        final ratings = await getRatingsById(cocktail.idDrink ?? '');
+        bool hasUserRated = false;
+        if (userId != null) {
+          hasUserRated = checkIfUserRated(ratings, userId);
+        }
+        emit(
+          state.copyWith(
+            isDatabase: isDatabase ?? false,
+            cocktail: cocktail,
+            ratings: ratings,
+            status: Status.success,
+            hasUserRated: hasUserRated,
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            isDatabase: isDatabase ?? false,
+            cocktail: cocktail,
+            status: Status.success,
+          ),
+        );
       }
-      emit(
-        state.copyWith(
-          isDatabase: isDatabase ?? false,
-          cocktail: cocktail,
-          ratings: ratings,
-          status: Status.success,
-          hasUserRated: hasUserRated,
-        ),
-      );
     }
   }
 
@@ -283,7 +294,7 @@ class CocktailPageCubit extends Cubit<CocktailPageState> {
   Future<void> close() {
     // Add any cleanup logic here, such as closing streams or disposing resources
     // ...
-    _accelerometerSubscription.cancel();
+    _accelerometerSubscription?.cancel();
 
     // Call the super class's close method to ensure that the Cubit is properly closed
     return super.close();

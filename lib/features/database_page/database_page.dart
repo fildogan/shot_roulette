@@ -244,6 +244,15 @@ class DatabasePage extends StatelessWidget {
                                               }
                                             })
                                       ]),
+                                    SettingsItem(settingsItems: [
+                                      SettingItemModel(
+                                          title: 'Generate AI',
+                                          onTap: () {
+                                            context
+                                                .read<DatabasePageCubit>()
+                                                .getAICocktail();
+                                          })
+                                    ]),
                                   ],
                                 ),
                               ),

@@ -7,21 +7,24 @@ import 'package:shot_roulette/domain/models/filter_model.dart';
 import 'package:shot_roulette/domain/repositories/cocktails_repository.dart';
 import 'package:shot_roulette/domain/repositories/favourites_repository.dart';
 import 'package:shot_roulette/domain/repositories/filter_repository.dart';
+import 'package:shot_roulette/domain/repositories/gpt_repository.dart';
 
 part 'database_page_state.dart';
 part 'database_page_cubit.freezed.dart';
 
 @injectable
 class DatabasePageCubit extends Cubit<DatabasePageState> {
-  DatabasePageCubit(
-      {required this.filtersRepository,
-      required this.cocktailsRepository,
-      required this.favouritesRepository})
-      : super(DatabasePageState());
+  DatabasePageCubit({
+    required this.filtersRepository,
+    required this.cocktailsRepository,
+    required this.favouritesRepository,
+    required this.gptRepository,
+  }) : super(DatabasePageState());
 
   final FiltersRepository filtersRepository;
   final CocktailsRepository cocktailsRepository;
   final FavouritesRepository favouritesRepository;
+  final GPTRepository gptRepository;
 
   Future<void> getFilterList(ChosenFilter chosenFilter) async {
     emit(state.copyWith(status: Status.loading));
@@ -150,6 +153,38 @@ class DatabasePageCubit extends Cubit<DatabasePageState> {
     final cocktail = (cocktailListResponse.drinks ?? [])[0];
 
     return cocktail;
+  }
+
+  Future<void> getAICocktail() async {
+    emit(state.copyWith(status: Status.loading));
+
+    final response = await gptRepository.getAICocktail();
+
+    if ((response.drinks ?? []).isNotEmpty) {
+      final CocktailModel cocktail = (response.drinks ?? [])[0];
+
+      print(cocktail);
+
+      emit(state.copyWith(
+        cocktail: cocktail,
+        status: Status.success,
+      ));
+
+      final String imageURL =
+          await gptRepository.getAICocktailImage(cocktail: cocktail);
+
+      print(imageURL);
+
+      CocktailModel generatedCocktailWithImage =
+          cocktail.copyWith(strDrinkThumb: imageURL);
+
+      print(generatedCocktailWithImage);
+
+      emit(state.copyWith(
+        cocktail: generatedCocktailWithImage,
+        status: Status.success,
+      ));
+    }
   }
 
   Future<void> goBack() async {
