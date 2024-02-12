@@ -92,10 +92,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i17.RootCubit(authRepository: gh<_i12.AuthRepository>()));
     gh.factory<_i18.SettingsPageCubit>(() =>
         _i18.SettingsPageCubit(authRepository: gh<_i12.AuthRepository>()));
-    gh.factory<_i19.AuthPageCubit>(() => _i19.AuthPageCubit(
-          authRepository: gh<_i12.AuthRepository>(),
-          gptRepository: gh<_i8.GPTRepository>(),
-        ));
+    gh.factory<_i19.AuthPageCubit>(
+        () => _i19.AuthPageCubit(authRepository: gh<_i12.AuthRepository>()));
     gh.factory<_i20.CocktailsRemoteRetroFitDataSource>(
         () => _i20.CocktailsRemoteRetroFitDataSource(gh<_i13.Dio>()));
     gh.factory<_i21.CocktailsRepository>(() => _i21.CocktailsRepository(
@@ -104,6 +102,7 @@ extension GetItInjectableX on _i1.GetIt {
           filtersRepository: gh<_i15.FiltersRepository>(),
           cocktailsRepository: gh<_i21.CocktailsRepository>(),
           favouritesRepository: gh<_i5.FavouritesRepository>(),
+          gptRepository: gh<_i8.GPTRepository>(),
         ));
     gh.factory<_i23.CocktailPageCubit>(() => _i23.CocktailPageCubit(
           cocktailsRepository: gh<_i21.CocktailsRepository>(),
