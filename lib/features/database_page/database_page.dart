@@ -244,15 +244,20 @@ class DatabasePage extends StatelessWidget {
                                               }
                                             })
                                       ]),
-                                    SettingsItem(settingsItems: [
-                                      SettingItemModel(
-                                          title: 'Generate AI',
-                                          onTap: () {
-                                            context
-                                                .read<DatabasePageCubit>()
-                                                .getAICocktail();
-                                          })
-                                    ]),
+                                    if (state.showLetters == false &&
+                                        state.chosenFilter == null &&
+                                        state.cocktail == null &&
+                                        !state.showFavourites &&
+                                        !state.isSearching)
+                                      SettingsItem(settingsItems: [
+                                        SettingItemModel(
+                                            title: 'Generate AI',
+                                            onTap: () {
+                                              context
+                                                  .read<DatabasePageCubit>()
+                                                  .getAICocktail();
+                                            })
+                                      ]),
                                   ],
                                 ),
                               ),
