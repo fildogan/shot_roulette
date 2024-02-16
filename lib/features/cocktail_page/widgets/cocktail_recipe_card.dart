@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shot_roulette/app/cubit/root_cubit.dart';
+import 'package:shot_roulette/app/injection_container.dart';
 import 'package:shot_roulette/features/cocktail_page/cubit/cocktail_page_cubit.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_amount.dart';
 import 'package:shot_roulette/features/cocktail_page/widgets/ingredient_name.dart';
@@ -93,34 +94,55 @@ class CocktailRecipeCard extends StatelessWidget {
                 ),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: BlocBuilder<DatabasePageCubit, DatabasePageState>(
-                    builder: (context, databaseState) {
-                      return ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8.0)),
-                          child: (state.cocktail != null &&
-                                  databaseState.cocktail!.strDrinkThumb != null)
-                              ? Image.network(
-                                  databaseState.cocktail!.strDrinkThumb!,
-                                  fit: BoxFit.fill,
-                                  width: double.infinity,
-                                )
-                              : (state.cocktail != null &&
-                                      state.cocktail!.strDrinkThumb != null)
-                                  ? Image.network(
-                                      state.cocktail!.strDrinkThumb!,
-                                      fit: BoxFit.fill,
-                                      width: double.infinity,
-                                    )
-                                  : Image.asset(
-                                      'assets/images/cocktail_placeholder.jpg',
-                                      fit: BoxFit.fill,
-                                      width: double.infinity,
-                                    ));
-                    },
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: state.isDatabase
+                        ? BlocBuilder<DatabasePageCubit, DatabasePageState>(
+                            builder: (context, databaseState) {
+                              return ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8.0)),
+                                  child: (state.cocktail != null &&
+                                          databaseState
+                                                  .cocktail!.strDrinkThumb !=
+                                              null)
+                                      ? Image.network(
+                                          databaseState
+                                              .cocktail!.strDrinkThumb!,
+                                          fit: BoxFit.fill,
+                                          width: double.infinity,
+                                        )
+                                      : (state.cocktail != null &&
+                                              state.cocktail!.strDrinkThumb !=
+                                                  null)
+                                          ? Image.network(
+                                              state.cocktail!.strDrinkThumb!,
+                                              fit: BoxFit.fill,
+                                              width: double.infinity,
+                                            )
+                                          : Image.asset(
+                                              'assets/images/cocktail_placeholder.jpg',
+                                              fit: BoxFit.fill,
+                                              width: double.infinity,
+                                            ));
+                            },
+                          )
+                        : ClipRRect(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(8.0),
+                            ),
+                            child: (state.cocktail != null &&
+                                    state.cocktail!.strDrinkThumb != null)
+                                ? Image.network(
+                                    state.cocktail!.strDrinkThumb!,
+                                    fit: BoxFit.fill,
+                                    width: double.infinity,
+                                  )
+                                : Image.asset(
+                                    'assets/images/cocktail_placeholder.jpg',
+                                    fit: BoxFit.fill,
+                                    width: double.infinity,
+                                  ),
+                          )),
               ),
               const SizedBox(height: 5),
               Padding(
